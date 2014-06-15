@@ -1,0 +1,35 @@
+Title: Tomcat site manager
+----
+Summary: A Chrome plugin to help manage Tomcat virtual hosts
+----
+Date: 03/10/2012
+----
+Text:
+
+(image: site-manager.png link: site-manager.png)
+
+At my day job I develop sites using a proprietary JSP framework which in turn runs on Apache Tomcat, sites are developed locally before being pushed via SVN to a staging site and then finally live. Tomcat has it’s own virtual host manager that runs in the browser, it’s a clever way of doing things but it it requires each and every site to be manually set up using a form each time you want to run it.
+
+I can’t stand such inefficiency and after reading about how easy Chrome plugins are to develop I thought I’d give it a go and write a tool for myself. I love writing tools, I must have a script, shortcut, plugin or bookmarklet for just about everything nowadays and this one turned out to be one of the most useful ones I’ve created.
+
+The idea is simple, the plugin needs to keep track of all the local sites I need access to (currently around 30+) and enable me to quickly see which ones are running as well as start, stop and restart them. All those actions are normally run using forms within Tomcats virtual host manager so all I need to do is spoof the form actions with AJAX calls.
+
+(image: site-settings.png link: site-settings.png)
+
+The image above show the main options page, you might recognise the use of Twitter Bootstrap which helped speed up development so much. The full domain, aliases and file path are dynamically using a base configuration as seen below.
+
+(image: global-settings.png link: global-settings.png)
+
+Sites can be added using a modal form (thanks to bootstrap), here you enter the sites domain, root path and any aliases, auto completion helps speed things up so it takes about 2 seconds to finish
+
+(image: add-site.png link: add-site.png)
+
+The sites configuration is all saved using the browsers localStorage API as a JSON string, that means I can pull it out and parse it straight back into an array, simple. It also enables backing up by simply saving the JSON string to a text file somewhere, idealy I would Gists to back up the data or the perhaps the javascript filesystem API to create the text file and download it but as of writing this both options look like far to much work to be worth it. So for now clicking ‘Export sites config’ will present a modal dialog with the config JSON to save somewhere, clicking ‘Import config’ will do the reverse.
+
+(image: export-sites.png link: export-sites.png)
+
+The plugins popup UI is the more often used part, it enables starting a site running, stopping or restarting a running site and opening the site url in a new tab. If you can play it, the short video below shows the different states.
+
+(video)
+
+Currently this is just a tool used by me and a few colleagues but if anyone thinks it might be useful to them, I’ll stick it up on github.

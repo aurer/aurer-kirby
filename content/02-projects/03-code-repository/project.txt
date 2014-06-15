@@ -1,0 +1,26 @@
+Title: Code Repository
+----
+Summary: A personal code repository built using the Codeigniter Framework
+----
+Date: 233/07/2012
+----
+Text:
+Another few months and another little project, this time a code snippet manager. I obviously have no imagination for thinking up web apps as there’s loads of these things around, however it seems a good sort of project to help with learning a framework.
+
+This one is built using the awesome [CodeIgniter framework](http://codeigniter.com/). If you havent heard of it I strongly suggest you have a read through the documentation and give it a go, the documentation is superb, it’s really easy to find things and doesn’t leave anything out.Codeigniter also has a big community of helpful devs, just google your query and chances are someone will have already answered it.
+
+So what was this web app meant to do:
+
+Allow me to quickly add and store code snippets.
+Categorise the clips using tags, I find that I often want to categorise code under more than a single language e.g PHP and Regex or HTML and Javascript.
+Quickly search for snippets.
+Keep track of my most recent and popular clips for fast access.
+I thought that maybe if I could get this working well enough I could add user login and private clips etc. and actually release it to the world but that is a LOT more work than it seems at first.
+
+
+(image: clips-list.jpg link: clips-list.jpg class: image caption: Main view showing the latest added code clips )
+(image: clips-list-compressed.jpg link: clips-list-compressed.jpg caption: Clips search page showing expanded code view)
+(image: expand-clip.jpg link: expand-clip.jpg )
+(image: add-clip.jpg link: add-clip.jpg )
+(image: tags.jpg link: tags.jpg )
+(image: manage-tags.jpg link: manage-tags.jpg )

@@ -1,0 +1,17 @@
+.off-top{
+
+	.mast{
+		.row{
+			height: $logo-height-small;
+		}
+	}
+
+	.nav1 a{
+		line-height: $logo-height-small;
+	}
+
+	.nav2{
+		position: fixed;
+		top: 5em;
+	}
+}

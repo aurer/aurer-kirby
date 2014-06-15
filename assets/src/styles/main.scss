@@ -1,0 +1,198 @@
+body {
+	background: url(/assets/dist/gfx/wild-sea.jpg) #222;
+	background-position: 80% 0;
+	color: #ccc;
+	font-family: Lato, "Gill sans", sans-serif;
+	line-height: 1.4;
+	padding: 0;
+
+	@media #{$respond-medium} {
+		padding-top: ($base-height + $logo-height-medium)
+	}
+
+	@media #{$respond-large} {
+		padding-top: ($base-height + $logo-height-large)
+	}
+}
+
+/*
+	Layout
+*/
+.row {
+	max-width: 980px;
+	margin: auto;
+	padding: $base-height 1em;
+	overflow: hidden;
+}
+
+.mast{
+	background: url(/assets/dist/gfx/wild-sea.jpg) #222;
+	background-position: 80% 0;
+
+	@media #{$respond-medium} {
+		position: fixed;
+		top: 0;
+		width: 100%;
+	}
+
+	.logo {
+		display: block;
+		text-align: center;
+		overflow: hidden;
+
+		@media #{$respond-small} {
+			height: 100%;
+		}
+
+		img, svg{
+			width: auto;
+			height: 100%;
+			max-height: 60px;
+			
+		}
+
+		@media #{$respond-small} {
+			float: left;
+		}
+	}
+
+	a{
+		color: #fff;
+		font-weight: lighter;
+	
+		&:hover{
+			color: $link-hover;
+		}
+	}
+
+	.row {
+		padding: ($base-height/2) 1em;
+		height: auto;
+
+		@media #{$respond-small} {
+			height: $logo-height-small;
+		}
+
+		@media #{$respond-medium} {
+			transition: height .2s;
+			height: $logo-height-medium;
+		}
+
+		@media #{$respond-large} {
+			height: $logo-height-large;
+		}
+
+		h1 {
+			float: left;
+			margin: 0em 0;
+			font-weight: lighter;
+		}
+	}
+}
+
+.main{
+	background: #fff;
+	color: #444;
+
+	.row{
+		
+	}
+}
+
+.foot{
+	font-size: .9em;
+
+	a{
+		color: $link-hover;
+		text-decoration: none;
+
+		&:hover{
+			color: #fff;
+		}
+	}
+}
+
+/*
+	Home
+*/
+.intro{
+	background-image: url(/assets/dist/gfx/mist.jpg);
+	background-position: 50%;
+	background-size: cover;
+	color: #111;
+	text-align: center;
+	padding-top: 3em;
+
+	.row{
+		@media #{$respond-large} {
+			min-height: 700px;		
+			padding-top: 10em;
+		}
+	} 
+}
+
+/*
+	Projects
+*/
+.projects{
+	
+
+	.project{
+		overflow: hidden;
+		border-top: 1px dashed #ccc;
+		margin: $base-height auto 0;
+		padding: 1em 0 0;
+		position: relative;
+
+		&:first-child{
+			border: none;
+		}
+		
+		@media #{$respond-small} {
+			max-width: 500px;
+			min-height: 170px;
+		}
+
+		@media #{$respond-large} {
+			float: left;
+			width: 45%;
+			margin: 1em 5% 1em 0;
+			border: none;
+
+			&:nth-of-type(2n+2){
+				margin-right: 0;
+				float: right;
+			}
+		}
+	}
+	
+	h2{
+		margin-bottom: .5em;
+	}
+	@media #{$respond-small} {
+		h2,
+		.summary{
+			padding-right: 250px;
+		}
+	}
+	
+	.detail{
+		
+		img{
+			float: right;
+			max-width: 170px;
+			margin-left: 1em;
+			@media #{$respond-small} {
+				max-width: 100%;
+			}
+		}
+		@media #{$respond-small} {
+			img{
+				display: block;
+				position: absolute;
+				right: 0;
+				top: 1.8em;
+			}
+		}
+	}
+}

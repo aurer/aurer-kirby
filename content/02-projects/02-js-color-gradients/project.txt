@@ -1,0 +1,47 @@
+Title: JS Color Gradient
+----
+Summary: An experiment in color, math and javascript.
+----
+Date: 16/08/2012
+----
+Text:
+First of all you can find the script at [github.com/aurer/jsgradient](https://github.com/aurer/jsgradient) if you want to try it out.
+
+This project originally grew from the the question of how to replicate the most basic part from the popular and awesome app Clear, that being the graduated color list denoting importance of tasks. The problem is automating the process of coloring a series of items using a gradient of colours from X to Y given that the list can be of any length.
+
+So I though, just generate a gradient using javascript…but how would that actually work? …how do I find the colours in between two colours? …I bet it involves maths.
+
+## Maths
+
+I thought I hated maths, boring maths classes, struggling to learn things I didn’t care about and thought I’d never use left me hating maths. Then I started coding and quickly found that maths is great, like actually really useful and even kind of fun! I’m still pretty hopeless, but I like it now and that means I can learn it.
+
+Here’s where this project comes in, in order to find the ‘colours between two colours’ I needed to take a hexidecimal representation of a colour e.g. #07E3F2 and convert it to an RGB version (in this case R=7, G=227, B=242).
+
+So I needed to know how to convert a hex color to an RGB color, turns out it’s quite simple, the hex string contains 6 characters, the first two represent Red, the next two Green and the last two Blue and each one is in base 16 i.e. 0,1,2,4,5,6,7,8,9,A,B,C,D,E,F. So I can uses the following to convert each colour from base 16 to it’s base 10 equivalent.
+
+	R = parseInt(hex.substr(0, 2), 16);
+	G = parseInt(hex.substr(2, 2), 16);
+	B = parseInt(hex.substr(4, 2), 16);
+
+I did that for the start and end colours, then using those numbers I could work out the ones in between.
+
+To work out the numbers in the middle, I took difference beween the start and end numbers and divided that by the number of steps I wanted. Using that as an increment, I simply removed or added it to the start number until I reached the end number, recording each one along the way and converting back into hex.
+
+So maybe there’s a better way to do it, but at least I understand this method, I learned from it and it works for me.
+
+## The jsgradient plugin
+
+The easiest way to implement a gradient is by calling the gradientList() function, specifying the start color, end color and list element you want to style like so:
+
+	jsgradient.gradientList('#07E3F2', '#155994', '#demo');
+
+You can pass in the colors in the following formats: **‘fff’**, **‘#fff’**, **‘ffffff’** or **‘#ffffff’**. The list element can also be passed in as a string e.g. **‘#demo’** or as a jquery object e.g. **$(‘#demo’)**;
+
+You can also call the **generateGradient()** function as the example below shows and this will return the array of hex colors for you do use however you like.
+
+	jsgradient.generateGradient('#07E3F2', '#155994', 10);
+
+Here’s a little demo of a styled list:
+
+<p data-height="268" data-theme-id="6060" data-slug-hash="yHbfG" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/aurer/pen/yHbfG/'>JS Gradient</a> by Phil Maurer (<a href='http://codepen.io/aurer'>@aurer</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>

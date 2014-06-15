@@ -1,0 +1,66 @@
+/*
+	Navigation
+*/
+nav a {
+	text-decoration: none;
+}
+
+.nav1 {
+	clear:both;
+	text-align: center;
+	width: 100%;
+	padding: 0 0 0;
+
+	@media #{$respond-small} {
+		float: right;
+		clear: none;
+		width: auto;
+		display: block;
+		padding: 0;
+	}
+
+	a{
+		margin: 0 .5em;
+		padding: 1em .5em 0;
+		color: #b5b5b5;
+		transition: color .2s, line-height .2s;
+		line-height: $logo-height-small;
+
+		@media #{$respond-medium} {
+			line-height: $logo-height-medium;
+		}
+
+		@media #{$respond-large} {
+			line-height: $logo-height-large;
+		}
+
+		&.active{
+			color: $link-hover;
+		}
+	}
+}
+
+.nav2 {
+	width: 20%;
+	float: left;
+	padding: .3em 0;
+
+	a {
+		display: block;
+		padding: .5em 0;
+
+		&.active{
+			color: $link-hover;
+		}
+	}
+	
+	h2{
+		
+	}
+
+	& + .content {
+		float: right;
+		width: 78%;
+	}
+}
+

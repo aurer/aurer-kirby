@@ -1,0 +1,10 @@
+Title: Now
+----
+Summary: A simple clock/calendar infographic
+----
+Date: 10/05/2014
+----
+Text: 
+Sorry project text coming soon...
+
+In the mean time you can (link: http://now.aurer.co.uk text: view the project here target: _blank).

@@ -1,0 +1,7 @@
+Title: Hello
+
+----
+
+Text: 
+
+Hi I'm Phil, I'm a web developer living and working in Bury St Edmunds UK.

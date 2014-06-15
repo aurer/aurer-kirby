@@ -1,0 +1,23 @@
+Title: Task Manager
+----
+Summary: A small personal project for managing tasks
+----
+Date: 03/06/2012
+----
+Text:
+This was an experimental project of mine, I wanted to develop a simple web application for myself, something that I could use on a daily basis and something that would test and improve my skills. So I came up with a little task managing application, I realize there are probably several million task managing/GTD style apps around but oh well, this one’s just for me. I’ve been working on a lot of imageless (CSS3) web design at the moment, so following that theme, this one uses no images what so ever, just HTML, CSS and jQuery.
+
+It seems I’m not the only one who likes the idea of creating sites and apps with only CSS, some amazing example are - [CSS Fail Whale](http://www.subcide.com/articles/pure-css-twitter-fail-whale/), [CSS iPhone icons](http://graphicpeel.com/cssiosicons), [Safari inside Safari](http://general-metrics.com/Safari/) and [the CSS iPhone](http://demos.jeffbatterton.com/iphone-css3/).
+
+Compared to these my efforts feel pretty mediocre, but it all works and it was fun to do, here’s some screencaps of the interface.
+
+(image: login.jpg link: login.jpg caption: The login screen)
+(image: empty-projects-view.jpg link: empty-projects-view.jpg caption: The main screen)
+(image: loaded-tasks.jpg link: loaded-tasks.jpg caption: Loaded tasks)
+(image: adding-project.jpg link: adding-project.jpg caption: Adding a new project)
+(image: add-task.jpg link: add-task.jpg caption: Adding a new task to a project)
+(image: re-ordering.jpg link: re-ordering.jpg caption: Drag-and-drop reordering of tasks)
+(image: options.jpg link: options.jpg caption: The options popup)
+(image: light-theme.jpg link: light-theme.jpg caption: A lighter version of the theme)
+
+I’ve actually been using this over the past few weeks to manage personal projects and even to jot down quick tasks at work, it’s reasonably good at managing tasks and as an experiment I’m calling it a success although it could be improved in future versions if I do ever get round to working on it again.
