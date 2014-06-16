@@ -3,7 +3,7 @@
     <head>
         <?= snippet('head') ?>
     </head>
-    <body class="default">
+    <body class="default <?= $site->uri()->path() ?>">
         
         <?= snippet('mast') ?>
     	

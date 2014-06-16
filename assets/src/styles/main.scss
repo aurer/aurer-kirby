@@ -110,6 +110,14 @@ body {
 			color: #fff;
 		}
 	}
+	@media #{$respond-medium} {
+		.copyright{
+			float: left;
+		}
+		.technology{
+			float: right;
+		}
+	}
 }
 
 /*
@@ -194,5 +202,32 @@ body {
 				top: 1.8em;
 			}
 		}
+	}
+}
+
+/*
+	About
+*/
+.about{
+	ul{
+		overflow: hidden;
+		margin: 0 0 $base-height;
+		padding: 0;
+
+		li{
+			list-style: none;
+			padding: .5em 0;
+			@media #{$respond-small} {
+				width: 50%;
+				float: left;
+				border-bottom: 1px dashed #ccc;
+			}
+		}
+
+		li:before{
+			content: '-';
+			margin-right: 1em;
+			color: #999;
+		} 
 	}
 }
