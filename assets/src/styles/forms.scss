@@ -1,6 +1,4 @@
 form.standard{
-	max-width: 700px;
-	margin: auto;
 
 	.field{
 		margin: $base-height 0;
@@ -9,28 +7,31 @@ form.standard{
 		label{
 			display: block;
 			margin: 0 0 .25em;
-			@media #{$respond-medium} {
-				float: left;
-				width: 20%;
-				padding: 0 2% 0 0;
-				text-align: right;
-			}
+			
 		}
 
 		.input{
-			@media #{$respond-medium} {
-				display: block;
-				float: right;
-				width: 77%;
-			}
 			input,
 			textarea,
 			select{
 				width: 100%;
 				border: 1px solid #ccc;
 				box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
-				padding: .2em;
+				padding: .35em .2em;
+
+				&:focus{
+					border-color: $highlight;
+					box-shadow: inset 0 1px 3px rgba($highlight, 0.4);
+					outline: none;
+				}
 			}
 		}
+	}
+}
+		
+form.contact{
+	.field input[type=text],
+	.field input[type=email]{
+		max-width: 700px;
 	}
 }

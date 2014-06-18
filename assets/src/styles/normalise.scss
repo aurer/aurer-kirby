@@ -85,6 +85,12 @@ template {
     display: none;
 }
 
+::selection{
+    background: lighten($highlight, 10%);
+    color: #fff;
+    text-shadow: none;
+}
+
 /* Links
 ========================================================================== */
 
@@ -106,6 +112,10 @@ a:active,
 a:hover {
     outline: 0;
     color: $link-hover;
+}
+
+a:focus{
+    outline: 1px dashed $highlight;
 }
 
 /* Text-level semantics
