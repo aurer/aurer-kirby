@@ -4,9 +4,9 @@
 			<?= kirbytext($site->copyright()) ?>
 		</span>
 		<span class="technology">
-			<span class="item">Built with <a href="http://getkirby.com">Kirby</a></span>
-			<span class="item">Running on <a href="http://wiki.nginx.org/Main">Nginx</a></span>
-			<span class="item">Powered by <a href="https://www.linode.com/">Linode</a></span>
+			<span class="item">Built with <a target="_blank" href="http://getkirby.com">Kirby</a></span>
+			<span class="item">Running on <a target="_blank" href="http://wiki.nginx.org/Main">Nginx</a></span>
+			<span class="item">Powered by <a target="_blank" href="https://www.linode.com/">Linode</a></span>
 		</span>
 	</footer>
 </section>
