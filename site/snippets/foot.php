@@ -10,7 +10,6 @@
 		</span>
 	</footer>
 </section>
-<?= css(asset_path('assets/dist/css', 'screen.css')) ?>
 <?= css(asset_path('http://fonts.googleapis.com/css?family=Lato:300,400,700', 'screen.css')) ?>
 <script src="/assets/dist/js/build.js" defer></script>
 <script defer>
