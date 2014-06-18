@@ -46,8 +46,7 @@
 			.pipe(sass({
 				errLogToConsole: true,
 				onError: function(err){
-					console.log('sass error:', err);
-					gulp.src(paths.cssIn).pipe(notify({
+					gulp.src(paths.src.css).pipe(notify({
 						title: 'Sass error',
 						message: err
 					}));
@@ -69,9 +68,11 @@
 
 	// Revision
 	gulp.task('rev_css', function() {
-		gulp.src(paths.dist.css + '/*.css', {read: false})
-		    .pipe(clean());
 
+		// Remove css files
+		gulp.src(paths.watch.css, {read: false}).pipe(clean());
+
+		// Create revisioned css file
 		gulp.src(paths.src.css)
 			.pipe(sass({
 				errLogToConsole: true,
@@ -103,10 +104,15 @@
 			.pipe(gulp.dest(paths.dist.gfx));
 	});
 
-	// Clean Build Folder
-	gulp.task('clean', function() {
-		gulp.src([paths.dist.css, paths.dist.js, paths.dist.gfx], {read: false}).pipe(clean());
-		gulp.start('styles', 'scripts', 'gfx');
+	// Content images
+	gulp.task('content_images', function(source){
+		return gulp.src(['./content/**/*.jpg', './content/**/*.png'])
+			.pipe(imagemin({
+				optimizationLevel: 5,
+				progressive: true,
+				interlaced: true
+			}))
+			.pipe(gulp.dest('./content/'));
 	});
 
 	// Watch Files For Changes & Livereload
@@ -132,7 +138,7 @@
 /*---------- Environements Tasks ----------*/
 
 	// Default Task
-	gulp.task('default',['gfx','watch']);
+	gulp.task('default', ['styles', 'watch']);
 	
 	// Build Task
-	gulp.task('build', ['clean', 'rev_css', 'gfx']);
+	gulp.task('build', ['content_images', 'rev_css', 'gfx', 'scripts']);
