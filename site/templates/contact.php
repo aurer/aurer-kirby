@@ -40,7 +40,7 @@
                     <?= kirbytext($page->text()) ?>
                     
                     <?php if(empty($_GET['sent'])) : ?>
-                        <form action="" method="post" id="contact-form" class="standard" >
+                        <form action="" method="post" id="contact-form" class="standard contact" >
                             <p class="field <?php echo $validator->error_class('contactname'); ?>">
                                 <label>Name</label>
                                 <span class="input">
@@ -65,7 +65,7 @@
                             <p class="field <?php echo $validator->error_class('message'); ?>">
                                 <label>Message</label>
                                 <span class="input">                    
-                                    <textarea name="message" id="in-message" cols="30" rows="6"><?php echo $validator->get_value('message'); ?></textarea>
+                                    <textarea name="message" id="in-message" cols="30" rows="10"><?php echo $validator->get_value('message'); ?></textarea>
                                     <?php $validator->field_error('message', '<span class="error">', '</span>') ?>
                                 </span>
                             </p>
