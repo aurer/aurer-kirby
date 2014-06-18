@@ -5,5 +5,3 @@
 <meta name="keywords" content="<?= html($site->keywords()) ?>" />
 <meta name="robots" content="index, follow" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<?= css(asset_path('assets/dist/css', 'screen.css')) ?>

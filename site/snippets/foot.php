@@ -10,10 +10,10 @@
 		</span>
 	</footer>
 </section>
-
-<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-<script src="/assets/dist/js/build.js"></script>
-<script>
+<?= css(asset_path('assets/dist/css', 'screen.css')) ?>
+<?= css(asset_path('http://fonts.googleapis.com/css?family=Lato:300,400,700', 'screen.css')) ?>
+<script src="/assets/dist/js/build.js" defer></script>
+<script defer>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
     e=o.createElement(i);r=o.getElementsByTagName(i)[0];
