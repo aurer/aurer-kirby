@@ -3,3 +3,5 @@ panel/
 site/panel
 docs
 node_modules
+*.sublime-project
+*.sublime-workspace
