@@ -23,8 +23,7 @@ function handleFixedNav(){
 		bgp         = 0;
 
 	window.onscroll = function(e){
-		var doc = document.body;
-		
+		var doc = document.body;		
 		if(document.body.scrollWidth > 700){
 			if(doc.scrollTop > 40){
 				addClass(body, 'off-top');
