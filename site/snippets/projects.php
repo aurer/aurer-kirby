@@ -13,9 +13,9 @@ $items = ($page) ? $page->children()->visible() : false;
     			<div class="detail">
     				<?php $thumb = $item->files()->find('thumb.jpg'); ?>
     				<?php if( $thumb ): ?>
-    					<img src="<?= $thumb->url() ?>" alt="Thumbnail for <?= html($item->title()) ?>" />
+    					<img width="220" height="150" src="<?= $thumb->url() ?>" alt="Thumbnail for <?= html($item->title()) ?>" />
     				<?php else: ?>
-                        <img src="http://placehold.it/220x150/&text=<?= urlencode($item->title()) ?>" alt="<?= $item->title() ?>">
+                        <img width="220" height="150" src="http://placehold.it/220x150/&text=<?= urlencode($item->title()) ?>" alt="<?= $item->title() ?>">
                     <?php endif ?>
     				<div class="summary"><?= $item->summary() ?></div>
     			</div>
