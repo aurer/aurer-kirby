@@ -91,6 +91,23 @@
 			.pipe(rev.manifest())
 			.pipe(gulp.dest(paths.dist.css))
 	});
+
+	// Revision
+	gulp.task('rev_js', function() {
+
+		// Remove js files files
+		gulp.src(paths.watch.jsDist, {read: false}).pipe(clean());
+
+		// Rev js files
+		gulp.src(paths.src.js)
+			.pipe(plumber())
+			.pipe(concat('build.js'))
+			.pipe(uglify())
+			.pipe(rev())
+			.pipe(gulp.dest(paths.dist.js))
+			.pipe(rev.manifest())
+			.pipe(gulp.dest(paths.dist.js));
+	});
 	
 
 	// Images
@@ -141,4 +158,4 @@
 	gulp.task('default', ['styles', 'watch']);
 	
 	// Build Task
-	gulp.task('build', ['content_images', 'rev_css', 'gfx', 'scripts']);
+	gulp.task('build', ['content_images', 'rev_css', 'rev_js', 'gfx']);
