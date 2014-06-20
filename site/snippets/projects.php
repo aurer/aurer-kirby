@@ -10,16 +10,14 @@ $items = ($page) ? $page->children()->visible() : false;
     	<div class="project">
     		<a href="<?= $item->url() ?>">
     			<h2><?= html($item->title()) ?></h2>
-    			<div class="detail">
-    				<?php $thumb = $item->files()->find('thumb.jpg'); ?>
-    				<?php if( $thumb ): ?>
-    					<img width="220" height="150" src="<?= $thumb->url() ?>" alt="Thumbnail for <?= html($item->title()) ?>" />
-    				<?php else: ?>
-                        <img width="220" height="150" src="http://placehold.it/220x150/&text=<?= urlencode($item->title()) ?>" alt="<?= $item->title() ?>">
-                    <?php endif ?>
-    				<div class="summary"><?= $item->summary() ?></div>
-    			</div>
+    			<p class="summary"><?= $item->summary() ?></p>
     		</a>
+            <?php $thumb = $item->files()->find('thumb.jpg'); ?>
+            <?php if( $thumb ): ?>
+                <img width="400" height="300" src="<?= $thumb->url() ?>" alt="Thumbnail for <?= html($item->title()) ?>" />
+            <?php else: ?>
+                <img width="400" height="300" src="http://placehold.it/440x300/&text=<?= urlencode($item->title()) ?>" alt="<?= $item->title() ?>">
+            <?php endif ?>
     	</div>
     <?php endforeach ?>
 </nav>

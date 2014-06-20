@@ -173,90 +173,104 @@ body {
 		}
 	}
 	
-	@media screen and (min-height: 500px) {
-		min-height: 240px;
-		padding-top: 80px;
+	@media #{$respond-medium}{
+		@media screen and (min-height: 500px) {
+			min-height: 240px;
+			padding-top: 80px;
+		}
+		@media screen and (min-height: 1000px) {
+			min-height: 380px;
+			padding-top: 170px;
+		}
+		@media screen and (min-height: 1200px) {
+			min-height: 450px;
+			padding-top: 240px;
+		}
 	}
-	@media screen and (min-height: 1000px) {
-		min-height: 380px;
-		padding-top: 170px;
-	}
-	@media screen and (min-height: 1200px) {
-		min-height: 450px;
-		padding-top: 240px;
-	}
-
 	.row{
 		@media #{$respond-tiny} {
 			padding-top: 0;
 		}
 	}
+}
 
-
+/*
+	Home
+*/
+.home{
+	h2{
+		text-align: center;
+	}
 }
 
 /*
 	Projects
 */
 .projects{
-	
+	overflow: hidden;
+	margin: auto;
+	text-align: center;
+}
+.project{
+	width: 100%;
+	max-width: 400px;
+	min-height: 140px;
+	float: none;
+	margin: 1em auto 0;
+	position: relative;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
-	.project{
-		overflow: hidden;
-		border-top: 1px dashed #ccc;
-		margin: $base-height auto 0;
-		padding: 1em 0 0;
-		position: relative;
+	@media screen and (min-width: 550px){
+		width: 48%;
+		max-width: none;
+		margin: 1em 2% 1em 0;
+		float: left;
 
-		&:first-child{
-			border: none;
-		}
-		
-		@media #{$respond-small} {
-			max-width: 500px;
-			min-height: 170px;
-		}
-
-		@media #{$respond-large} {
-			float: left;
-			width: 45%;
-			margin: 1em 5% 1em 0;
-			border: none;
-
-			&:nth-of-type(2n+2){
-				margin-right: 0;
-				float: right;
-			}
+		&:nth-child(2n){
+		  margin: 1em 0 1em 2%;
 		}
 	}
-	
-	h2{
-		margin-bottom: .5em;
-	}
-	@media #{$respond-small} {
-		h2,
-		.summary{
-			padding-right: 250px;
+
+	@media screen and (min-width: 800px){
+		width: 30%;
+		max-width: none;
+		margin: 1em 1.5% 1em !important;
+		float: left;
+		&:nth-child(3n){
+			margin-right: 0;
+		}
+		&:nth-child(3n+2){
+			margin-left: 2% !important; 
+			margin-right: 2% !important; 
 		}
 	}
-	
-	.detail{
-		
-		img{
-			float: right;
-			margin-left: 1em;
-			@media #{$respond-small} {
-				max-width: 100%;
-			}
+
+	a{
+		position: absolute;
+		padding: 3%;
+		text-align: left;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: #f8f8f8;
+		background: rgba(250, 250, 250, 0.95);
+		opacity: 0;
+		transition: opacity .3s;
+
+		&:hover{
+			color: #333;
+			opacity: 1;
 		}
-		@media #{$respond-small} {
-			img{
-				display: block;
-				position: absolute;
-				right: 0;
-				top: 1.8em;
-			}
+		@media #{$respond-medium}{
+			padding: 1em 6%;
 		}
+	}
+
+	img{
+		max-width: 100%;
+		height: auto;
+		vertical-align: bottom;
 	}
 }
 
