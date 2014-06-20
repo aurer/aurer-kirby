@@ -152,23 +152,14 @@ body {
 	color: #fff;
 	text-align: center;
 	position: relative;
-	
+	transition: min-height 1s, padding-top 1s;
+
 	@media #{$respond-medium} {
 		background-image: url(/assets/dist/gfx/corn.jpg);
 		background-position: center 40%;
 		background-size: cover;
 		color: #fff;
-		min-height: 360px;
-		padding-top: 180px;
-	}
 
-	.row{
-		@media #{$respond-tiny} {
-			padding-top: 0;
-		}
-	} 
-	
-	@media #{$respond-medium} {
 		h1{
 			animation-name: fadeIn;
 			animation-duration: 1.5s;
@@ -181,6 +172,27 @@ body {
 			animation-delay: .8s;
 		}
 	}
+	
+	@media screen and (min-height: 500px) {
+		min-height: 240px;
+		padding-top: 80px;
+	}
+	@media screen and (min-height: 1000px) {
+		min-height: 380px;
+		padding-top: 170px;
+	}
+	@media screen and (min-height: 1200px) {
+		min-height: 450px;
+		padding-top: 240px;
+	}
+
+	.row{
+		@media #{$respond-tiny} {
+			padding-top: 0;
+		}
+	}
+
+
 }
 
 /*
