@@ -3,7 +3,7 @@
     <head>
         <?= snippet('head') ?>
     </head>
-    <body class="home">
+    <body class="<?= $page->template() ?>">
         
         <?= snippet('mast') ?>
         

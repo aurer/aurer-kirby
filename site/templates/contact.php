@@ -29,7 +29,7 @@
     <head>
         <?= snippet('head') ?>
     </head>
-    <body class="default">
+    <body class="<?= $page->template() ?>">
         
         <?= snippet('mast') ?>
     	
