@@ -211,6 +211,7 @@ body {
 	margin: auto;
 	text-align: center;
 }
+
 .project{
 	width: 100%;
 	max-width: 400px;
@@ -218,6 +219,8 @@ body {
 	float: none;
 	margin: 1em auto 0;
 	position: relative;
+	padding: .5em;
+	box-sizing: border-box;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
 	@media screen and (min-width: 550px){
@@ -245,9 +248,14 @@ body {
 		}
 	}
 
+	h2{
+		margin-bottom: ($base-height/2);
+		font-size: 1.1em;
+	}
+
 	a{
 		position: absolute;
-		padding: 3%;
+		padding: 4%;
 		text-align: left;
 		top: 0;
 		left: 0;
@@ -261,6 +269,16 @@ body {
 		&:hover{
 			color: #333;
 			opacity: 1;
+
+			h2{
+				animation-name: fadeIn;
+				animation-duration: .7s;
+			}
+			p{
+				animation-name: fadeIn;
+				animation-duration: .7s;
+				animation-delay: .2s;
+			}
 		}
 		@media #{$respond-medium}{
 			padding: 1em 6%;

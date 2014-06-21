@@ -40,27 +40,54 @@ nav a {
 	}
 }
 
-.nav2 {
-	width: 20%;
-	float: left;
-	padding: .3em 0;
-
-	a {
-		display: block;
-		padding: .5em 0;
-
-		&.active{
-			color: $link-hover;
+.nav2{
+	padding-top: 1em;
+	border-top: 1px solid #d5d5d5;
+	background: #2A3238;
+	background: #eee;
+	font-size: .9em;
+	text-align: center;
+	
+	.row{
+		width: 70%;
+		@media #{$respond-small}{
+			width: 60%;
+		}
+		@media #{$respond-medium}{
+			width: 50%;
+		}
+		@media #{$respond-large}{
+			width: 30%;
 		}
 	}
 	
-	h2{
-		
+
+	a{
+		text-decoration: none;
+	}
+	nav{
+		a {
+			display: block;
+			padding: .5em 0;
+
+			&.active{
+				color: $link-hover;
+			}
+			&:last-child{
+				border: none;
+			}
+		}
 	}
 
-	& + .content {
-		float: right;
-		width: 78%;
+	h2{
+		font-size: 1.1em;
+		margin: 0 0 .5em;
+		padding: 0 0 .5em;
+		border-bottom: 1px solid $highlight;
+		@media #{$respond-large}{
+			margin: 0 0 1em;
+			padding: 0 0 1em;
+		}
 	}
 }
 
