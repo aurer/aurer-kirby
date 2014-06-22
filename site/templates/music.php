@@ -49,7 +49,7 @@
                         newTrack.thumbnail = thumbnail(track.image, 'large', newTrack.album);
                         tracks.push(newTrack);
                     });
-                    // $scope.loading = false;
+                    $scope.loading = false;
                     $scope.tracks = tracks;
                 });
             });
