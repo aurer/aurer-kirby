@@ -41,4 +41,7 @@ Eventually that helped me land a junior position in a web agency, and from that 
 
 ## About this site
 
-Comming soon...
+Built with (link: http://getkirby.com text: Kirby target: _blank)
+Running on (link: http://wiki.nginx.org/Main text: Nginx target: _blank)
+Powered by (link: https://www.linode.com/ text: Linode target: _blank)
+
