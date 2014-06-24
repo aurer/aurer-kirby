@@ -3,13 +3,12 @@
     <head>
         <?= snippet('head') ?>
     </head>
-    <body class="<?= $page->template() ?>">
+    <body class="<?= snippet('body-class') ?>">
         
         <?= snippet('mast') ?>
         
         <section class="intro">
             <div class="row">
-                <h1><?= html($page->title()) ?></h1>
                 <?= kirbytext($page->text()) ?>
             </div>
         </section>
