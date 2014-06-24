@@ -197,8 +197,8 @@ body {
 /*
 	Home
 */
-.home{
-	h2{
+.template-home{
+	.row > h2{
 		text-align: center;
 	}
 }
@@ -299,7 +299,7 @@ body {
 /*
 	About
 */
-.about{
+.page-about{
 	ul{
 		overflow: hidden;
 		margin: 0 0 $base-height;
@@ -341,6 +341,11 @@ body {
 		border-top: 1px solid #ddd;
 		padding-top: 1em;
 		margin-bottom: 1em;
+		@media #{$respond-medium}{
+			float: left;
+			width: 48%;
+			padding-right: 2%;
+		}
 	}
 	a{
 		text-decoration: none;
@@ -361,5 +366,32 @@ body {
 			width: 80px;
 			height: auto;
 		}
+	}
+}
+
+/*
+	Sitemap
+*/
+ul.sitemap{
+	border-top: 1px solid #ddd;
+	list-style: none;
+	padding: $base-height 0;
+
+	li{
+		margin: 0 0 1em;
+	}
+	a{
+		text-decoration: none;
+	}
+	.depth-2{
+		font-size: .9em;
+		padding-left: 1em;
+
+		a{
+			color: #999;
+		}
+	}
+	.depth-3{
+		margin-left: 4em;
 	}
 }
