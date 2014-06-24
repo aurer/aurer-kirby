@@ -7,31 +7,58 @@ form.standard{
 		label{
 			display: block;
 			margin: 0 0 .25em;
-			
 		}
+	}
+	.input{
+		input,
+		textarea,
+		select{
+			width: 100%;
+			border: 1px solid #ccc;
+			box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+			padding: .35em .2em;
 
-		.input{
-			input,
-			textarea,
-			select{
-				width: 100%;
-				border: 1px solid #ccc;
-				box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
-				padding: .35em .2em;
-
-				&:focus{
-					border-color: $highlight;
-					box-shadow: inset 0 1px 3px rgba($highlight, 0.4);
-					outline: none;
-				}
+			&:focus{
+				border-color: $highlight;
+				box-shadow: inset 0 1px 3px rgba($highlight, 0.4);
+				outline: none;
 			}
 		}
 	}
-}
-		
-form.contact{
-	.field input[type=text],
-	.field input[type=email]{
-		max-width: 700px;
+
+	/*
+		Errors
+	*/
+	.field.error{
+		label{
+	    	color: #C95750;
+		}
+		input,
+		select,
+		textarea{
+	    	border-color: #C95750;
+		}
+	}
+	.formerror{
+		line-height: 1.4;
+		font-size: .9em;
+		font-weight: bold;
+		padding: .3em .7em;
+		margin: .7em 0 0;
+		background: #C95750;
+		color: #fff;
+		position: relative;
+		list-style: none;
+		display: inline-block;
+	}
+	.formerror:after {
+		content: '';
+		border: 10px solid transparent;
+		border-bottom-color: #C95750;
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: -19px;
+		left: 10%;
 	}
 }
