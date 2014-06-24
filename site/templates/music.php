@@ -14,7 +14,7 @@
                     <?= kirbytext($page->text()) ?>
 
                     <div class="music-tracks" ng-controller="lastController">
-                        <div  class="loading" ng-show="loading">Loading...</div>
+                        <div  class="loading" ng-show="loading"><?= snippet('loading') ?></div>
                         <ul>
                             <li class="track" ng-repeat="track in tracks">
                                 <a href="{{track.url}}" title="View this track on Last.FM" target="_blank">
