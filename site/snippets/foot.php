@@ -3,11 +3,12 @@
 		<span class="copyright">
 			<?= kirbytext($site->copyright()) ?>
 		</span>
-		<span class="technology">
-			<span class="item">Built with <a target="_blank" href="http://getkirby.com">Kirby</a></span>
-			<span class="item">Running on <a target="_blank" href="http://wiki.nginx.org/Main">Nginx</a></span>
-			<span class="item">Powered by <a target="_blank" href="https://www.linode.com/">Linode</a></span>
-		</span>
+		<nav class="extra">
+			<?php foreach ($pages->invisible() as $p): ?>
+				<?php if(in_array($p->uri(), array('error'))) continue ?>
+				<a href="<?= $p->url() ?>"><?= $p->title() ?></a>
+			<?php endforeach ?>
+		</nav>
 	</footer>
 </section>
 <?= js(asset_path('assets/dist/js', 'build.js')) ?>

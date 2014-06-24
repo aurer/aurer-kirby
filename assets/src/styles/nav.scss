@@ -91,3 +91,25 @@ nav a {
 	}
 }
 
+nav.extra{
+	a{
+		display: block;
+		margin: 0 0 1em;
+	}
+
+	@media #{$respond-medium}{
+		float: right;
+
+		a{
+			display: inline-block;
+			padding-left: 1em;
+			margin-left: 1em;
+			border-left: 1px solid #666;
+
+			&:first-of-type{
+				border: none;
+			}
+		}
+	}
+}
+
