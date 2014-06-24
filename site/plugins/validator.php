@@ -107,12 +107,14 @@ class Validator{
 	/*
 		Display the error message for the specified field if there is one
 	*/
-	public function field_error($field, $before='', $after=''){
+	public function field_error($field, $before='<span class="formerror">', $after='</span>'){
+		$html = '';
 		if(!empty($this->errors[$field])){
-			echo $before;
-			echo $this->errors[$field];
-			echo $after;
+			$html .= $before;
+			$html .= $this->errors[$field];
+			$html .= $after;
 		}
+		return $html;
 	}
 
 	/*
@@ -121,7 +123,7 @@ class Validator{
 	*/
 	public function error_class($field, $class='error'){
 		if(!empty($this->errors[$field])){
-			echo $class;
+			return $class;
 		}	
 	}
 	

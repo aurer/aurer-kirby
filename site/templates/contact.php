@@ -29,7 +29,7 @@
     <head>
         <?= snippet('head') ?>
     </head>
-    <body class="<?= $page->template() ?>">
+    <body class="<?= snippet('body-class') ?>">
         
         <?= snippet('mast') ?>
     	
@@ -40,38 +40,38 @@
                     <?= kirbytext($page->text()) ?>
                     
                     <?php if(empty($_GET['sent'])) : ?>
-                        <form action="" method="post" id="contact-form" class="standard contact" >
-                            <p class="field <?php echo $validator->error_class('contactname'); ?>">
+                        <form action="<?= $page->url() ?>#contact-form" method="post" id="contact-form" class="standard contact" >
+                            <div class="field <?= $validator->error_class('contactname'); ?>">
                                 <label>Name</label>
-                                <span class="input">
-                                    <input type="text" name="contactname" value="<?php echo $validator->get_value('contactname'); ?>" />
-                                    <?php $validator->field_error('contactname', '<span class="error">', '</span>') ?>
-                                </span>
-                            </p>
-                            <p class="field <?php echo $validator->error_class('email'); ?>">
+                                <div class="input">
+                                    <input type="text" name="contactname" value="<?= $validator->get_value('contactname'); ?>" />
+                                    <?= $validator->field_error('contactname') ?>
+                                </div>
+                            </div>
+                            <div class="field <?= $validator->error_class('email'); ?>">
                                 <label>Email</label>
-                                <span class="input">
-                                    <input type="email" name="email" value="<?php echo $validator->get_value('email'); ?>" />
-                                    <?php $validator->field_error('email', '<span class="error">', '</span>') ?>
-                                </span>
-                            </p>
-                            <p class="field <?php echo $validator->error_class('subject'); ?>">
+                                <div class="input">
+                                    <input type="email" name="email" value="<?= $validator->get_value('email'); ?>" />
+                                    <?= $validator->field_error('email') ?>
+                                </div>
+                            </div>
+                            <div class="field <?= $validator->error_class('subject'); ?>">
                                 <label>Subject</label>
-                                <span class="input">
-                                    <input type="text" name="subject" value="<?php echo $validator->get_value('subject'); ?>" />
-                                    <?php $validator->field_error('subject', '<span class="error">', '</span>') ?>
-                                </span>
-                            </p>
-                            <p class="field <?php echo $validator->error_class('message'); ?>">
+                                <div class="input">
+                                    <input type="text" name="subject" value="<?= $validator->get_value('subject'); ?>" />
+                                    <?= $validator->field_error('subject') ?>
+                                </div>
+                            </div>
+                            <div class="field <?= $validator->error_class('message'); ?>">
                                 <label>Message</label>
-                                <span class="input">                    
-                                    <textarea name="message" id="in-message" cols="30" rows="10"><?php echo $validator->get_value('message'); ?></textarea>
-                                    <?php $validator->field_error('message', '<span class="error">', '</span>') ?>
-                                </span>
-                            </p>
-                            <p class="field submit">
+                                <div class="input">                    
+                                    <textarea name="message" id="in-message" cols="30" rows="10"><?= $validator->get_value('message'); ?></textarea>
+                                    <?= $validator->field_error('message') ?>
+                                </div>
+                            </div>
+                            <div class="field submit">
                                 <input type="submit" name="submit" class="btn" value="Send" />
-                            </p>
+                            </div>
                         </form>
                     <?php else: ?>
                         <div class="sent">
