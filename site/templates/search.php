@@ -32,8 +32,10 @@
                         <ul class="display-list">
                             <?php foreach($results as $result): ?>
                                 <li>
-                                    <a class="result-title" href="<?php echo $result->url() ?>"><?php echo $result->title() ?></a>
-                                    <small><a href="<?php echo $result->url() ?>"><?php echo $result->url() ?></a></small>
+                                    <a class="result-title" href="<?php echo $result->url() ?>">
+                                        <span class="result-title"><?php echo $result->title() ?></span>
+                                        <small><?php echo $result->url() ?></small>
+                                    </a>
                                 </li>
                             <?php endforeach ?>
                         </ul>

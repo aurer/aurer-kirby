@@ -392,14 +392,14 @@ ul.sitemap{
 */
 .page-search{
 	.display-list{
-		a.result-title{
+		.result-title{
 			font-size: 1.1em;
 			text-decoration: none;
 			margin: 0 0 1em;
 		}
-		small a{
+		small{
 			display: block;
-			color: invert(#f54121);
+			color: invert($highlight);
 			margin: 0;
 		}
 	}
