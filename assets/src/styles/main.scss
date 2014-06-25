@@ -386,3 +386,21 @@ ul.sitemap{
 		margin-left: 4em;
 	}
 }
+
+/*
+	Search
+*/
+.page-search{
+	.display-list{
+		a.result-title{
+			font-size: 1.1em;
+			text-decoration: none;
+			margin: 0 0 1em;
+		}
+		small a{
+			display: block;
+			color: invert(#f54121);
+			margin: 0;
+		}
+	}
+}

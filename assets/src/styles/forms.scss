@@ -62,3 +62,27 @@ form.standard{
 		left: 10%;
 	}
 }
+
+form.search{
+	position: relative;
+	margin: 0 0 $base-height;
+	.input input{
+		padding-right: 100px;
+		height: 30px;
+		border-radius: 3px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	input[type=submit]{
+		@extend .btn;
+		width: 100px;
+		height: 30px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		border-radius: 0 3px 3px 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 0;
+	}
+}
