@@ -331,16 +331,7 @@ body {
 		text-align: center;
 		padding: 1em 0;
 	}
-	ul{
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
 	li{
-		overflow: hidden;
-		border-top: 1px solid #ddd;
-		padding-top: 1em;
-		margin-bottom: 1em;
 		@media #{$respond-medium}{
 			float: left;
 			width: 48%;

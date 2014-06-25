@@ -15,7 +15,7 @@
 
                     <div class="music-tracks" ng-controller="lastController">
                         <div  class="loading" ng-show="loading"><?= snippet('loading') ?></div>
-                        <ul>
+                        <ul class="display-list">
                             <li class="track" ng-repeat="track in tracks">
                                 <a href="{{track.url}}" title="View this track on Last.FM" target="_blank">
                                     <img src="{{track.thumbnail.url}}" width="{{track.thumbnail.width}}" height="{{track.thumbnail.height}}" alt="{{track.name}} album image">
