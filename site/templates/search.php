@@ -22,7 +22,7 @@
 
                     <form class="standard search" action="<?= thisURL() ?>">
                         <div class="input">
-                            <input type="text" placeholder="Search…" name="q" value="<?= $search->query() ?>" />
+                            <input type="text" placeholder="Search…" name="q" value="<?= $search->query() ?>" autofocus />
                         </div>
                         <input type="submit" value="Search" />
                     </form>
