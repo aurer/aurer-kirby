@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <?= snippet('head') ?>
-    </head>
-    <body class="<?= snippet('body-class') ?>">
-        
-        <?= snippet('mast') ?>
+<?= snippet('header') ?>
 
         <section class="main">
             <div class="row">
@@ -28,7 +21,7 @@
                     </form>
 
                     <?php if($results): ?>
-                        <h3><?= $results->count() ?> items found matching '<?= html($search->query()) ?>'</h3>
+                        <h3><?= $results->count() ?> items found.</h3>
                         <ul class="display-list">
                             <?php foreach($results as $result): ?>
                                 <li>
@@ -39,13 +32,13 @@
                                 </li>
                             <?php endforeach ?>
                         </ul>
+                    <?php else : ?>
+                        <h3>No results.</h3>
                     <?php endif ?>
+
 
                 </div>
             </div>
         </section>
 
-        <?= snippet('foot') ?>
-   
-    </body>
-</html>
+<?= snippet('footer') ?>

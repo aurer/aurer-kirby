@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <?= snippet('head') ?>
-    </head>
-    <body class="<?= snippet('body-class') ?>">
-        
-        <?= snippet('mast') ?>
+<?= snippet('header') ?>
         
         <section class="intro">
             <div class="row">
@@ -22,7 +15,4 @@
             </div>
         </section>
 
-        <?= snippet('foot') ?>
-   
-    </body>
-</html>
+<?= snippet('footer') ?>

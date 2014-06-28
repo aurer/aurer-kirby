@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="lastFmApp">
-    <head>
-        <?= snippet('head') ?>
-    </head>
-    <body class="<?= snippet('body-class') ?>">
-        
-        <?= snippet('mast') ?>
+<?php c::set('html-attr', 'ng-app="lastFmApp"') ?>
+<?= snippet('header') ?>
     	
         <section class="main">
       		<div class="row">
@@ -74,7 +68,4 @@
             }
         </script>
 
-        <?= snippet('foot') ?>
-    
-    </body>
-</html>
+<?= snippet('footer') ?>

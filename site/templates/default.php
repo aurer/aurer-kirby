@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <?= snippet('head') ?>
-    </head>
-    <body class="<?= snippet('body-class') ?>">
-        
-        <?= snippet('mast') ?>
-    	
+<?= snippet('header') ?>
+
         <section class="main">
       		<div class="row">
                 <div class="content">
@@ -16,8 +9,4 @@
             </div>
         </section>
         
-        <?= snippet('nav2') ?>
-        <?= snippet('foot') ?>
-    
-    </body>
-</html>
+<?= snippet('footer') ?>
