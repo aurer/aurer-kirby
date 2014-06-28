@@ -33,7 +33,7 @@
 			js:             './assets/src/js/*',
 			jsDist:         './assets/dist/js/*',
 			gfx: 			'./assets/src/gfx/*',
-			files: 			['./site/templates/*', './site/snippets/*', './content/**'],
+			files: 			['./site/templates/*', './site/snippets/*', './content/**', './test.php'],
 		}
 	};
 
