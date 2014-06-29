@@ -22,6 +22,7 @@
 
                     <?php if($results): ?>
                         <h3><?= $results->count() ?> items found.</h3>
+                        <?php $results = $results->paginate(10) ?>
                         <ul class="display-list">
                             <?php foreach($results as $result): ?>
                                 <li>
@@ -32,7 +33,10 @@
                                 </li>
                             <?php endforeach ?>
                         </ul>
-                    <?php else : ?>
+                        
+                        <?= pagination($results) ?>
+
+                    <?php elseif ($search->query() != '') : ?>
                         <h3>No results.</h3>
                     <?php endif ?>
 
