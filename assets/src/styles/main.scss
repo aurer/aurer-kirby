@@ -210,6 +210,7 @@ body {
 	overflow: hidden;
 	margin: auto;
 	text-align: center;
+	padding: 0 3px 0; // Prevent hiding box-shadow on small screens
 }
 
 .project{
