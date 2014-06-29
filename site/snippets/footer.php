@@ -11,6 +11,7 @@
 			</nav>
 		</footer>
 	</section>
+	<?= css(asset_path('http://fonts.googleapis.com/css?family=Lato:300,400,700', 'screen.css')) ?>
 	<?= js(asset_path('assets/dist/js', 'build.js')) ?>
 	<script defer>
 	    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
