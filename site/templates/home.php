@@ -8,7 +8,7 @@
 
         <section class="main">
             <div class="row">
-                <h2>Projects</h2>
+                <h2 class="h1">Projects</h2>
                 <div class="content">
                     <?= snippet('projects') ?>
                 </div>
