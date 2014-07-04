@@ -11,7 +11,7 @@
         if($validator->run()==true){
             $send = email(array(
               'to'      => 'Phil Mau <philmau@gmail.com>',
-              'from'    => 'Max Musterman <max@musterman.com>',
+              'from'    => 'Aurer emailer <noreply@aurer.co.uk>',
               'subject' => $validator->get_value('subject', 'Response from the Aurer site'),
               'body'    => $validator->get_value('contactname')." sent you a message\n\n".$validator->get_value('message')."\n\n".$validator->get_value('email'),
             ));
@@ -34,35 +34,35 @@
                 
                 <?php if(empty($_GET['sent'])) : ?>
                     <form action="<?= $page->url() ?>#contact-form" method="post" id="contact-form" class="standard contact" >
-                        <div class="field <?= $validator->error_class('contactname'); ?>">
-                            <label>Name</label>
+                        <div class="field field-contactname <?= $validator->error_class('contactname'); ?>">
+                            <label>Name *</label>
                             <div class="input">
                                 <input type="text" name="contactname" value="<?= $validator->get_value('contactname'); ?>" />
                                 <?= $validator->field_error('contactname') ?>
                             </div>
                         </div>
-                        <div class="field <?= $validator->error_class('email'); ?>">
-                            <label>Email</label>
+                        <div class="field field-email <?= $validator->error_class('email'); ?>">
+                            <label>Email *</label>
                             <div class="input">
                                 <input type="email" name="email" value="<?= $validator->get_value('email'); ?>" />
                                 <?= $validator->field_error('email') ?>
                             </div>
                         </div>
-                        <div class="field <?= $validator->error_class('subject'); ?>">
+                        <div class="field field-subject <?= $validator->error_class('subject'); ?>">
                             <label>Subject</label>
                             <div class="input">
                                 <input type="text" name="subject" value="<?= $validator->get_value('subject'); ?>" />
                                 <?= $validator->field_error('subject') ?>
                             </div>
                         </div>
-                        <div class="field <?= $validator->error_class('message'); ?>">
-                            <label>Message</label>
+                        <div class="field field-message <?= $validator->error_class('message'); ?>">
+                            <label>Message *</label>
                             <div class="input">                    
                                 <textarea name="message" id="in-message" cols="30" rows="10"><?= $validator->get_value('message'); ?></textarea>
                                 <?= $validator->field_error('message') ?>
                             </div>
                         </div>
-                        <div class="field submit">
+                        <div class="field field-submit">
                             <input type="submit" name="submit" class="btn" value="Send" />
                         </div>
                     </form>
@@ -76,6 +76,25 @@
 
             </div>
     	</div>
+        <script>
+        (function(){
+            var supportsPlaceholder = function(){
+                var i = document.getElementsByTagName('input');
+                return i ? 'placeholder' in i[0] : false;
+            }
+            if (supportsPlaceholder()) {
+                var labels = document.querySelectorAll('#contact-form label');
+                for(var i = 0; i < labels.length; i++){
+                    var label = labels[i];
+                    var parent = label.parentNode;
+                    var siblings = parent.children;
+                    var input = siblings[1].children[0];
+                    input.placeholder = label.innerText;
+                    label.style.display = 'none';
+                }
+            };
+        }());
+        </script>
     </section>
         
 <?= snippet('footer') ?>
