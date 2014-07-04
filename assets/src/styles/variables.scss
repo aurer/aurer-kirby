@@ -1,4 +1,6 @@
-$base-height: 24px;
+$base-font-size: 16px;
+$base-height: $base-font-size * 1.5;
+
 $highlight: #f54121;
 $link-hover: $highlight;
 $logo-height-small: 30px;
