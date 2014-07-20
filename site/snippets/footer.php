@@ -1,14 +1,14 @@
 	<section class="foot">
 		<footer class="row">
-			<span class="copyright">
-				<?= kirbytext($site->copyright()) ?>
-			</span>
 			<nav class="extra">
 				<?php foreach ($pages->invisible() as $p): ?>
 					<?php if(in_array($p->uri(), array('error'))) continue ?>
 					<a href="<?= $p->url() ?>"><?= $p->title() ?></a>
 				<?php endforeach ?>
 			</nav>
+			<span class="copyright">
+				<?= kirbytext($site->copyright()) ?>
+			</span>
 		</footer>
 	</section>
 	<?= css(asset_path('http://fonts.googleapis.com/css?family=Lato:300,400,700', 'screen.css')) ?>
