@@ -30,9 +30,11 @@
   		<div class="row">
             <div class="content">
                 <h1><?= html($page->title()) ?></h1>
-                <?= kirbytext($page->text()) ?>
-                
+                                
                 <?php if(empty($_GET['sent'])) : ?>
+                    
+                    <?= kirbytext($page->text()) ?>
+
                     <form action="<?= $page->url() ?>#contact-form" method="post" id="contact-form" class="standard contact" >
                         <div class="field field-contactname <?= $validator->error_class('contactname'); ?>">
                             <label>Name *</label>
@@ -70,7 +72,6 @@
                     <div class="sent">
                         <h2>Thanks for getting in touch.</h2>
                         <p>I will try to get back you you as soon as possible.</p>
-                        <p><b>Phil.</b></p>
                     </div>
                 <?php endif ?>
 
