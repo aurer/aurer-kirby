@@ -251,7 +251,7 @@ body {
 		opacity: 0;
 		transition: opacity .3s;
 		border-radius: 3px;
-
+		
 		&:hover{
 			color: #888;
 			opacity: 1;
@@ -303,6 +303,15 @@ body {
 			margin-right: 1em;
 			color: #999;
 		} 
+	}
+}
+
+/*
+	Contact
+*/
+.page-contact{
+	.main{
+		text-align: center;
 	}
 }
 
