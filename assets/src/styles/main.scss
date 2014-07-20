@@ -95,51 +95,30 @@ body {
 }
 
 .main{
-	background: #fff;
+	background: #EFF3F5;
 	color: #444;
-
-	.row{
-		
+	h1{
+		text-align: center;
 	}
 }
-
+/*
+	Footer
+*/
 .foot{
+	padding-top: $base-height/2;
 	font-size: .9em;
 	text-align: center;
 	
 	a{
-		color: $link-hover;
-		text-decoration: none;
-
-		&:hover{
-			color: #fff;
-		}
+		color: #fff;
+		display: inline-block;
+		padding: .7em;
 	}
-	@media #{$respond-medium} {
-		.copyright{
-			float: left;
-		}
-	}
-	.technology{
 
-		span{
-			display: block;
-		}
-		@media #{$respond-medium} {
-			float: right;
-			span{
-				display: inline;
-				margin-left: 1em;
-			}
-			span:after{
-				content: '/';
-				margin: 0 0 0 1em;
-				opacity: .5;
-			}
-			span:last-of-type:after{
-				content: none;
-			}
-		}
+	.copyright{
+		display: block;
+		margin-top: $base-height;
+		font-style: italic;
 	}
 }
 
