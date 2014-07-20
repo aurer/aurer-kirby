@@ -23,22 +23,21 @@ function handleFixedNav(){
 		bgp         = 0;
 
 	window.onscroll = function(e){
-		var doc = document.body;		
+		var scrolltop = document.body.scrollTop || document.documentElement.scrollTop || 0;
 		if(document.body.scrollWidth > 700){
-			if(doc.scrollTop > 40){
+			if(scrolltop > 40){
 				addClass(body, 'off-top');
 			} else {
 				removeClass(body, 'off-top');
 			}
-			var range = 2 + ((doc.scrollTop-30)/100);
+			var range = 2 + ((scrolltop-30)/100);
 			if(range > 6){
 				range = 6;
 			}
-			bgp = -doc.scrollTop / range;
+			bgp = -scrolltop / range;
 		};
-
-		mast.style.backgroundPositionY = Math.round(bgp) + 'px';
-		body.style.backgroundPositionY = Math.round(bgp) + 'px';
+		mast.style.backgroundPosition = 'center ' + Math.round(bgp) + 'px';
+		body.style.backgroundPosition = 'center ' + Math.round(bgp) + 'px';
 	}
 }
 
