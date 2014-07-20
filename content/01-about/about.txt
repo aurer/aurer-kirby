@@ -41,7 +41,18 @@ Eventually that helped me land a junior position in a web agency, and from that 
 
 ## About this site
 
-Built with (link: http://getkirby.com text: Kirby target: _blank)
-Running on (link: http://wiki.nginx.org/Main text: Nginx target: _blank)
-Powered by (link: https://www.linode.com/ text: Linode target: _blank)
+This site runs on an architecture of:
 
+* PHP 5.4
+* (link: http://wiki.nginx.org/Main text: Nginx target: _blank)
+* (link: https://www.linode.com/ text: Linode target: _blank)
+
+Server side and development technologies include:
+
+* (link: http://getkirby.com text: Kirby target: _blank)
+* (link: http://gulpjs.com/ text: Gulp.js target: _blank)
+* (link: http://sass-lang.com/ text : Sass target: _blank)
+
+You can view the source on (link: https://github.com/aurer/aurer-kirby text: Github target: _blank).
+
+### Considerations
