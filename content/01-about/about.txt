@@ -9,7 +9,9 @@ I’ve always had a great appreciation for good design, I studied graphic design
 
 Eventually that helped me land a junior position in a web agency, and from that point on I expanded into other web technologies, and I continue to learn new things every day.
 
-### Experience
+----
+Text_Experience:
+## Experience
 
 #### Languages
 - HTML
@@ -39,11 +41,13 @@ Eventually that helped me land a junior position in a web agency, and from that 
 - Illustrator
 - Photoshop
 
+-----
+Text_Site:
 ## About this site
 
 This site runs on an architecture of:
 
-* PHP 5.4
+* (link: http://php.net text: PHP 5.4 target: _blank)
 * (link: http://wiki.nginx.org/Main text: Nginx target: _blank)
 * (link: https://www.linode.com/ text: Linode target: _blank)
 
