@@ -2,6 +2,8 @@ Title: Now
 ----
 Summary: A simple clock/calendar infographic
 ----
+URL: http://now.aurer.co.uk
+----
 Date: 10/05/2014
 ----
 Text: 

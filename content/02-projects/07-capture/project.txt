@@ -1,0 +1,9 @@
+Title: Capture
+----
+Summary: A simple screenshot service using PhantomJs
+----
+URL: http://capture.aurer.co.uk
+----
+Text: Project info coming soon...
+
+(link: http://capture.aurer.co.uk text: capture.aurer.co.uk target: _blank)
