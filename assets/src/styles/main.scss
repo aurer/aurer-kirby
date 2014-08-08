@@ -1,8 +1,9 @@
 body {
-	background: url(/assets/dist/gfx/wild-sea.jpg) #222;
-	background-position: 80% 0;
+	background: #273036;
 	color: #ccc;
 	padding: 0;
+	background-image: url(/assets/dist/gfx/polygons.jpg);
+	background-position: center 0;
 
 	@media #{$respond-medium} {
 		padding-top: ($base-height + $logo-height-medium)
@@ -24,9 +25,11 @@ body {
 }
 
 .mast{
-	background: url(/assets/dist/gfx/wild-sea.jpg) #222;
+	background: #273036;
 	background-position: 80% 0;
 	z-index: 100;
+	background-image: url(/assets/dist/gfx/polygons.jpg); 
+	background-position: center 0;
 
 	@media #{$respond-medium} {
 		position: fixed;
@@ -95,7 +98,7 @@ body {
 }
 
 .main{
-	background: #EFF3F5;
+	background: #eee;
 	color: #444;
 	h1{
 		text-align: center;
@@ -303,6 +306,23 @@ body {
 			margin-right: 1em;
 			color: #999;
 		} 
+	}
+
+	.main.experience{
+		background: #3B4B57;
+		color: #fff;
+		 li{
+		 	border-color: #04263A;
+		 }
+	}
+
+	.main.site{
+		li{
+			border: none;
+			width: 100%;
+			float: none;
+			padding: 0 0 .5em;
+		}
 	}
 }
 
