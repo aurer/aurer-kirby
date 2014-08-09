@@ -339,9 +339,25 @@ body {
 	Music
 */
 .music-tracks{
-	.loading{
+	.load-icon{
 		text-align: center;
 		padding: 1em 0;
+		overflow: hidden;
+		transition:  padding .2s;
+		
+		svg{
+			opacity: 1;
+			transition: height .2s, opacity .2s;
+			vertical-align: middle;
+		}
+		&.hidden{
+			padding: 0 0;
+
+			svg{
+				height: 0;
+				opacity: 0;
+			}
+		}
 	}
 	li{
 		@media #{$respond-medium}{
