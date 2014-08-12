@@ -19,7 +19,13 @@
 	var paths = {
 		src : {
 			css: 			'./assets/src/styles/screen.scss',
-			js:             ['./assets/src/js/plugins.js', './assets/src/js/main.js'],
+			js: [
+				'assets/src/js/vendor/underscore.js',
+				'assets/src/js/vendor/quest.js',
+				'./assets/src/js/plugins.js',
+				'./assets/src/js/main.js',
+				'./assets/src/js/music.js'
+			],
 			gfx: 			'./assets/src/gfx/*',
 		},
 		dist : {
