@@ -6,19 +6,28 @@
     var currentPage = 1;
     var totalPages = 1;
     
+    document.addEventListener('DOMContentLoaded', init, false);
+
     // Load the track template html
-    qwest.get(template, {}, {type: 'html'}).success(function(templateData){
-        template = templateData;
-        getTracks(templateData);   
-    });
+    function init(){
+        qwest.get(template, {}, {type: 'html'}).success(function(templateData){
+            template = templateData;
+            getTracks(templateData);   
+        });
+    }
 
     // Fetch paged tracks from LastFM API and render on page
     function getTracks(template, page){
         var page = page || 1;
-        loadingIcon.className = loadingIcon.className.replace(' hidden', '');
+        loadingIcon.className = loadingIcon.className.replace(' loaded', '');
+        loadingIcon.className += ' loading';
         qwest.get(lastFm, {page: page}, {type: 'json'}).success(function(trackData){
             // Remove the loading icon
-            loadingIcon.className += ' hidden';
+            loadingIcon.className = loadingIcon.className.replace(' loading', '');
+            loadingIcon.className += ' loaded';
+            setTimeout(function(){
+                loadingIcon.className = loadingIcon.className.replace(' loaded', '');
+            }, 500);
 
             // Empty the tracklist
             tracklist.innerHTML = '';
@@ -33,7 +42,8 @@
                 track.artist = item.artist['#text'];
                 track.album = item.album['#text'];
                 track.url = item.url;
-                track.thumbnail = thumbnail(item.image, 'large', track.album);
+                track.thumbnail = thumbnail(item.image, 'large', track.artist);
+                track.searchparam = encodeURIComponent(track.artist +  " " + track.name);
                 tracks.push(track);
                 
             });
@@ -42,6 +52,7 @@
             tracklist.innerHTML += html;
             addPagination();
             scrollToTracks();
+            handleImageLoadErrors();
             if (currentPage <= 1) {
                 document.querySelector('#prev-page').disabled = true;
             }
@@ -73,6 +84,17 @@
         tracklist.appendChild(pagination);
     }
 
+    // Image often fail to load :( so I'm adding a fallback
+    function handleImageLoadErrors(){
+        var images = document.querySelectorAll('.track img');
+        _.each(images, function(image){
+            image.onerror = function(){
+                image.src = 'http://placehold.it/128x128/333/eee&text=Image Missing';
+            }
+        });
+
+    }
+
     // Scroll to the top of the tracklist
     function scrollToTracks(){
         if( screen.width < 800){
@@ -82,14 +104,14 @@
     }
 
     // Return image and attributes for a lastFM track image
-    function thumbnail(images, size, album){
+    function thumbnail(images, size, text){
         var newImages = [];
         var sizes = {'extralarge': 300, 'large': 126, 'medium': 64, 'small': 43};
         _.each(images, function(image){
             var width = sizes[image.size];
             var height = sizes[image.size];
             var scale = sizes[image.size] + 'x' + sizes[image.size]; 
-            var url = (image['#text'] == '') ? 'http://placehold.it/'+scale+'/333/eee/&text='+encodeURIComponent(album) : image['#text'];
+            var url = (image['#text'] == '') ? 'http://placehold.it/'+scale+'/333/eee/&text='+encodeURIComponent(text) : image['#text'];
             newImages[image.size] = {
                 url: url,
                 width: width,

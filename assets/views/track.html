@@ -1,11 +1,15 @@
 <ul class="display-list">
 	<% _.each(tracks, function(track) { %>
 		<li class="track">
-		    <a href="<%= track.url %>" title="View this track on Last.FM" target="_blank">
+		    <a class="album-cover" href="<%= track.url %>" title="View this track on Last.FM" target="_blank">
 		        <img src="<%= track.thumbnail.url %>" width="<%= track.thumbnail.width %>" height="<%= track.thumbnail.height %>" alt="<%= track.name %> album image">
-		        <b class="trackname"><%= track.name %></b>
-		        <span class="trackartist"><%= track.artist %></span>
 		    </a>
+		    <div class="details">
+			    <a class="track-info" href="<%= track.url %>" title="View this track on Last.FM" target="_blank">
+			        <b class="trackname"><%= track.name %></b>
+			        <span class="trackartist"><%= track.artist %></span>
+			    </a>
+		    </div>
 		</li>
 	<% }) %>
 </ul>
