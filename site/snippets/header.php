@@ -9,6 +9,10 @@
 		<meta name="robots" content="index, follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<?= css(asset_path('assets/dist/css', 'screen.css')) ?>
+		<!--[if lt IE 9]>
+			<?= css(asset_path('assets/dist/css', 'ie8.css')) ?>
+            <script src="/assets/dist/js/html5shiv.min.js"></script>
+        <![endif]-->
     </head>
     <body class="<?= snippet('body-class') ?>">
         
