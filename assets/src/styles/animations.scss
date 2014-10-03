@@ -17,3 +17,20 @@
 		-webkit-transform: translateY(-10px);
 	}
 }
+
+@keyframes loadAdvance{
+	from{
+		width: 0%;
+	}
+	to{
+		width: 90%;
+	}
+}
+
+@keyframes loaded{
+	from{
+	}
+	to{
+		width: 100%;
+	}
+}
