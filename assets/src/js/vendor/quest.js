@@ -4,7 +4,6 @@
 	Author
 		Aurélien Delogu (dev@dreamysource.fr)
 */
-
 (function(def){
 	if(typeof define=='function'){
 		define(def);
