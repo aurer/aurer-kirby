@@ -2,15 +2,15 @@ body {
 	background: #273036;
 	color: #ccc;
 	padding: 0;
-	background-image: url(/assets/dist/gfx/polygons.jpg);
+	background-image: url(#{$body-image});
 	background-position: center 0;
 
 	@media #{$respond-medium} {
-		padding-top: ($base-height + $logo-height-medium)
+		padding-top: ($base-height + $logo-height-medium);
 	}
 
 	@media #{$respond-large} {
-		padding-top: ($base-height + $logo-height-large)
+		padding-top: ($base-height + $logo-height-large);
 	}
 }
 
@@ -28,7 +28,7 @@ body {
 	background: #273036;
 	background-position: 80% 0;
 	z-index: 100;
-	background-image: url(/assets/dist/gfx/polygons.jpg); 
+	background-image: url(#{$body-image}); 
 	background-position: center 0;
 
 	@media #{$respond-medium} {
@@ -135,7 +135,7 @@ body {
 	transition: min-height 1s, padding-top 1s;
 
 	@media #{$respond-medium} {
-		background-image: url(/assets/dist/gfx/lake.jpg);
+		background-image: url(#{$homepage-image});
 		background-position: center 40%;
 		background-size: cover;
 		color: #fff;
@@ -339,26 +339,6 @@ body {
 	Music
 */
 .music-tracks{
-	.load-icon{
-		text-align: center;
-		padding: 1em 0;
-		overflow: hidden;
-		transition:  padding .2s;
-		
-		svg{
-			opacity: 1;
-			transition: height .2s, opacity .2s;
-			vertical-align: middle;
-		}
-		&.hidden{
-			padding: 0 0;
-
-			svg{
-				height: 0;
-				opacity: 0;
-			}
-		}
-	}
 	li{
 		@media #{$respond-medium}{
 			float: left;
@@ -369,22 +349,98 @@ body {
 	a{
 		text-decoration: none;
 	}
-	img{
-		float: left;
-		margin: 0 1em 0 0;
+}
+
+.track-list{
+	ul{
+		overflow: hidden;
 	}
-	.trackname{
+	li{
+		padding-left: 140px;
+		position: relative;
+		min-height: 128px;
+		box-sizing: border-box;
+		&:hover{
+			.youtube{
+				display: block;
+			}
+		}
+
+		@media #{$respond-medium}{
+			float: left;
+			width: 50%;
+			padding-right: 2%;
+		}
+	}
+
+	.album-cover{
+		position: absolute;
+		left: 0;
+	}
+	
+	
+	.trackname,
+	.trackartist{
 		display: block;
 	}
+
 	.trackartist{
 		font-size: .9em;
 	}
+	
+	.icon{
+		display: inline-block;
+		margin-top: .5em;
+		fill: #333;
+		transition: fill .2s, opacity .2s;
+		
+		&:hover,
+		&:focus{
+			fill: #d00c03;
+		}
+	}
 
 	@media #{$respond-tiny}{
+		li{
+			padding-left: 90px;
+			min-height: 90px;
+		}
 		img{
 			width: 80px;
 			height: auto;
 		}
+	}
+
+	@media #{$respond-large}{
+		.icon{ opacity: 0; }
+		li:hover .icon{ opacity: 1; }
+	}
+}
+.load-icon{
+	width: 100%;
+	height: 3px;
+
+	&:after{
+		content: '';
+		display: block;
+		height: 3px;
+		width: 0%;
+		opacity: 0;
+		background: #f54121;
+		transition: width 0s;
+	}
+
+	&.loading:after{
+		opacity: 1;
+		transition: width 1s;
+		animation: loadAdvance 3s;
+		width: 90%;
+	}
+
+	&.loaded:after{
+		width: 100%;
+		opacity: 0;
+		transition: all .4s;
 	}
 }
 

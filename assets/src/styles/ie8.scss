@@ -1,0 +1,38 @@
+@import 'variables';
+@import 'animations';
+
+body {
+	
+}
+
+.mast{
+ 	.logo {
+		float: left;
+ 		
+ 		img{
+			height: auto;
+		}
+	}
+}
+
+.nav1{
+	float: right;
+	clear: none;
+	width: auto;
+	display: block;
+	padding: 0;
+	margin: 0 .5em;
+	line-height: $logo-height-large;
+}
+
+
+.page-about{
+	ul{
+		li{
+			width: 50%;
+			float: left;
+			border-bottom: 1px dashed #ccc;
+			
+		}
+	}
+}
