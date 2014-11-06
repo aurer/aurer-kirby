@@ -85,13 +85,16 @@ module.exports = function(grunt) {
 			},
 			images: {
 				files: 'assets/src/gfx/**/*',
-				tasks: 'imagemin'
+				tasks: ['imagemin', 'svg2png']
+			},
+			grunt: {
+				files: 'gruntfile.js'
 			}
 		},
 
 		browserSync: {
 		    bsFiles: {
-		        src : 'assets/dist/css/*.css'
+		        src : ['assets/dist/css/*.css', 'content/**/*', 'site/templates/*.php']
 		    },
 		    options: {
 		        proxy: 'aurer-kirby:8080',

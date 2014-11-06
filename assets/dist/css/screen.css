@@ -3,7 +3,6 @@
     opacity: 0;
     transform: translateY(-10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -13,7 +12,6 @@
   from {
     -webkit-transform: translateY(0);
   }
-
   to {
     -webkit-transform: translateY(-10px);
   }
@@ -22,7 +20,6 @@
   from {
     width: 0%;
   }
-
   to {
     width: 90%;
   }
@@ -517,6 +514,23 @@ ul.sitemap .depth-3 {
   text-align: center;
 }
 
+blockquote {
+  font-size: 1.2em;
+  font-style: italic;
+  padding: 0;
+  margin: 0 10%;
+  padding: .5em;
+  position: relative;
+}
+blockquote p:before {
+  content: '\201c';
+  line-height: .5;
+  font-size: 3em;
+  position: absolute;
+  left: -.5em;
+  font-family: serif;
+}
+
 /*
 	Navigation
 */
@@ -565,7 +579,7 @@ nav a {
 }
 .pagination a {
   background: #fff;
-  background: linear-gradient(top, white, whitesmoke);
+  background: linear-gradient(top, #fff, #f5f5f5);
   border-radius: 3px;
   padding: 3px 10px;
   border: 1px solid #d9d9d9;
@@ -1001,8 +1015,14 @@ th {
 
 /* Bits
 =========================================================================== */
+code {
+  background-color: #f8f8f8;
+  font-size: 13px;
+  line-height: 19px;
+  padding: .1em .3em;
+}
+
 pre {
-  max-width: 700px;
   margin: 15px 0;
   padding: 10px 20px;
   background-color: #f8f8f8;
@@ -1163,3 +1183,5 @@ form.search input[type=submit] {
 .off-top .intro .continue {
   opacity: 0;
 }
+
+/*# sourceMappingURL=screen.css.map */

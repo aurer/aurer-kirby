@@ -511,3 +511,21 @@ ul.sitemap{
 		text-align: center;
 	}
 }
+
+blockquote{
+	font-size: 1.2em;
+	font-style: italic;
+	padding: 0;
+	margin: 0 10%;
+	padding: .5em;
+	position: relative;
+
+	p:before{
+		content: '\201c';
+		line-height: .5;
+		font-size: 3em;
+		position: absolute;
+		left: -.5em;
+		font-family: serif;
+	}
+}

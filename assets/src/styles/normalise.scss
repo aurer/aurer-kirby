@@ -450,8 +450,13 @@ th {
 
 /* Bits
 =========================================================================== */
+code{
+    background-color: #f8f8f8;
+    font-size: 13px;
+    line-height: 19px;
+    padding: .1em .3em;
+}
 pre{
-    max-width: 700px;
     margin: 15px 0;
     padding: 10px 20px;
     background-color: #f8f8f8;
