@@ -1,7 +1,7 @@
 <?php 
 
 $page  = $pages->find('/projects');
-$items = ($page) ? $page->children()->visible() : false; 
+$items = ($page) ? $page->children()->visible()->flip() : false; 
 
 ?>
 <?php if($items && $items->count()): ?>
@@ -16,7 +16,7 @@ $items = ($page) ? $page->children()->visible() : false;
             <?php if( $thumb ): ?>
                 <img width="400" height="300" src="<?= $thumb->url() ?>" alt="Thumbnail for <?= html($item->title()) ?>" />
             <?php else: ?>
-                <img width="400" height="300" src="http://placehold.it/440x300/&text=<?= urlencode($item->title()) ?>" alt="<?= $item->title() ?>">
+                <img width="400" height="300" src="http://placehold.it/440x300/333/f54121&text=<?= urlencode($item->title()) ?>" alt="<?= $item->title() ?>">
             <?php endif ?>
     	</div>
     <?php endforeach ?>

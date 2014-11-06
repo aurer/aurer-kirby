@@ -1,0 +1,6 @@
+Title: Music
+----
+Summary: A Last.FM based music display
+----
+Text: This page lists an up to date list of songs I’ve been listening to, via Spotify and Last.FM. 
+(link: /projects/music/about text: How it works...)

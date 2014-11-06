@@ -8,5 +8,5 @@
                 </div>
             </div>
         </section>
-        
+
 <?= snippet('footer') ?>
