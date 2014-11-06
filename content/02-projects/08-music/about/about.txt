@@ -1,0 +1,99 @@
+Title: Building the music page
+----
+Text:
+The (link:/projects/music text:music page) on this site is a fairly simple list of all the songs I've listened to on Spotify. It uses Spotify's scrobble to last.fm feature along with the following components to accomplish this:
+
+* The (link:http://www.last.fm/api text:Last.fm API)
+* The (link:https://github.com/pyrsmk/qwest text:Qwest ajax library)
+* The (link:http://underscorejs.org/ text:Underscore.js library)
+
+### Last.fm API
+
+The Last.fm api is a simple and well documented service that provides data for virtauly anything they do, in my case I made use of the (link:http://www.last.fm/api/show/user.getRecentTracks text:user.getRecentTracks) method to get a paginated list of all the tracks I've listened to. The actual call to the API looks something like this: 
+
+	http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=philmau&format=json&api_key=xxx
+
+This returns a JSON response with the track data, 10 tracks are returned by default but you can change this by adding a 'limit' parameter to the url. Requesting a single item would give you a response like this:
+
+    {
+        "recenttracks": {
+            "track": [
+                {
+                    "artist": {
+                        "#text": "Monster Rally",
+                        "mbid": "ba934f3d-4e53-482a-a632-6848935de50c"
+                    },
+                    "name": "Siberian Girls",
+                    "streamable": "0",
+                    "mbid": "",
+                    "album": {
+                        "#text": "Deep Sea",
+                        "mbid": ""
+                    },
+                    "url": "http://www.last.fm/music/Monster+Rally/_/Siberian+Girls",
+                    "image": [
+                        {
+                            "#text": "http://userserve-ak.last.fm/serve/34s/73796826.jpg",
+                            "size": "small"
+                        },
+                        {
+                            "#text": "http://userserve-ak.last.fm/serve/64s/73796826.jpg",
+                            "size": "medium"
+                        },
+                        {
+                            "#text": "http://userserve-ak.last.fm/serve/126/73796826.jpg",
+                            "size": "large"
+                        },
+                        {
+                            "#text": "http://userserve-ak.last.fm/serve/300x300/73796826.jpg",
+                            "size": "extralarge"
+                        }
+                    ],
+                    "@attr": {
+                        "nowplaying": "true"
+                    }
+                }
+            ],
+            "@attr": {
+                "user": "philmau",
+                "page": "1",
+                "perPage": "1",
+                "totalPages": "2116",
+                "total": "21153"
+            }
+        }
+    }
+
+Some of the keys are prefixed with a hash, for example the artist name has a key of "#text", this means that you have to access the value with array style rather than object style notation in javascript i.e. `artist.#text` will fail so `artist['#text']` must be used instead, the same goes for the "@attr" values.
+
+Another slight chanllege is the thumbnail images, firstly there is an array of different sizes available, to get the one you want you must loop over the array, check for the "size" you want and return the "#text" value. You must also take into account the fact that the image might not exist, either at the size you want or at all. I hanlded this with a fallback using the (link:http://placehold.it text:placehold.it) service to generate an image of the correct size with the song name as text e.g. `http://placehold.it/128x128/333/eee&text=Deep+sea` will produce a tidy image like this: 
+
+(image:http://placehold.it/128x128/333/eee&text=Deep+sea)
+
+I also noticed that a fair few thumbnail image urls returned a 404, I handled this by adding a function to replace the images `src` attribute if they errored:
+
+	image.onerror = function(){
+		image.src = 'http://placehold.it/128x128/333/eee&text=Image Missing';
+	}
+
+### Qwest AJAX library
+
+> Qwest is a simple ajax library based on promises behaviour and that supports XmlHttpRequest2 special data like ArrayBuffer, Blob and FormData.
+
+I decided not to use jQuery in this project so I had to find an alternative library to help with AJAX work, after a little searching I found the Qwest library on Github.
+
+It's lightweight, super simple to use and does a god job which is all I was looking for. The only slightly tricky part was the requirement to fetch two items; the first is the html template I use to render the results, the second is the JSON data from Last.FM. As they each depend on each other I have to fetch the template first, wait for it to finish, then fetch the JSON before rendering the results. It would be nice to fetch both simultaneously but having looked into doing this it turns out it's not as easy as it might seem.
+
+The eventual fetching was done something like this:
+
+ 	qwest.get(template, {}, {type: 'html'}).success(function(templateData){
+        qwest.get(lastFm, {}, {type: 'json'}).success(function(trackData){
+        	...
+        }
+    });
+
+There is room for improvement but it works well enough for a first draft. You view the can see the (link:/assets/src/js/music.js text: full source here target: _blank).
+
+### Underscore library
+
+> Underscore is a JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects.
