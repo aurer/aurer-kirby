@@ -7,6 +7,9 @@ URL: http://now.aurer.co.uk
 Date: 10/05/2014
 ----
 Text: 
-Sorry project text coming soon...
+(image: screenshot.jpg)
 
-In the mean time you can (link: http://now.aurer.co.uk text: view the project here target: _blank).
+
+This is an experiment in canvas used to render some sort of calendar/clock to give you an idea of where you are in the current day, week, month and year.
+
+If your interested you can try it out at (link:http://now.aurer.co.uk target:_blank) and view the source over on github - (link:https://github.com/aurer/now target:_blank).
