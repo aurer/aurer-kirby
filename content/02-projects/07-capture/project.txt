@@ -4,7 +4,7 @@ Summary: A simple screenshot service using PhantomJs
 ----
 URL: http://capture.aurer.co.uk
 ----
-Text: (image: capture-screenshot.jpg)
+Text: (image: screenshot.jpg)
 
 This is a service I created for myself to help with generating screenshot of webites. I can't remember exactly why I needed it initially but it has turned out to be usefull a few times.
 
