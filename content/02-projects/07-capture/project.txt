@@ -4,6 +4,12 @@ Summary: A simple screenshot service using PhantomJs
 ----
 URL: http://capture.aurer.co.uk
 ----
-Text: Project info coming soon...
+Text: (image: capture-screenshot.jpg)
 
-(link: http://capture.aurer.co.uk text: capture.aurer.co.uk target: _blank)
+This is a service I created for myself to help with generating screenshot of webites. I can't remember exactly why I needed it initially but it has turned out to be usefull a few times.
+
+It uses PhantomJS to render an image of a specified webpage at a set of predefined sizes or any custom size. The predefined sizes are 320 x 548, 600 x 1024, 1024 x 768, 1280 x 800 and 1440 x 900.
+
+It's not perfect, the font rendering for example is a little off sometimes and it currently struggles with sites served over https, but most of the time it does a good enough job.
+
+If your interested you can try it out at (link:http://capture.aurer.co.uk target:_blank) and view the source over on github - (link:https://github.com/aurer/capture target:_blank).
