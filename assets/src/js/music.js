@@ -1,4 +1,4 @@
-(function(){
+;(function(){
     var lastFm = "http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=philmau&api_key=ccfce33b35f8480c2413f2a642fa2c6a&format=json";
     var template = "/assets/views/track.html";
     var tracklist = document.querySelector('.track-list');
@@ -44,6 +44,8 @@
                 track.url = item.url;
                 track.thumbnail = thumbnail(item.image, 'large', track.artist);
                 track.searchparam = encodeURIComponent(track.artist +  " " + track.name);
+                track.timestamp = getTimeStamp(item);
+                track.nowplaying = isPlaying(item);
                 tracks.push(track);
                 
             });
@@ -121,5 +123,60 @@
         });
         return newImages[size];
     }
+
+    function isPlaying(item){
+        return ( item['@attr'] && item['@attr'].nowplaying );
+    }
+
+    function getTimeStamp(item){
+        if ( isPlaying(item) ) {
+            return 'Now playing';
+        } else if (item.date && item.date['#text']) {
+            return "Played " + timeSince(item.date['#text']) + ' ago';
+        }
+    }
+
+    function timeSince(date) {
+        if (typeof date !== 'object') {
+            date = new Date(date);
+        }
+
+        var seconds = Math.floor((new Date() - date) / 1000);
+        var intervalType;
+
+        var interval = Math.floor(seconds / 31536000);
+        if (interval >= 1) {
+            intervalType = 'year';
+        } else {
+            interval = Math.floor(seconds / 2592000);
+            if (interval >= 1) {
+                intervalType = 'month';
+            } else {
+                interval = Math.floor(seconds / 86400);
+                if (interval >= 1) {
+                    intervalType = 'day';
+                } else {
+                    interval = Math.floor(seconds / 3600);
+                    if (interval >= 1) {
+                        intervalType = "hour";
+                    } else {
+                        interval = Math.floor(seconds / 60);
+                        if (interval >= 1) {
+                            intervalType = "minute";
+                        } else {
+                            interval = seconds;
+                            intervalType = "second";
+                        }
+                    }
+                }
+            }
+        }
+
+        if (interval > 1 || interval === 0) {
+            intervalType += 's';
+        }
+
+        return interval + ' ' + intervalType;
+    };
 
 }());

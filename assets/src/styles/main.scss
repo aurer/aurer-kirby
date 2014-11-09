@@ -358,7 +358,8 @@ body {
 	li{
 		padding-left: 140px;
 		position: relative;
-		min-height: 128px;
+		height: 128px;
+		overflow: auto;
 		box-sizing: border-box;
 		&:hover{
 			.youtube{
@@ -371,6 +372,10 @@ body {
 			width: 50%;
 			padding-right: 2%;
 		}
+	}
+
+	.nowplaying-true{
+		color: $highlight;
 	}
 
 	.album-cover{
@@ -458,7 +463,9 @@ ul.sitemap{
 	a{
 		text-decoration: none;
 	}
-	.depth-2{
+	.depth-2,
+	.depth-3,
+	.depth-4{
 		font-size: .9em;
 		padding-left: 1em;
 
@@ -467,7 +474,10 @@ ul.sitemap{
 		}
 	}
 	.depth-3{
-		margin-left: 4em;
+		margin-left: 2em;
+	}
+	.depth-4{
+		margin-left: 3em;
 	}
 }
 
