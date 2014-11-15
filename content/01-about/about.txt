@@ -58,5 +58,3 @@ Server side and development technologies include:
 * (link: http://sass-lang.com/ text : Sass target: _blank)
 
 You can view the source on (link: https://github.com/aurer/aurer-kirby text: Github target: _blank).
-
-### Considerations
