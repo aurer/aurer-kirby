@@ -150,8 +150,7 @@ body {
 }
 @media screen and (min-width: 700px) {
   .mast .row {
-    -webkit-transition: height .2s;
-            transition: height .2s;
+    transition: height 0.4s cubic-bezier(0, 0.535, 0.01, 1.005);
     height: 45px;
   }
 }
@@ -204,8 +203,7 @@ body {
   color: #fff;
   text-align: center;
   position: relative;
-  -webkit-transition: min-height 1s, padding-top 1s;
-          transition: min-height 1s, padding-top 1s;
+  transition: min-height 1s, padding-top 1s;
 }
 @media screen and (min-width: 700px) {
   .intro {
@@ -214,17 +212,21 @@ body {
     background-size: cover;
     color: #fff;
   }
-  .intro h1 {
+  .intro h1, .intro p {
     -webkit-animation-name: fadeIn;
             animation-name: fadeIn;
+    -webkit-animation-timing-function: cubic-bezier(0.64, -0.37, 0.13, 1.62);
+            animation-timing-function: cubic-bezier(0.64, -0.37, 0.13, 1.62);
+    -webkit-animation-fill-mode: backwards;
+            animation-fill-mode: backwards;
+  }
+  .intro h1 {
     -webkit-animation-duration: 1.5s;
             animation-duration: 1.5s;
     -webkit-animation-delay: .5s;
             animation-delay: .5s;
   }
   .intro p {
-    -webkit-animation-name: fadeIn;
-            animation-name: fadeIn;
     -webkit-animation-duration: 1.2s;
             animation-duration: 1.2s;
     -webkit-animation-delay: .8s;
@@ -332,27 +334,27 @@ body {
   background: #eee;
   background: rgba(255, 255, 255, 0.95);
   opacity: 0;
-  -webkit-transition: opacity .3s;
-          transition: opacity .3s;
+  transition: opacity .3s;
   border-radius: 3px;
 }
 .project a:hover {
   color: #888;
   opacity: 1;
 }
-.project a:hover h2 {
-  -webkit-animation-name: fadeIn;
-          animation-name: fadeIn;
-  -webkit-animation-duration: .4s;
-          animation-duration: .4s;
-}
+.project a:hover h2,
 .project a:hover p {
   -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
-  -webkit-animation-delay: .1s;
-          animation-delay: .1s;
+  -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.475, 1.65);
+          animation-timing-function: cubic-bezier(0.175, 0.885, 0.475, 1.65);
+}
+.project a:hover p {
+  -webkit-animation-delay: .2s;
+          animation-delay: .2s;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
 }
 @media screen and (min-width: 700px) {
   .project a {
@@ -364,6 +366,25 @@ body {
   height: auto;
   vertical-align: bottom;
   border-radius: 2px;
+}
+.project .icon {
+  width: 100%;
+  background: #333;
+  color: #f54121;
+  padding: 30px 0 40px;
+}
+.project .icon h3 {
+  margin: 0;
+}
+.project svg {
+  margin: 0 auto 1em;
+  width: auto;
+  height: 60px;
+  display: block;
+}
+.project svg path,
+.project svg rect {
+  fill: #fff;
 }
 
 /*
@@ -391,7 +412,7 @@ body {
   color: #999;
 }
 .page-about .main.experience {
-  background: #3B4B57;
+  background: #303A42;
   color: #fff;
 }
 .page-about .main.experience li {
@@ -463,8 +484,7 @@ body {
   display: inline-block;
   margin-top: .5em;
   fill: #333;
-  -webkit-transition: fill .2s, opacity .2s;
-          transition: fill .2s, opacity .2s;
+  transition: fill .2s, opacity .2s;
 }
 .track-list .icon:hover, .track-list .icon:focus {
   fill: #d00c03;
@@ -499,13 +519,11 @@ body {
   width: 0%;
   opacity: 0;
   background: #f54121;
-  -webkit-transition: width 0s;
-          transition: width 0s;
+  transition: width 0s;
 }
 .load-icon.loading:after {
   opacity: 1;
-  -webkit-transition: width 1s;
-          transition: width 1s;
+  transition: width 1s;
   -webkit-animation: loadAdvance 3s;
           animation: loadAdvance 3s;
   width: 90%;
@@ -513,8 +531,7 @@ body {
 .load-icon.loaded:after {
   width: 100%;
   opacity: 0;
-  -webkit-transition: all .4s;
-          transition: all .4s;
+  transition: all .4s;
 }
 
 /*
@@ -625,8 +642,7 @@ nav a {
 .nav1 a {
   padding: .5em;
   color: #b5b5b5;
-  -webkit-transition: color .2s, line-height .2s;
-          transition: color .2s, line-height .2s;
+  transition: color .2s, line-height .2s;
   line-height: 30px;
 }
 @media screen and (min-width: 700px) {
@@ -650,7 +666,6 @@ nav a {
 }
 .pagination a {
   background: #fff;
-  background: -webkit-linear-gradient(top, #fff, #f5f5f5);
   background: linear-gradient(top, #fff, #f5f5f5);
   border-radius: 3px;
   padding: 3px 10px;
@@ -778,8 +793,7 @@ template {
 a {
   background: transparent;
   color: #000;
-  -webkit-transition: color .2s;
-          transition: color .2s;
+  transition: color .2s;
 }
 
 /**
@@ -1122,8 +1136,7 @@ pre {
   border-radius: 4px;
   color: #fff;
   background: #24292d;
-  -webkit-transition: background .2s;
-          transition: background .2s;
+  transition: background .2s;
 }
 
 .btn:hover, form.search input[type=submit]:hover,

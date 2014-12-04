@@ -81,7 +81,7 @@ body {
 		}
 
 		@media #{$respond-medium} {
-			transition: height .2s;
+			transition: height .4s cubic-bezier(0.000, 0.535, 0.010, 1.005);
 			height: $logo-height-medium;
 		}
 
@@ -145,17 +145,23 @@ body {
 		background-size: cover;
 		color: #fff;
 
-		h1{
+		h1, p{
 			animation-name: fadeIn;
+			animation-timing-function: cubic-bezier(0.640, -0.370, 0.130, 1.620);
+			animation-fill-mode: backwards;
+		}
+
+		h1{
 			animation-duration: 1.5s;
 			animation-delay: .5s;
 		}
 
 		p{
-			animation-name: fadeIn;
 			animation-duration: 1.2s;
 			animation-delay: .8s;
+			
 		}
+
 	}
 	
 	@media #{$respond-medium}{
@@ -264,14 +270,15 @@ body {
 			color: #888;
 			opacity: 1;
 
-			h2{
-				animation-name: fadeIn;
-				animation-duration: .4s;
-			}
+			h2,
 			p{
 				animation-name: fadeIn;
 				animation-duration: .4s;
-				animation-delay: .1s;
+				animation-timing-function: cubic-bezier(0.175, 0.885, 0.475, 1.650);
+			}
+			p{
+				animation-delay: .2s;
+				animation-fill-mode: backwards;
 			}
 		}
 		@media #{$respond-medium}{
@@ -284,6 +291,29 @@ body {
 		height: auto;
 		vertical-align: bottom;
 		border-radius: 2px;
+	}
+
+	.icon{
+		width: 100%;
+		background: #333;
+		color: #f54121;
+		padding: 30px 0 40px;
+
+		h3{
+			margin: 0;
+		}
+	}
+
+	svg{
+		margin: 0 auto 1em;
+		width: auto;
+		height: 60px;
+		display: block;
+
+		path,
+		rect{
+			fill: #fff;
+		}
 	}
 }
 
@@ -314,7 +344,7 @@ body {
 	}
 
 	.main.experience{
-		background: #3B4B57;
+		background: #303A42;
 		color: #fff;
 		 li{
 		 	border-color: #04263A;

@@ -14,14 +14,17 @@ foreach ($redirects as $src => $dest) {
 	}
 }
 
+$http = new httpResponse;
+$statuscode = (String)$http->statuscode();
+$statustext = $http->statustext();
 ?>
 <?= snippet('header') ?>
 
     <section class="main">
   		<div class="row">
             <div class="content">
-                <h1><?= html($page->title()) ?></h1>
-                <?= kirbytext($page->text()) ?>
+                <h1><?= "$statuscode $statustext" ?></h1>
+                <?= kirbytext($page->$statuscode()) ?>                
             </div>
         </div>
     </section>
