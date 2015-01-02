@@ -1,33 +1,11 @@
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-    -webkit-transform: translateY(-10px);
-            transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-}
 @keyframes fadeIn {
   from {
     opacity: 0;
-    -webkit-transform: translateY(-10px);
-            transform: translateY(-10px);
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-}
-@-webkit-keyframes hover {
-  from {
-    -webkit-transform: translateY(0);
-  }
-  to {
-    -webkit-transform: translateY(-10px);
+    transform: translateY(0);
   }
 }
 @keyframes hover {
@@ -38,25 +16,12 @@
     -webkit-transform: translateY(-10px);
   }
 }
-@-webkit-keyframes loadAdvance {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 90%;
-  }
-}
 @keyframes loadAdvance {
   from {
     width: 0%;
   }
   to {
     width: 90%;
-  }
-}
-@-webkit-keyframes loaded {
-  to {
-    width: 100%;
   }
 }
 @keyframes loaded {
@@ -104,8 +69,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+    transform: translateZ(0);
   }
 }
 .mast .logo {
@@ -215,24 +179,17 @@ body {
     color: #fff;
   }
   .intro h1, .intro p {
-    -webkit-animation-name: fadeIn;
-            animation-name: fadeIn;
-    -webkit-animation-timing-function: cubic-bezier(0.64, -0.37, 0.13, 1.62);
-            animation-timing-function: cubic-bezier(0.64, -0.37, 0.13, 1.62);
-    -webkit-animation-fill-mode: backwards;
-            animation-fill-mode: backwards;
+    animation-name: fadeIn;
+    animation-timing-function: cubic-bezier(0.64, -0.37, 0.13, 1.62);
+    animation-fill-mode: backwards;
   }
   .intro h1 {
-    -webkit-animation-duration: 1.5s;
-            animation-duration: 1.5s;
-    -webkit-animation-delay: .5s;
-            animation-delay: .5s;
+    animation-duration: 1.5s;
+    animation-delay: .5s;
   }
   .intro p {
-    -webkit-animation-duration: 1.2s;
-            animation-duration: 1.2s;
-    -webkit-animation-delay: .8s;
-            animation-delay: .8s;
+    animation-duration: 1.2s;
+    animation-delay: .8s;
   }
 }
 @media screen and (min-width: 700px) and (min-height: 500px) {
@@ -345,18 +302,13 @@ body {
 }
 .project a:hover h2,
 .project a:hover p {
-  -webkit-animation-name: fadeIn;
-          animation-name: fadeIn;
-  -webkit-animation-duration: .4s;
-          animation-duration: .4s;
-  -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.475, 1.65);
-          animation-timing-function: cubic-bezier(0.175, 0.885, 0.475, 1.65);
+  animation-name: fadeIn;
+  animation-duration: .4s;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.475, 1.65);
 }
 .project a:hover p {
-  -webkit-animation-delay: .2s;
-          animation-delay: .2s;
-  -webkit-animation-fill-mode: backwards;
-          animation-fill-mode: backwards;
+  animation-delay: .2s;
+  animation-fill-mode: backwards;
 }
 @media screen and (min-width: 700px) {
   .project a {
@@ -526,8 +478,7 @@ body {
 .load-icon.loading:after {
   opacity: 1;
   transition: width 1s;
-  -webkit-animation: loadAdvance 3s;
-          animation: loadAdvance 3s;
+  animation: loadAdvance 3s;
   width: 90%;
 }
 .load-icon.loaded:after {
@@ -775,12 +726,6 @@ template {
   display: none;
 }
 
-::-moz-selection {
-  background: #f76b52;
-  color: #fff;
-  text-shadow: none;
-}
-
 ::selection {
   background: #f76b52;
   color: #fff;
@@ -899,6 +844,7 @@ figure {
  * Address differences between Firefox and other browsers.
  */
 hr {
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0;
 }
@@ -1040,6 +986,8 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box;
 }
@@ -1275,3 +1223,5 @@ form.search input[type=submit] {
 .off-top .intro .continue {
   opacity: 0;
 }
+
+/*# sourceMappingURL=screen.css.map */
