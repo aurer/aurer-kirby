@@ -97,8 +97,14 @@ module.exports = function(grunt) {
 		        src : ['assets/dist/css/*.css', 'content/**/*', 'site/templates/*.php']
 		    },
 		    options: {
-		        proxy: 'aurer-kirby:8080',
-		        watchTask: true
+		        proxy: 'v2.aurer.dev',
+		        watchTask: true,
+		        ghostMode: {
+				    clicks: true,
+				    location: false,
+				    forms: true,
+				    scroll: false
+				}
 		    }
 		}
 	});
