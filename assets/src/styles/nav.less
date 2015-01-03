@@ -11,7 +11,7 @@ nav a {
 	width: 100%;
 	padding: 0 0 0;
 
-	@media #{$respond-small} {
+	@media @respond-small {
 		float: right;
 		clear: none;
 		width: auto;
@@ -23,26 +23,26 @@ nav a {
 		padding: .5em;
 		color: #b5b5b5;
 		transition: color .2s, line-height .2s;
-		line-height: $logo-height-small;
+		line-height: @logo-height-small;
 
-		@media #{$respond-medium} {
+		@media @respond-medium {
 			margin: 0 .5em;
-			line-height: $logo-height-medium;
+			line-height: @logo-height-medium;
 		}
 
-		@media #{$respond-large} {
-			line-height: $logo-height-large;
+		@media @respond-large {
+			line-height: @logo-height-large;
 		}
 
 		&.active{
-			color: $link-hover;
+			color: @link-hover;
 		}
 	}
 }
 
 .pagination{
 	text-align: center;
-	margin-bottom: $base-height;
+	margin-bottom: @base-height;
 
 	a{
 		background: #fff;

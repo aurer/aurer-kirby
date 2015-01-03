@@ -3,7 +3,7 @@ ul, ol, dl
 blockquote, p, address,
 table, fieldset, figure, pre{
   margin: 0;
-  margin-bottom: $base-height;
+  margin-bottom: @base-height;
 }
 
 /**
@@ -24,7 +24,7 @@ html {
 
 body {
     margin: 0;
-    font-size: $base-font-size;
+    font-size: @base-font-size;
     font-family: Lato, "Gill sans", sans-serif;
     line-height: 1.5;
 }
@@ -96,7 +96,7 @@ template {
 }
 
 ::selection{
-    background: lighten($highlight, 10%);
+    background: lighten(@highlight, 10%);
     color: #fff;
     text-shadow: none;
 }
@@ -121,11 +121,11 @@ a {
 a:active,
 a:hover {
     outline: 0;
-    color: $link-hover;
+    color: @link-hover;
 }
 
 a:focus{
-    outline: 1px dashed $highlight;
+    outline: 1px dashed @highlight;
 }
 
 /* Text-level semantics

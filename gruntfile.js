@@ -24,18 +24,25 @@ module.exports = function(grunt) {
 			}
 		},
 
-		sass: {
+		less: {
+			options: {
+				compress: true,
+				sourceMap: true
+			},
 			dist: {
-				options: {
-					style: 'expanded'
-				},
 				files: {
-					'assets/dist/css/screen.css': 'assets/src/styles/screen.scss'
+					'assets/dist/css/screen.css': 'assets/src/styles/screen.less'
+				},
+				options: {
+					sourceMapURL: '/assets/dist/css/screen.css.map'
 				}
 			},
 			ie: {
 				files: {
-					'assets/dist/css/ie8.css': 'assets/src/styles/ie8.scss'
+					'assets/dist/css/ie8.css': 'assets/src/styles/ie8.less'
+				},
+				options: {
+					sourceMapURL: '/assets/dist/css/ie8.css.map'
 				}
 			}
 		},
@@ -81,7 +88,7 @@ module.exports = function(grunt) {
 			},
 			styles: {
 				files: 'assets/src/styles/**/*',
-				tasks: ['sass', 'autoprefixer']
+				tasks: ['less', 'autoprefixer']
 			},
 			images: {
 				files: 'assets/src/gfx/**/*',
@@ -116,7 +123,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-browser-sync');
 	grunt.loadNpmTasks('grunt-svg2png');
@@ -124,5 +131,5 @@ module.exports = function(grunt) {
 	/*
 		Setup the tasks
 	*/
-	grunt.registerTask('default', ['sass', 'concat', 'browserSync', 'watch']);
+	grunt.registerTask('default', ['less', 'concat', 'browserSync', 'watch']);
 };
