@@ -41,25 +41,18 @@ body {
 		display: block;
 		text-align: center;
 		overflow: hidden;
-		
-		@media @respond-tiny {
-			height: 2em;
-			margin: 1em 0;
-		}
+		height: 2.5em;
+		margin: 1em 0;
 
-		@media @respond-small {
+		@media @respond-medium {
 			height: 100%;
+			float: left;
+			margin: 0;
 		}
 
 		img, svg{
 			width: auto;
 			height: 100%;
-			max-height: 60px;
-			
-		}
-
-		@media @respond-small {
-			float: left;
 		}
 	}
 
@@ -73,15 +66,15 @@ body {
 	}
 
 	.row {
-		padding: (@base-height/2) 1em;
+		padding: (@base-height) 1em;
 		height: auto;
 
 		@media @respond-small {
-			height: @logo-height-small;
+			//height: @logo-height-small;
 		}
 
 		@media @respond-medium {
-			transition: height .4s cubic-bezier(0.000, 0.535, 0.010, 1.005);
+			transition: all .4s;
 			height: @logo-height-medium;
 		}
 
@@ -154,31 +147,29 @@ body {
 		h1{
 			animation-duration: 1.5s;
 			animation-delay: .5s;
+			margin-top: 0;
 		}
 
 		p{
 			animation-duration: 1.2s;
-			animation-delay: .8s;
-			
+			animation-delay: .8s;	
 		}
-
 	}
 	
-	@media @respond-medium{
-		@media screen and (min-height: 500px) {
-			min-height: 240px;
-			padding-top: 80px;
-		}
-		@media screen and (min-height: 800px) {
-			min-height: 380px;
-			padding-top: 170px;
-		}
-		@media screen and (min-height: 1200px) {
-			min-height: 450px;
-			padding-top: 240px;
-		}
+	@media @respond-medium and (min-height: 500px) {
+		min-height: 240px;
+		padding-top: 80px;
 	}
-	.row{
+	@media @respond-medium and (min-height: 800px) {
+		min-height: 380px;
+		padding-top: 170px;
+	}
+	@media @respond-medium and (min-height: 1200px) {
+		min-height: 450px;
+		padding-top: 210px;
+	}
+	
+	.row {
 		@media @respond-tiny {
 			padding-top: 0;
 		}
