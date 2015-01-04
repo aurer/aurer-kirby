@@ -27,7 +27,8 @@ module.exports = function(grunt) {
 		less: {
 			options: {
 				compress: true,
-				sourceMap: true
+				sourceMap: true,
+				sourceMapRootpath: '/'
 			},
 			dist: {
 				files: {
