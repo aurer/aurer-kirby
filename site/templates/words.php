@@ -6,7 +6,6 @@
                     <h1><?= html($page->title()) ?></h1>
                     <?= kirbytext($page->text()) ?>
 					
-					
 					<nav class="nav2">
 					  	<?php foreach($page->children() AS $p): ?>
 					    	<a <?= ($p->isOpen()) ? ' class="active"' : '' ?> href="<?= $p->url() ?>"><?= html($p->title()) ?></a>
