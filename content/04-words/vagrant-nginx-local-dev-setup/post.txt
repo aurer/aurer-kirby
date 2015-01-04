@@ -1,0 +1,76 @@
+Title: Development with Vagrant, Virtualbox and Nginx
+----
+Text: I thought I'd share my simple local web development setup here. It took a while to get to this stage but aftr trying many other setups this feels like a good way of doing things.
+
+## Overview 
+First of all an overview of the technologies used:
+
+* OSX - Host OS
+* (link:https://www.debian.org target:_blank text:Debian) - Guest OS
+* (link:https://www.virtualbox.org target:_blank text:Virtualbox) - Virtualization platform
+* (link:https://www.vagrantup.com target:_blank text:Vagrant) - Virtual environment manager
+* (link:http://nginx.org/en/docs  target:_blanktext:Nginx) - HTTP server software
+* (link:http:php-fpm.org target:_blank text:PHP-FPM) - Server side scripting language
+ 
+Additional/optional tools:
+
+* (link:http://www.sublimetext.com/ text:Sublime Text) - The current best text editor/IDE in my opinion
+* (link:http://gruntjs.com/ text:Grunt) - Almost an essential tool nowdays: task runner, CSS preprocessor/prefixer, JS concatinator etc.
+* Dnsmasq - Used to redirect all .dev domains to the virtual machine, see this article to get it set up on your mac (link:http://passingcuriosity.com/2013/dnsmasq-dev-osx/)
+
+### How it works
+
+Vagrant sets up a virtual machine running Debian, this is our webserver, much easier than installing everything on our main machine. All the code is in our main OS so we can edit in a nice fast editor like Sublime. That code is also available to the virtual machine (shared by virtualbox), debian then uses Nginx and PHP-FPM to run the code and serve it up. We access that served site by pointing a browser at a .dev domain, DNSMasq takes this address and points it to the virtual machine, happy days.
+
+## Vagrant setup
+
+I used (link:http://puphpet.com/ text:PuPHPet) to set up my virtual machine, it's such a great tool. The important parts of my setup are:
+
+* Private network for the VM (192.168.2.2 in my case, DNSMasq directs all .dev domains to this address)
+* A shared folder (I set '../' as the source and '/srv/http/' as the target)
+* Nginx as the webserver
+* PHP as the language with Xdebug installed
+
+I have all my sites in the ~/Sites folder, within that I have a 'vagrant' folder containing the vagrant and puphpet files, and a 'logs' folder to hold the sites logs. It could be divided into more distinct folders but I chose to keep things simple.
+
+## Nginx setup
+
+Below is my automatic virtualhost config file for Nginx. Basically all it has to do is look for domains ending in '.dev'. my one is a little more complex because it matches *.dev and *.public.dev domains, the latter sets the root in a public folder in the site. This is useful for frameworks like Laravel which use this structure.
+
+	server {
+	    listen         80;
+		server_name		~^(?<domain>((?!public).)*)(.(?<public>public))?.dev$;
+		root			/srv/http/$domain.dev/$public;    
+		access_log     	/srv/http/logs/$domain.access.log;
+	    error_log      	/srv/http/logs/error.log;
+	    
+		include        configs/php.conf;
+	    include        configs/cache.conf;
+	    include        configs/favicon.conf;
+	}
+
+If you don't care about the /public style sites you could use something like this:
+
+	server {
+	    listen         80;
+		server_name		~^(?<domain>.*).dev$;
+		root			/srv/http/$domain.dev;
+		access_log     	/srv/http/logs/$domain.access.log;
+	    error_log      	/srv/http/logs/error.log;
+	    
+		include        configs/php.conf;
+	    include        configs/cache.conf;
+	    include        configs/favicon.conf;
+	}
+
+The three include files in the configs are pointing to some preset config files which you can find on github: (link:https://github.com/aurer/nginx-conf)
+
+## Conclusion
+
+As an example I can set up a new kirby site on my machine like so:
+
+1. Download a fresh copy of kirby (link:http://getkirby.com/downloads) and extract it into a folder called ~/Sites/kirby.dev
+2. Open terminal and move into the vagrant folder `$ cd ~/Sites/vagrant` then run `$ vagrant up`
+3. Open a browser and go to http://kirby.dev and we should see the fresh install of kirby running.
+
+No need to alter the hosts file, no need to create a virtualhost config, just create the site with the .dev naming convention and it just works!
