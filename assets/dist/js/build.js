@@ -60,6 +60,8 @@ function handleFixedNav(){
 			}
 			bgp = -scrolltop / range;
 		};
+		mast.style.backgroundPosition = 'center ' + Math.round(bgp) + 'px';
+		body.style.backgroundPosition = 'center ' + Math.round(bgp) + 'px';
 	}
 }
 
