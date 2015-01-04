@@ -26,16 +26,15 @@ body {
 
 .mast{
 	background: #273036;
+	background-image: url(@body-image); 
 	background-position: 80% 0;
 	z-index: 100;
-	background-image: url(@body-image); 
 	background-position: center 0;
 
 	@media @respond-medium {
 		position: fixed;
 		top: 0;
 		width: 100%;
-		transform: translateZ(0);
 	}
 
 	.logo {
