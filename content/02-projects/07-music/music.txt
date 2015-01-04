@@ -3,4 +3,4 @@ Title: Music
 Summary: A Last.FM based music display
 ----
 Text: Everything I have ever listened to on Spotify and Last.FM...
-(link: /projects/music/about text: Read about it)
+(link: /words/building-the-music-page text: Read about it)
