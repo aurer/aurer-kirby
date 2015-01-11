@@ -53,6 +53,7 @@ body {
 		img, svg{
 			width: auto;
 			height: 100%;
+			float: left;
 		}
 	}
 
@@ -472,6 +473,46 @@ body {
 		width: 100%;
 		opacity: 0;
 		transition: all .4s;
+	}
+}
+
+/*
+	Words
+*/
+.post-list {
+	
+	.post {
+		overflow: hidden;
+	}
+
+	.post + .post{
+		margin-top: 1em;
+		padding-top: 1em;
+		border-top: 1px dotted #999;
+	}
+
+	h2 {
+		margin-bottom: .2em;
+	}
+
+	.date {
+		display: block;
+		font-style: italic;
+		margin-bottom: 1em;
+	}
+
+	@media @respond-large {
+		.date {
+			float: left;
+			width: 15%;
+			padding: .5em 0 0;
+		}
+
+		h2,
+		.summary {
+			float: right;
+			width: 85%;
+		}
 	}
 }
 
