@@ -1,5 +1,5 @@
 Title: Error
 ----
-404: The page could not been found.
+404: The page your looking for couldn't be found, you can search for the page using the form below.
 ----
 500: There was a problem with the application.
