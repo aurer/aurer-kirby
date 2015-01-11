@@ -1,5 +1,9 @@
 Title: Development with Vagrant, Virtualbox and Nginx
 ----
+Date: 2015/01/04
+----
+Summary: My current local development set up using VM's, DNSMasq and a clever Nginx config.
+----
 Text: I thought I'd share my simple local web development setup here. It took a while to get to this stage but aftr trying many other setups this feels like a good way of doing things.
 
 ## Overview 

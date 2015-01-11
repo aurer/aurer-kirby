@@ -1,7 +1,10 @@
-Title: Building the music page
+Title: Building a simple music history page
 ----
-Text:
-The (link:/projects/music text:music page) on this site is a fairly simple list of all the songs I've listened to on Spotify. It uses Spotify's scrobble to last.fm feature along with the following components to accomplish this:
+Date: 2014/10/20
+----
+Summary: A little information about how the music page was created and the technology behind it.
+----
+Text: The (link:/projects/music text:music page) on this site is a fairly simple list of all the songs I've listened to on Spotify. It uses Spotify's scrobble to last.fm feature along with the following components to accomplish this:
 
 * The (link:http://www.last.fm/api text:Last.fm API)
 * The (link:https://github.com/pyrsmk/qwest text:Qwest ajax library)
