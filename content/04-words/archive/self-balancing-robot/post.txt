@@ -1,0 +1,7 @@
+Title: Self balancing robot
+----
+Date: 2010/04/30
+----
+Text: A self balancing robot 
+
+(youtube: http://www.youtube.com/embed/bI06lujiD7E)

@@ -1,0 +1,19 @@
+Title: Zenburn theme for Espresso
+----
+Date: 2011/12/09
+----
+Text: I wanted a subtle/dark color scheme for my current IDE of choice [Espresso](http://macrabbit.com/espresso/ "Espresso editor by MacRabbit") but being as fussy as I am, nothing I found was quite right, so I ended up creating my own one roughly based on the popular [Zenburn](http://slinky.imukuppi.org/zenburnpage/ "Zenburn") color scheme which I find is nice and easy on the eyes. 
+
+You can download a copy (file:Zenburn.css.zip). Of course you want a preview so here's a simple PHP/HTML page 
+
+(image: php-html.png)
+PHP/HTML
+
+(image: javascript.png)
+Javascript
+
+
+(image: css.png)
+And a CSS file
+
+Enjoy!

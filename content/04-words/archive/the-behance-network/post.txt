@@ -1,0 +1,7 @@
+Title: The Behance Network
+----
+Date: 2009/08/21
+----
+Text:   (image: behance-logo-grey.png link:http://www.behance.net/) 
+
+Awesome creative / design site with a community aspect, featuring galleries, creative portfolios, 'Tip exchange' and creative jobs listings. [Check it out](http://www.behance.net/).
