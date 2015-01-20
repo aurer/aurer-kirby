@@ -6,21 +6,24 @@ module.exports = function(grunt) {
   	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
-		concat: {
+		uglify: {
 			options: {
-				separator: ';'
+				beautify: true
 			},
 			dist: {
-				src: ['assets/src/js/plugins.js', 'assets/src/js/main.js'],
-				dest: 'assets/dist/js/build.js'
+				files: {
+					'assets/dist/js/build.js': ['assets/src/js/plugins.js', 'assets/src/js/vendor/quest.js', 'assets/src/js/main.js']
+				}
 			},
 			shiv: {
-				src: 'assets/src/js/vendor/html5shiv.min.js',
-				dest: 'assets/dist/js/html5shiv.min.js'
+				files: {
+					'assets/dist/js/html5shiv.min.js': 'assets/src/js/vendor/html5shiv.min.js'
+				}
 			},
 			music: {
-				src: ['assets/src/js/vendor/underscore.js', 'assets/src/js/vendor/quest.js', 'assets/src/js/music.js'],
-				dest: 'assets/dist/js/music.js'
+				files: {
+					'assets/dist/js/music.js': ['assets/src/js/vendor/underscore.js', 'assets/src/js/music.js']		
+				}
 			}
 		},
 
@@ -85,7 +88,7 @@ module.exports = function(grunt) {
 		watch: {
 			scripts: {
 				files: 'assets/src/js/**/*',
-				tasks: 'concat'
+				tasks: ['uglify']
 			},
 			styles: {
 				files: 'assets/src/styles/**/*',
@@ -121,7 +124,7 @@ module.exports = function(grunt) {
   	/*
 		Load NPM Tasks
   	*/
-	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-less');
@@ -132,5 +135,5 @@ module.exports = function(grunt) {
 	/*
 		Setup the tasks
 	*/
-	grunt.registerTask('default', ['less', 'concat', 'browserSync', 'watch']);
+	grunt.registerTask('default', ['less', 'uglify', 'browserSync', 'watch']);
 };
