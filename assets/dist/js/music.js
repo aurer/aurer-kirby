@@ -1,514 +1,632 @@
-//     Underscore.js 1.6.0
-//     http://underscorejs.org
-//     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-//     Underscore may be freely distributed under the MIT license.
-(function(){var n=this,t=n._,r={},e=Array.prototype,u=Object.prototype,i=Function.prototype,a=e.push,o=e.slice,c=e.concat,l=u.toString,f=u.hasOwnProperty,s=e.forEach,p=e.map,h=e.reduce,v=e.reduceRight,g=e.filter,d=e.every,m=e.some,y=e.indexOf,b=e.lastIndexOf,x=Array.isArray,w=Object.keys,_=i.bind,j=function(n){return n instanceof j?n:this instanceof j?void(this._wrapped=n):new j(n)};"undefined"!=typeof exports?("undefined"!=typeof module&&module.exports&&(exports=module.exports=j),exports._=j):n._=j,j.VERSION="1.6.0";var A=j.each=j.forEach=function(n,t,e){if(null==n)return n;if(s&&n.forEach===s)n.forEach(t,e);else if(n.length===+n.length){for(var u=0,i=n.length;i>u;u++)if(t.call(e,n[u],u,n)===r)return}else for(var a=j.keys(n),u=0,i=a.length;i>u;u++)if(t.call(e,n[a[u]],a[u],n)===r)return;return n};j.map=j.collect=function(n,t,r){var e=[];return null==n?e:p&&n.map===p?n.map(t,r):(A(n,function(n,u,i){e.push(t.call(r,n,u,i))}),e)};var O="Reduce of empty array with no initial value";j.reduce=j.foldl=j.inject=function(n,t,r,e){var u=arguments.length>2;if(null==n&&(n=[]),h&&n.reduce===h)return e&&(t=j.bind(t,e)),u?n.reduce(t,r):n.reduce(t);if(A(n,function(n,i,a){u?r=t.call(e,r,n,i,a):(r=n,u=!0)}),!u)throw new TypeError(O);return r},j.reduceRight=j.foldr=function(n,t,r,e){var u=arguments.length>2;if(null==n&&(n=[]),v&&n.reduceRight===v)return e&&(t=j.bind(t,e)),u?n.reduceRight(t,r):n.reduceRight(t);var i=n.length;if(i!==+i){var a=j.keys(n);i=a.length}if(A(n,function(o,c,l){c=a?a[--i]:--i,u?r=t.call(e,r,n[c],c,l):(r=n[c],u=!0)}),!u)throw new TypeError(O);return r},j.find=j.detect=function(n,t,r){var e;return k(n,function(n,u,i){return t.call(r,n,u,i)?(e=n,!0):void 0}),e},j.filter=j.select=function(n,t,r){var e=[];return null==n?e:g&&n.filter===g?n.filter(t,r):(A(n,function(n,u,i){t.call(r,n,u,i)&&e.push(n)}),e)},j.reject=function(n,t,r){return j.filter(n,function(n,e,u){return!t.call(r,n,e,u)},r)},j.every=j.all=function(n,t,e){t||(t=j.identity);var u=!0;return null==n?u:d&&n.every===d?n.every(t,e):(A(n,function(n,i,a){return(u=u&&t.call(e,n,i,a))?void 0:r}),!!u)};var k=j.some=j.any=function(n,t,e){t||(t=j.identity);var u=!1;return null==n?u:m&&n.some===m?n.some(t,e):(A(n,function(n,i,a){return u||(u=t.call(e,n,i,a))?r:void 0}),!!u)};j.contains=j.include=function(n,t){return null==n?!1:y&&n.indexOf===y?n.indexOf(t)!=-1:k(n,function(n){return n===t})},j.invoke=function(n,t){var r=o.call(arguments,2),e=j.isFunction(t);return j.map(n,function(n){return(e?t:n[t]).apply(n,r)})},j.pluck=function(n,t){return j.map(n,j.property(t))},j.where=function(n,t){return j.filter(n,j.matches(t))},j.findWhere=function(n,t){return j.find(n,j.matches(t))},j.max=function(n,t,r){if(!t&&j.isArray(n)&&n[0]===+n[0]&&n.length<65535)return Math.max.apply(Math,n);var e=-1/0,u=-1/0;return A(n,function(n,i,a){var o=t?t.call(r,n,i,a):n;o>u&&(e=n,u=o)}),e},j.min=function(n,t,r){if(!t&&j.isArray(n)&&n[0]===+n[0]&&n.length<65535)return Math.min.apply(Math,n);var e=1/0,u=1/0;return A(n,function(n,i,a){var o=t?t.call(r,n,i,a):n;u>o&&(e=n,u=o)}),e},j.shuffle=function(n){var t,r=0,e=[];return A(n,function(n){t=j.random(r++),e[r-1]=e[t],e[t]=n}),e},j.sample=function(n,t,r){return null==t||r?(n.length!==+n.length&&(n=j.values(n)),n[j.random(n.length-1)]):j.shuffle(n).slice(0,Math.max(0,t))};var E=function(n){return null==n?j.identity:j.isFunction(n)?n:j.property(n)};j.sortBy=function(n,t,r){return t=E(t),j.pluck(j.map(n,function(n,e,u){return{value:n,index:e,criteria:t.call(r,n,e,u)}}).sort(function(n,t){var r=n.criteria,e=t.criteria;if(r!==e){if(r>e||r===void 0)return 1;if(e>r||e===void 0)return-1}return n.index-t.index}),"value")};var F=function(n){return function(t,r,e){var u={};return r=E(r),A(t,function(i,a){var o=r.call(e,i,a,t);n(u,o,i)}),u}};j.groupBy=F(function(n,t,r){j.has(n,t)?n[t].push(r):n[t]=[r]}),j.indexBy=F(function(n,t,r){n[t]=r}),j.countBy=F(function(n,t){j.has(n,t)?n[t]++:n[t]=1}),j.sortedIndex=function(n,t,r,e){r=E(r);for(var u=r.call(e,t),i=0,a=n.length;a>i;){var o=i+a>>>1;r.call(e,n[o])<u?i=o+1:a=o}return i},j.toArray=function(n){return n?j.isArray(n)?o.call(n):n.length===+n.length?j.map(n,j.identity):j.values(n):[]},j.size=function(n){return null==n?0:n.length===+n.length?n.length:j.keys(n).length},j.first=j.head=j.take=function(n,t,r){return null==n?void 0:null==t||r?n[0]:0>t?[]:o.call(n,0,t)},j.initial=function(n,t,r){return o.call(n,0,n.length-(null==t||r?1:t))},j.last=function(n,t,r){return null==n?void 0:null==t||r?n[n.length-1]:o.call(n,Math.max(n.length-t,0))},j.rest=j.tail=j.drop=function(n,t,r){return o.call(n,null==t||r?1:t)},j.compact=function(n){return j.filter(n,j.identity)};var M=function(n,t,r){return t&&j.every(n,j.isArray)?c.apply(r,n):(A(n,function(n){j.isArray(n)||j.isArguments(n)?t?a.apply(r,n):M(n,t,r):r.push(n)}),r)};j.flatten=function(n,t){return M(n,t,[])},j.without=function(n){return j.difference(n,o.call(arguments,1))},j.partition=function(n,t){var r=[],e=[];return A(n,function(n){(t(n)?r:e).push(n)}),[r,e]},j.uniq=j.unique=function(n,t,r,e){j.isFunction(t)&&(e=r,r=t,t=!1);var u=r?j.map(n,r,e):n,i=[],a=[];return A(u,function(r,e){(t?e&&a[a.length-1]===r:j.contains(a,r))||(a.push(r),i.push(n[e]))}),i},j.union=function(){return j.uniq(j.flatten(arguments,!0))},j.intersection=function(n){var t=o.call(arguments,1);return j.filter(j.uniq(n),function(n){return j.every(t,function(t){return j.contains(t,n)})})},j.difference=function(n){var t=c.apply(e,o.call(arguments,1));return j.filter(n,function(n){return!j.contains(t,n)})},j.zip=function(){for(var n=j.max(j.pluck(arguments,"length").concat(0)),t=new Array(n),r=0;n>r;r++)t[r]=j.pluck(arguments,""+r);return t},j.object=function(n,t){if(null==n)return{};for(var r={},e=0,u=n.length;u>e;e++)t?r[n[e]]=t[e]:r[n[e][0]]=n[e][1];return r},j.indexOf=function(n,t,r){if(null==n)return-1;var e=0,u=n.length;if(r){if("number"!=typeof r)return e=j.sortedIndex(n,t),n[e]===t?e:-1;e=0>r?Math.max(0,u+r):r}if(y&&n.indexOf===y)return n.indexOf(t,r);for(;u>e;e++)if(n[e]===t)return e;return-1},j.lastIndexOf=function(n,t,r){if(null==n)return-1;var e=null!=r;if(b&&n.lastIndexOf===b)return e?n.lastIndexOf(t,r):n.lastIndexOf(t);for(var u=e?r:n.length;u--;)if(n[u]===t)return u;return-1},j.range=function(n,t,r){arguments.length<=1&&(t=n||0,n=0),r=arguments[2]||1;for(var e=Math.max(Math.ceil((t-n)/r),0),u=0,i=new Array(e);e>u;)i[u++]=n,n+=r;return i};var R=function(){};j.bind=function(n,t){var r,e;if(_&&n.bind===_)return _.apply(n,o.call(arguments,1));if(!j.isFunction(n))throw new TypeError;return r=o.call(arguments,2),e=function(){if(!(this instanceof e))return n.apply(t,r.concat(o.call(arguments)));R.prototype=n.prototype;var u=new R;R.prototype=null;var i=n.apply(u,r.concat(o.call(arguments)));return Object(i)===i?i:u}},j.partial=function(n){var t=o.call(arguments,1);return function(){for(var r=0,e=t.slice(),u=0,i=e.length;i>u;u++)e[u]===j&&(e[u]=arguments[r++]);for(;r<arguments.length;)e.push(arguments[r++]);return n.apply(this,e)}},j.bindAll=function(n){var t=o.call(arguments,1);if(0===t.length)throw new Error("bindAll must be passed function names");return A(t,function(t){n[t]=j.bind(n[t],n)}),n},j.memoize=function(n,t){var r={};return t||(t=j.identity),function(){var e=t.apply(this,arguments);return j.has(r,e)?r[e]:r[e]=n.apply(this,arguments)}},j.delay=function(n,t){var r=o.call(arguments,2);return setTimeout(function(){return n.apply(null,r)},t)},j.defer=function(n){return j.delay.apply(j,[n,1].concat(o.call(arguments,1)))},j.throttle=function(n,t,r){var e,u,i,a=null,o=0;r||(r={});var c=function(){o=r.leading===!1?0:j.now(),a=null,i=n.apply(e,u),e=u=null};return function(){var l=j.now();o||r.leading!==!1||(o=l);var f=t-(l-o);return e=this,u=arguments,0>=f?(clearTimeout(a),a=null,o=l,i=n.apply(e,u),e=u=null):a||r.trailing===!1||(a=setTimeout(c,f)),i}},j.debounce=function(n,t,r){var e,u,i,a,o,c=function(){var l=j.now()-a;t>l?e=setTimeout(c,t-l):(e=null,r||(o=n.apply(i,u),i=u=null))};return function(){i=this,u=arguments,a=j.now();var l=r&&!e;return e||(e=setTimeout(c,t)),l&&(o=n.apply(i,u),i=u=null),o}},j.once=function(n){var t,r=!1;return function(){return r?t:(r=!0,t=n.apply(this,arguments),n=null,t)}},j.wrap=function(n,t){return j.partial(t,n)},j.compose=function(){var n=arguments;return function(){for(var t=arguments,r=n.length-1;r>=0;r--)t=[n[r].apply(this,t)];return t[0]}},j.after=function(n,t){return function(){return--n<1?t.apply(this,arguments):void 0}},j.keys=function(n){if(!j.isObject(n))return[];if(w)return w(n);var t=[];for(var r in n)j.has(n,r)&&t.push(r);return t},j.values=function(n){for(var t=j.keys(n),r=t.length,e=new Array(r),u=0;r>u;u++)e[u]=n[t[u]];return e},j.pairs=function(n){for(var t=j.keys(n),r=t.length,e=new Array(r),u=0;r>u;u++)e[u]=[t[u],n[t[u]]];return e},j.invert=function(n){for(var t={},r=j.keys(n),e=0,u=r.length;u>e;e++)t[n[r[e]]]=r[e];return t},j.functions=j.methods=function(n){var t=[];for(var r in n)j.isFunction(n[r])&&t.push(r);return t.sort()},j.extend=function(n){return A(o.call(arguments,1),function(t){if(t)for(var r in t)n[r]=t[r]}),n},j.pick=function(n){var t={},r=c.apply(e,o.call(arguments,1));return A(r,function(r){r in n&&(t[r]=n[r])}),t},j.omit=function(n){var t={},r=c.apply(e,o.call(arguments,1));for(var u in n)j.contains(r,u)||(t[u]=n[u]);return t},j.defaults=function(n){return A(o.call(arguments,1),function(t){if(t)for(var r in t)n[r]===void 0&&(n[r]=t[r])}),n},j.clone=function(n){return j.isObject(n)?j.isArray(n)?n.slice():j.extend({},n):n},j.tap=function(n,t){return t(n),n};var S=function(n,t,r,e){if(n===t)return 0!==n||1/n==1/t;if(null==n||null==t)return n===t;n instanceof j&&(n=n._wrapped),t instanceof j&&(t=t._wrapped);var u=l.call(n);if(u!=l.call(t))return!1;switch(u){case"[object String]":return n==String(t);case"[object Number]":return n!=+n?t!=+t:0==n?1/n==1/t:n==+t;case"[object Date]":case"[object Boolean]":return+n==+t;case"[object RegExp]":return n.source==t.source&&n.global==t.global&&n.multiline==t.multiline&&n.ignoreCase==t.ignoreCase}if("object"!=typeof n||"object"!=typeof t)return!1;for(var i=r.length;i--;)if(r[i]==n)return e[i]==t;var a=n.constructor,o=t.constructor;if(a!==o&&!(j.isFunction(a)&&a instanceof a&&j.isFunction(o)&&o instanceof o)&&"constructor"in n&&"constructor"in t)return!1;r.push(n),e.push(t);var c=0,f=!0;if("[object Array]"==u){if(c=n.length,f=c==t.length)for(;c--&&(f=S(n[c],t[c],r,e)););}else{for(var s in n)if(j.has(n,s)&&(c++,!(f=j.has(t,s)&&S(n[s],t[s],r,e))))break;if(f){for(s in t)if(j.has(t,s)&&!c--)break;f=!c}}return r.pop(),e.pop(),f};j.isEqual=function(n,t){return S(n,t,[],[])},j.isEmpty=function(n){if(null==n)return!0;if(j.isArray(n)||j.isString(n))return 0===n.length;for(var t in n)if(j.has(n,t))return!1;return!0},j.isElement=function(n){return!(!n||1!==n.nodeType)},j.isArray=x||function(n){return"[object Array]"==l.call(n)},j.isObject=function(n){return n===Object(n)},A(["Arguments","Function","String","Number","Date","RegExp"],function(n){j["is"+n]=function(t){return l.call(t)=="[object "+n+"]"}}),j.isArguments(arguments)||(j.isArguments=function(n){return!(!n||!j.has(n,"callee"))}),"function"!=typeof/./&&(j.isFunction=function(n){return"function"==typeof n}),j.isFinite=function(n){return isFinite(n)&&!isNaN(parseFloat(n))},j.isNaN=function(n){return j.isNumber(n)&&n!=+n},j.isBoolean=function(n){return n===!0||n===!1||"[object Boolean]"==l.call(n)},j.isNull=function(n){return null===n},j.isUndefined=function(n){return n===void 0},j.has=function(n,t){return f.call(n,t)},j.noConflict=function(){return n._=t,this},j.identity=function(n){return n},j.constant=function(n){return function(){return n}},j.property=function(n){return function(t){return t[n]}},j.matches=function(n){return function(t){if(t===n)return!0;for(var r in n)if(n[r]!==t[r])return!1;return!0}},j.times=function(n,t,r){for(var e=Array(Math.max(0,n)),u=0;n>u;u++)e[u]=t.call(r,u);return e},j.random=function(n,t){return null==t&&(t=n,n=0),n+Math.floor(Math.random()*(t-n+1))},j.now=Date.now||function(){return(new Date).getTime()};var T={escape:{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;"}};T.unescape=j.invert(T.escape);var I={escape:new RegExp("["+j.keys(T.escape).join("")+"]","g"),unescape:new RegExp("("+j.keys(T.unescape).join("|")+")","g")};j.each(["escape","unescape"],function(n){j[n]=function(t){return null==t?"":(""+t).replace(I[n],function(t){return T[n][t]})}}),j.result=function(n,t){if(null==n)return void 0;var r=n[t];return j.isFunction(r)?r.call(n):r},j.mixin=function(n){A(j.functions(n),function(t){var r=j[t]=n[t];j.prototype[t]=function(){var n=[this._wrapped];return a.apply(n,arguments),z.call(this,r.apply(j,n))}})};var N=0;j.uniqueId=function(n){var t=++N+"";return n?n+t:t},j.templateSettings={evaluate:/<%([\s\S]+?)%>/g,interpolate:/<%=([\s\S]+?)%>/g,escape:/<%-([\s\S]+?)%>/g};var q=/(.)^/,B={"'":"'","\\":"\\","\r":"r","\n":"n","	":"t","\u2028":"u2028","\u2029":"u2029"},D=/\\|'|\r|\n|\t|\u2028|\u2029/g;j.template=function(n,t,r){var e;r=j.defaults({},r,j.templateSettings);var u=new RegExp([(r.escape||q).source,(r.interpolate||q).source,(r.evaluate||q).source].join("|")+"|$","g"),i=0,a="__p+='";n.replace(u,function(t,r,e,u,o){return a+=n.slice(i,o).replace(D,function(n){return"\\"+B[n]}),r&&(a+="'+\n((__t=("+r+"))==null?'':_.escape(__t))+\n'"),e&&(a+="'+\n((__t=("+e+"))==null?'':__t)+\n'"),u&&(a+="';\n"+u+"\n__p+='"),i=o+t.length,t}),a+="';\n",r.variable||(a="with(obj||{}){\n"+a+"}\n"),a="var __t,__p='',__j=Array.prototype.join,"+"print=function(){__p+=__j.call(arguments,'');};\n"+a+"return __p;\n";try{e=new Function(r.variable||"obj","_",a)}catch(o){throw o.source=a,o}if(t)return e(t,j);var c=function(n){return e.call(this,n,j)};return c.source="function("+(r.variable||"obj")+"){\n"+a+"}",c},j.chain=function(n){return j(n).chain()};var z=function(n){return this._chain?j(n).chain():n};j.mixin(j),A(["pop","push","reverse","shift","sort","splice","unshift"],function(n){var t=e[n];j.prototype[n]=function(){var r=this._wrapped;return t.apply(r,arguments),"shift"!=n&&"splice"!=n||0!==r.length||delete r[0],z.call(this,r)}}),A(["concat","join","slice"],function(n){var t=e[n];j.prototype[n]=function(){return z.call(this,t.apply(this._wrapped,arguments))}}),j.extend(j.prototype,{chain:function(){return this._chain=!0,this},value:function(){return this._wrapped}}),"function"==typeof define&&define.amd&&define("underscore",[],function(){return j})}).call(this);
-;/*
-	qwest, ajax library with promises and XHR2 support
-
-	Author
-		Aurélien Delogu (dev@dreamysource.fr)
-*/
-(function(def){
-	if(typeof define=='function'){
-		define(def);
-	}
-	else if(typeof module!='undefined'){
-		module.exports=def;
-	}
-	else{
-		this.qwest=def;
-	}
-}(function(){
-	
-	var win=window,
-		// Variables for limit mechanism
-		limit=null,
-		requests=0,
-		request_stack=[],
-		// Get XMLHttpRequest object
-		getXHR=function(){
-			return win.XMLHttpRequest?
-					new XMLHttpRequest():
-					new ActiveXObject('Microsoft.XMLHTTP');
-			},
-		// Guess XHR version
-		version2=(getXHR().responseType===''),
-		
-	// Core function
-	qwest=function(method,url,data,options,before){
-
-		// Format
-		data=data || null;
-		options=options || {};
-
-		var typeSupported=false,
-			xhr=getXHR(),
-			async=options.async===undefined?true:!!options.async,
-			cache=options.cache,
-			type=options.type?options.type.toLowerCase():'json',
-			user=options.user || '',
-			password=options.password || '',
-			headers={'X-Requested-With':'XMLHttpRequest'},
-			accepts={
-				xml : 'application/xml, text/xml',
-				html: 'text/html',
-				//text: 'text/plain',
-				json: 'application/json, text/javascript',
-				js  : 'application/javascript, text/javascript'
-			},
-			toUpper=function(match,p1,p2){return p1+p2.toUpperCase();},
-			vars='',
-			i,j,
-			parseError='parseError',
-			serialized,
-			success_stack=[],
-			error_stack=[],
-			complete_stack=[],
-			response,
-			success,
-			error,
-			func,
-			// Define promises
-			promises={
-				success:function(func){
-					if(async){
-						success_stack.push(func);
-					}
-					else if(success){
-						func.apply(xhr,[response]);
-					}
-					return promises;
-				},
-				error:function(func){
-					if(async){
-						error_stack.push(func);
-					}
-					else if(error){
-						func.apply(xhr,[response]);
-					}
-					return promises;
-				},
-				complete:function(func){
-					if(async){
-						complete_stack.push(func);
-					}
-					else{
-						func.apply(xhr);
-					}
-					return promises;
-				}
-			},
-			promises_limit={
-				success:function(func){
-					request_stack[request_stack.length-1].success.push(func);
-					return promises_limit;
-				},
-				error:function(func){
-					request_stack[request_stack.length-1].error.push(func);
-					return promises_limit;
-				},
-				complete:function(func){
-					request_stack[request_stack.length-1].complete.push(func);
-					return promises_limit;
-				}
-			},
-			// Handle the response
-			handleResponse=function(){
-				// Prepare
-				var i,req,p;
-				--requests;
-				// Launch next stacked request
-				if(request_stack.length){
-					req=request_stack.shift();
-					p=qwest(req.method,req.url,req.data,req.options,req.before);
-					for(i=0;func=req.success[i];++i){
-						p.success(func);
-					}
-					for(i=0;func=req.error[i];++i){
-						p.error(func);
-					}
-					for(i=0;func=req.complete[i];++i){
-						p.complete(func);
-					}
-				}
-				// Handle response
-				try{
-					// Verify status code
-					if(!/^2/.test(xhr.status)){
-						throw xhr.status+' ('+xhr.statusText+')';
-					}
-					// Init
-					var responseText='responseText',
-						responseXML='responseXML';
-					// Process response
-					/*if(type=='text' || type=='html'){
-						response=xhr[responseText];
-					}
-					else */if(typeSupported && xhr.response!==undefined){
-						response=xhr.response;
-					}
-					else{
-						switch(type){
-							case 'json':
-								try{
-									if(win.JSON){
-										response=win.JSON.parse(xhr[responseText]);
-									}
-									else{
-										response=eval('('+xhr[responseText]+')');
-									}
-								}
-								catch(e){
-									throw "Error while parsing JSON body";
-								}
-								break;
-							case 'js':
-								response=eval(xhr[responseText]);
-								break;
-							case 'xml':
-								if(!xhr[responseXML] || (xhr[responseXML][parseError] && xhr[responseXML][parseError].errorCode && xhr[responseXML][parseError].reason)){
-									throw "Error while parsing XML body";
-								}
-								else{
-									response=xhr[responseXML];
-								}
-								break;
-							default:
-								//throw "Unsupported "+type+" type";
-								response=xhr[responseText];
-						}
-					}
-					// Execute success stack
-					success=true;
-					if(async){
-						for(i=0;func=success_stack[i];++i){
-							func.apply(xhr,[response]);
-						}
-					}
-				}
-				catch(e){
-					error=true;
-					response="Request to '"+url+"' aborted: "+e;
-					// Execute error stack
-					if(async){
-						for(i=0;func=error_stack[i];++i){
-							func.apply(xhr,[response]);
-						}
-					}
-				}
-				// Execute complete stack
-				if(async){
-					for(i=0;func=complete_stack[i];++i){
-						func.apply(xhr);
-					}
-				}
-			},
-			// Recursively build the query string
-			buildData = function(data, key) {
-				var res = [],
-					enc = encodeURIComponent;
-				if(typeof data === 'object' && data != null) {
-					for(var p in data) {
-						if(data.hasOwnProperty(p)) {
-							res = res.concat(buildData(data[p], key ? key + '[' + p + ']' : p));
-						}
-					}
-				} else if(data != null && key != null) {
-					res.push(enc(key) + '=' + enc(data));
-				}
-				return res.join('&');
-			};
-
-		// Limit requests
-		if(limit && requests==limit){
-			// Stock current request
-			request_stack.push({
-				method      : method,
-				url         : url,
-				data        : data,
-				options     : options,
-				before      : before,
-				success     : [],
-				error       : [],
-				complete    : []
-			});
-			// Return promises
-			return promises_limit;
-		}
-		// New request
-		++requests;
-		// Prepare data
-		if(
-			win.ArrayBuffer && 
-			(data instanceof ArrayBuffer ||
-			data instanceof Blob ||
-			data instanceof Document ||
-			data instanceof FormData)
-		){
-			if(method=='GET'){
-				data=null;
-			}
-		}
-		else{
-			data = buildData(data);
-			serialized=true;
-		}
-		// Prepare URL
-		if(method=='GET'){
-			vars+=data;
-		}
-		if(cache==null){
-			cache=(method=='POST');
-		}
-		if(!cache){
-			if(vars){
-				vars+='&';
-			}
-			vars+='__t='+Date.now();
-		}
-		if(vars){
-			url+=(/\?/.test(url)?'&':'?')+vars;
-		}
-		// Open connection
-		xhr.open(method,url,async,user,password);
-		// Identify supported XHR version
-		if(type && version2){
-			try{
-				xhr.responseType=type;
-				typeSupported=(xhr.responseType==type);
-			}
-			catch(e){}
-		}
-		// Plug response handler
-		if(version2){
-			xhr.onload=handleResponse;
-		}
-		else{
-			xhr.onreadystatechange=function(){
-				if(xhr.readyState==4){
-					handleResponse();
-				}
-			};
-		}
-		// Prepare headers
-		for(i in headers){
-			j=i.replace(/(^|-)([^-])/g,toUpper);
-			headers[j]=headers[i];
-			delete headers[i];
-			xhr.setRequestHeader(j,headers[j]);
-		}
-		if(!headers['Content-Type'] && serialized && method=='POST'){
-			xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-		}
-		if(!headers.Accept){
-			xhr.setRequestHeader('Accept',accepts[type]);
-		}
-		// Before
-		if(before){
-			before.apply(xhr);
-		}
-		// Send request
-		xhr.send(method=='POST'?data:null);
-		// Return promises
-		return promises;
-		
-	};
-
-	// Return final qwest object
-	return {
-		get:function(url,data,options,before){
-			return qwest('GET',url,data,options,before);
-		},
-		post:function(url,data,options,before){
-			return qwest('POST',url,data,options,before);
-		},
-		xhr2:version2,
-		limit:function(by){
-			limit=by;
-		}
-	};
-	
-}()));
-;;(function(){
-    var lastFm = "http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=philmau&api_key=ccfce33b35f8480c2413f2a642fa2c6a&format=json";
-    var template = "/assets/views/track.html";
-    var tracklist = document.querySelector('.track-list');
-    var loadingIcon = document.querySelector('.load-icon');
-    var currentPage = 1;
-    var totalPages = 1;
-    
-    document.addEventListener('DOMContentLoaded', init, false);
-
-    // Load the track template html
-    function init(){
-        qwest.get(template, {}, {type: 'html'}).success(function(templateData){
-            template = templateData;
-            getTracks(templateData);   
-        });
-    }
-
-    // Fetch paged tracks from LastFM API and render on page
-    function getTracks(template, page){
-        var page = page || 1;
-        loadingIcon.className = loadingIcon.className.replace(' loaded', '');
-        loadingIcon.className += ' loading';
-        qwest.get(lastFm, {page: page}, {type: 'json'}).success(function(trackData){
-            // Remove the loading icon
-            loadingIcon.className = loadingIcon.className.replace(' loading', '');
-            loadingIcon.className += ' loaded';
-            setTimeout(function(){
-                loadingIcon.className = loadingIcon.className.replace(' loaded', '');
-            }, 500);
-
-            // Empty the tracklist
-            tracklist.innerHTML = '';
-
-            totalPages = trackData.recenttracks['@attr'].totalPages;
-
-            // Add in all the tracks
-            var tracks = [];
-            _.each(trackData.recenttracks.track, function(item){
-                var track = {};
-                track.name = item.name;
-                track.artist = item.artist['#text'];
-                track.album = item.album['#text'];
-                track.url = item.url;
-                track.thumbnail = thumbnail(item.image, 'large', track.artist);
-                track.searchparam = encodeURIComponent(track.artist +  " " + track.name);
-                track.timestamp = getTimeStamp(item);
-                track.nowplaying = isPlaying(item);
-                tracks.push(track);
-                
-            });
-            var compiled = _.template(template);
-            var html = compiled({tracks: tracks});
-            tracklist.innerHTML += html;
-            addPagination();
-            scrollToTracks();
-            handleImageLoadErrors();
-            if (currentPage <= 1) {
-                document.querySelector('#prev-page').disabled = true;
-            }
-            if (currentPage >= totalPages) {
-                document.querySelector('#next-page').disabled = true;
-            }
-        });
-    }
-
-    // Add pagination for tracks
-    function addPagination(){
-        var pagination = document.createElement('div')
-            pagination.className = 'pagination';
-        
-        var nextButton = document.createElement('button')
-            nextButton.className = 'btn';
-            nextButton.id = 'next-page';
-            nextButton.textContent = 'Older';
-            nextButton.onclick = function(){getTracks(template, ++currentPage)}
-
-        var prevButton = document.createElement('button')
-            prevButton.className = 'btn';
-            prevButton.id = 'prev-page';
-            prevButton.textContent = 'Newer';
-            prevButton.onclick = function(){getTracks(template, --currentPage)}
-        
-        pagination.appendChild(prevButton)
-        pagination.appendChild(nextButton);
-        tracklist.appendChild(pagination);
-    }
-
-    // Image often fail to load :( so I'm adding a fallback
-    function handleImageLoadErrors(){
-        var images = document.querySelectorAll('.track img');
-        _.each(images, function(image){
-            image.onerror = function(){
-                image.src = 'http://placehold.it/128x128/333/eee&text=Image Missing';
-            }
-        });
-
-    }
-
-    // Scroll to the top of the tracklist
-    function scrollToTracks(){
-        if( screen.width < 800){
-            var top = tracklist.offsetTop - 60;
-            window.scrollTo(0, top);
-        }
-    }
-
-    // Return image and attributes for a lastFM track image
-    function thumbnail(images, size, text){
-        var newImages = [];
-        var sizes = {'extralarge': 300, 'large': 126, 'medium': 64, 'small': 43};
-        _.each(images, function(image){
-            var width = sizes[image.size];
-            var height = sizes[image.size];
-            var scale = sizes[image.size] + 'x' + sizes[image.size]; 
-            var url = (image['#text'] == '') ? 'http://placehold.it/'+scale+'/333/eee/&text='+encodeURIComponent(text) : image['#text'];
-            newImages[image.size] = {
-                url: url,
-                width: width,
-                height: height,
-                scale: scale
-            }
-        });
-        return newImages[size];
-    }
-
-    function isPlaying(item){
-        return ( item['@attr'] && item['@attr'].nowplaying );
-    }
-
-    function getTimeStamp(item){
-        if ( isPlaying(item) ) {
-            return 'Now playing';
-        } else if (item.date && item.date['#text']) {
-            return "Played " + timeSince(item.date['#text']) + ' ago';
-        }
-    }
-
-    function timeSince(date) {
-        if (typeof date !== 'object') {
-            date = new Date(date);
-        }
-
-        var seconds = Math.floor((new Date() - date) / 1000);
-        var intervalType;
-
-        var interval = Math.floor(seconds / 31536000);
-        if (interval >= 1) {
-            intervalType = 'year';
-        } else {
-            interval = Math.floor(seconds / 2592000);
-            if (interval >= 1) {
-                intervalType = 'month';
-            } else {
-                interval = Math.floor(seconds / 86400);
-                if (interval >= 1) {
-                    intervalType = 'day';
-                } else {
-                    interval = Math.floor(seconds / 3600);
-                    if (interval >= 1) {
-                        intervalType = "hour";
-                    } else {
-                        interval = Math.floor(seconds / 60);
-                        if (interval >= 1) {
-                            intervalType = "minute";
-                        } else {
-                            interval = seconds;
-                            intervalType = "second";
-                        }
-                    }
-                }
-            }
-        }
-
-        if (interval > 1 || interval === 0) {
-            intervalType += 's';
-        }
-
-        return interval + ' ' + intervalType;
+(function() {
+    var a = this, b = a._, c = {}, d = Array.prototype, e = Object.prototype, f = Function.prototype, g = d.push, h = d.slice, i = d.concat, j = e.toString, k = e.hasOwnProperty, l = d.forEach, m = d.map, n = d.reduce, o = d.reduceRight, p = d.filter, q = d.every, r = d.some, s = d.indexOf, t = d.lastIndexOf, u = Array.isArray, v = Object.keys, w = f.bind, x = function(a) {
+        return a instanceof x ? a : this instanceof x ? void (this._wrapped = a) : new x(a);
     };
+    "undefined" != typeof exports ? ("undefined" != typeof module && module.exports && (exports = module.exports = x), 
+    exports._ = x) : a._ = x, x.VERSION = "1.6.0";
+    var y = x.each = x.forEach = function(a, b, d) {
+        if (null == a) return a;
+        if (l && a.forEach === l) a.forEach(b, d); else if (a.length === +a.length) {
+            for (var e = 0, f = a.length; f > e; e++) if (b.call(d, a[e], e, a) === c) return;
+        } else for (var g = x.keys(a), e = 0, f = g.length; f > e; e++) if (b.call(d, a[g[e]], g[e], a) === c) return;
+        return a;
+    };
+    x.map = x.collect = function(a, b, c) {
+        var d = [];
+        return null == a ? d : m && a.map === m ? a.map(b, c) : (y(a, function(a, e, f) {
+            d.push(b.call(c, a, e, f));
+        }), d);
+    };
+    var z = "Reduce of empty array with no initial value";
+    x.reduce = x.foldl = x.inject = function(a, b, c, d) {
+        var e = arguments.length > 2;
+        if (null == a && (a = []), n && a.reduce === n) return d && (b = x.bind(b, d)), 
+        e ? a.reduce(b, c) : a.reduce(b);
+        if (y(a, function(a, f, g) {
+            e ? c = b.call(d, c, a, f, g) : (c = a, e = !0);
+        }), !e) throw new TypeError(z);
+        return c;
+    }, x.reduceRight = x.foldr = function(a, b, c, d) {
+        var e = arguments.length > 2;
+        if (null == a && (a = []), o && a.reduceRight === o) return d && (b = x.bind(b, d)), 
+        e ? a.reduceRight(b, c) : a.reduceRight(b);
+        var f = a.length;
+        if (f !== +f) {
+            var g = x.keys(a);
+            f = g.length;
+        }
+        if (y(a, function(h, i, j) {
+            i = g ? g[--f] : --f, e ? c = b.call(d, c, a[i], i, j) : (c = a[i], e = !0);
+        }), !e) throw new TypeError(z);
+        return c;
+    }, x.find = x.detect = function(a, b, c) {
+        var d;
+        return A(a, function(a, e, f) {
+            return b.call(c, a, e, f) ? (d = a, !0) : void 0;
+        }), d;
+    }, x.filter = x.select = function(a, b, c) {
+        var d = [];
+        return null == a ? d : p && a.filter === p ? a.filter(b, c) : (y(a, function(a, e, f) {
+            b.call(c, a, e, f) && d.push(a);
+        }), d);
+    }, x.reject = function(a, b, c) {
+        return x.filter(a, function(a, d, e) {
+            return !b.call(c, a, d, e);
+        }, c);
+    }, x.every = x.all = function(a, b, d) {
+        b || (b = x.identity);
+        var e = !0;
+        return null == a ? e : q && a.every === q ? a.every(b, d) : (y(a, function(a, f, g) {
+            return (e = e && b.call(d, a, f, g)) ? void 0 : c;
+        }), !!e);
+    };
+    var A = x.some = x.any = function(a, b, d) {
+        b || (b = x.identity);
+        var e = !1;
+        return null == a ? e : r && a.some === r ? a.some(b, d) : (y(a, function(a, f, g) {
+            return e || (e = b.call(d, a, f, g)) ? c : void 0;
+        }), !!e);
+    };
+    x.contains = x.include = function(a, b) {
+        return null == a ? !1 : s && a.indexOf === s ? -1 != a.indexOf(b) : A(a, function(a) {
+            return a === b;
+        });
+    }, x.invoke = function(a, b) {
+        var c = h.call(arguments, 2), d = x.isFunction(b);
+        return x.map(a, function(a) {
+            return (d ? b : a[b]).apply(a, c);
+        });
+    }, x.pluck = function(a, b) {
+        return x.map(a, x.property(b));
+    }, x.where = function(a, b) {
+        return x.filter(a, x.matches(b));
+    }, x.findWhere = function(a, b) {
+        return x.find(a, x.matches(b));
+    }, x.max = function(a, b, c) {
+        if (!b && x.isArray(a) && a[0] === +a[0] && a.length < 65535) return Math.max.apply(Math, a);
+        var d = -1 / 0, e = -1 / 0;
+        return y(a, function(a, f, g) {
+            var h = b ? b.call(c, a, f, g) : a;
+            h > e && (d = a, e = h);
+        }), d;
+    }, x.min = function(a, b, c) {
+        if (!b && x.isArray(a) && a[0] === +a[0] && a.length < 65535) return Math.min.apply(Math, a);
+        var d = 1 / 0, e = 1 / 0;
+        return y(a, function(a, f, g) {
+            var h = b ? b.call(c, a, f, g) : a;
+            e > h && (d = a, e = h);
+        }), d;
+    }, x.shuffle = function(a) {
+        var b, c = 0, d = [];
+        return y(a, function(a) {
+            b = x.random(c++), d[c - 1] = d[b], d[b] = a;
+        }), d;
+    }, x.sample = function(a, b, c) {
+        return null == b || c ? (a.length !== +a.length && (a = x.values(a)), a[x.random(a.length - 1)]) : x.shuffle(a).slice(0, Math.max(0, b));
+    };
+    var B = function(a) {
+        return null == a ? x.identity : x.isFunction(a) ? a : x.property(a);
+    };
+    x.sortBy = function(a, b, c) {
+        return b = B(b), x.pluck(x.map(a, function(a, d, e) {
+            return {
+                value: a,
+                index: d,
+                criteria: b.call(c, a, d, e)
+            };
+        }).sort(function(a, b) {
+            var c = a.criteria, d = b.criteria;
+            if (c !== d) {
+                if (c > d || void 0 === c) return 1;
+                if (d > c || void 0 === d) return -1;
+            }
+            return a.index - b.index;
+        }), "value");
+    };
+    var C = function(a) {
+        return function(b, c, d) {
+            var e = {};
+            return c = B(c), y(b, function(f, g) {
+                var h = c.call(d, f, g, b);
+                a(e, h, f);
+            }), e;
+        };
+    };
+    x.groupBy = C(function(a, b, c) {
+        x.has(a, b) ? a[b].push(c) : a[b] = [ c ];
+    }), x.indexBy = C(function(a, b, c) {
+        a[b] = c;
+    }), x.countBy = C(function(a, b) {
+        x.has(a, b) ? a[b]++ : a[b] = 1;
+    }), x.sortedIndex = function(a, b, c, d) {
+        c = B(c);
+        for (var e = c.call(d, b), f = 0, g = a.length; g > f; ) {
+            var h = f + g >>> 1;
+            c.call(d, a[h]) < e ? f = h + 1 : g = h;
+        }
+        return f;
+    }, x.toArray = function(a) {
+        return a ? x.isArray(a) ? h.call(a) : a.length === +a.length ? x.map(a, x.identity) : x.values(a) : [];
+    }, x.size = function(a) {
+        return null == a ? 0 : a.length === +a.length ? a.length : x.keys(a).length;
+    }, x.first = x.head = x.take = function(a, b, c) {
+        return null == a ? void 0 : null == b || c ? a[0] : 0 > b ? [] : h.call(a, 0, b);
+    }, x.initial = function(a, b, c) {
+        return h.call(a, 0, a.length - (null == b || c ? 1 : b));
+    }, x.last = function(a, b, c) {
+        return null == a ? void 0 : null == b || c ? a[a.length - 1] : h.call(a, Math.max(a.length - b, 0));
+    }, x.rest = x.tail = x.drop = function(a, b, c) {
+        return h.call(a, null == b || c ? 1 : b);
+    }, x.compact = function(a) {
+        return x.filter(a, x.identity);
+    };
+    var D = function(a, b, c) {
+        return b && x.every(a, x.isArray) ? i.apply(c, a) : (y(a, function(a) {
+            x.isArray(a) || x.isArguments(a) ? b ? g.apply(c, a) : D(a, b, c) : c.push(a);
+        }), c);
+    };
+    x.flatten = function(a, b) {
+        return D(a, b, []);
+    }, x.without = function(a) {
+        return x.difference(a, h.call(arguments, 1));
+    }, x.partition = function(a, b) {
+        var c = [], d = [];
+        return y(a, function(a) {
+            (b(a) ? c : d).push(a);
+        }), [ c, d ];
+    }, x.uniq = x.unique = function(a, b, c, d) {
+        x.isFunction(b) && (d = c, c = b, b = !1);
+        var e = c ? x.map(a, c, d) : a, f = [], g = [];
+        return y(e, function(c, d) {
+            (b ? d && g[g.length - 1] === c : x.contains(g, c)) || (g.push(c), f.push(a[d]));
+        }), f;
+    }, x.union = function() {
+        return x.uniq(x.flatten(arguments, !0));
+    }, x.intersection = function(a) {
+        var b = h.call(arguments, 1);
+        return x.filter(x.uniq(a), function(a) {
+            return x.every(b, function(b) {
+                return x.contains(b, a);
+            });
+        });
+    }, x.difference = function(a) {
+        var b = i.apply(d, h.call(arguments, 1));
+        return x.filter(a, function(a) {
+            return !x.contains(b, a);
+        });
+    }, x.zip = function() {
+        for (var a = x.max(x.pluck(arguments, "length").concat(0)), b = new Array(a), c = 0; a > c; c++) b[c] = x.pluck(arguments, "" + c);
+        return b;
+    }, x.object = function(a, b) {
+        if (null == a) return {};
+        for (var c = {}, d = 0, e = a.length; e > d; d++) b ? c[a[d]] = b[d] : c[a[d][0]] = a[d][1];
+        return c;
+    }, x.indexOf = function(a, b, c) {
+        if (null == a) return -1;
+        var d = 0, e = a.length;
+        if (c) {
+            if ("number" != typeof c) return d = x.sortedIndex(a, b), a[d] === b ? d : -1;
+            d = 0 > c ? Math.max(0, e + c) : c;
+        }
+        if (s && a.indexOf === s) return a.indexOf(b, c);
+        for (;e > d; d++) if (a[d] === b) return d;
+        return -1;
+    }, x.lastIndexOf = function(a, b, c) {
+        if (null == a) return -1;
+        var d = null != c;
+        if (t && a.lastIndexOf === t) return d ? a.lastIndexOf(b, c) : a.lastIndexOf(b);
+        for (var e = d ? c : a.length; e--; ) if (a[e] === b) return e;
+        return -1;
+    }, x.range = function(a, b, c) {
+        arguments.length <= 1 && (b = a || 0, a = 0), c = arguments[2] || 1;
+        for (var d = Math.max(Math.ceil((b - a) / c), 0), e = 0, f = new Array(d); d > e; ) f[e++] = a, 
+        a += c;
+        return f;
+    };
+    var E = function() {};
+    x.bind = function(a, b) {
+        var c, d;
+        if (w && a.bind === w) return w.apply(a, h.call(arguments, 1));
+        if (!x.isFunction(a)) throw new TypeError();
+        return c = h.call(arguments, 2), d = function() {
+            if (!(this instanceof d)) return a.apply(b, c.concat(h.call(arguments)));
+            E.prototype = a.prototype;
+            var e = new E();
+            E.prototype = null;
+            var f = a.apply(e, c.concat(h.call(arguments)));
+            return Object(f) === f ? f : e;
+        };
+    }, x.partial = function(a) {
+        var b = h.call(arguments, 1);
+        return function() {
+            for (var c = 0, d = b.slice(), e = 0, f = d.length; f > e; e++) d[e] === x && (d[e] = arguments[c++]);
+            for (;c < arguments.length; ) d.push(arguments[c++]);
+            return a.apply(this, d);
+        };
+    }, x.bindAll = function(a) {
+        var b = h.call(arguments, 1);
+        if (0 === b.length) throw new Error("bindAll must be passed function names");
+        return y(b, function(b) {
+            a[b] = x.bind(a[b], a);
+        }), a;
+    }, x.memoize = function(a, b) {
+        var c = {};
+        return b || (b = x.identity), function() {
+            var d = b.apply(this, arguments);
+            return x.has(c, d) ? c[d] : c[d] = a.apply(this, arguments);
+        };
+    }, x.delay = function(a, b) {
+        var c = h.call(arguments, 2);
+        return setTimeout(function() {
+            return a.apply(null, c);
+        }, b);
+    }, x.defer = function(a) {
+        return x.delay.apply(x, [ a, 1 ].concat(h.call(arguments, 1)));
+    }, x.throttle = function(a, b, c) {
+        var d, e, f, g = null, h = 0;
+        c || (c = {});
+        var i = function() {
+            h = c.leading === !1 ? 0 : x.now(), g = null, f = a.apply(d, e), d = e = null;
+        };
+        return function() {
+            var j = x.now();
+            h || c.leading !== !1 || (h = j);
+            var k = b - (j - h);
+            return d = this, e = arguments, 0 >= k ? (clearTimeout(g), g = null, h = j, f = a.apply(d, e), 
+            d = e = null) : g || c.trailing === !1 || (g = setTimeout(i, k)), f;
+        };
+    }, x.debounce = function(a, b, c) {
+        var d, e, f, g, h, i = function() {
+            var j = x.now() - g;
+            b > j ? d = setTimeout(i, b - j) : (d = null, c || (h = a.apply(f, e), f = e = null));
+        };
+        return function() {
+            f = this, e = arguments, g = x.now();
+            var j = c && !d;
+            return d || (d = setTimeout(i, b)), j && (h = a.apply(f, e), f = e = null), h;
+        };
+    }, x.once = function(a) {
+        var b, c = !1;
+        return function() {
+            return c ? b : (c = !0, b = a.apply(this, arguments), a = null, b);
+        };
+    }, x.wrap = function(a, b) {
+        return x.partial(b, a);
+    }, x.compose = function() {
+        var a = arguments;
+        return function() {
+            for (var b = arguments, c = a.length - 1; c >= 0; c--) b = [ a[c].apply(this, b) ];
+            return b[0];
+        };
+    }, x.after = function(a, b) {
+        return function() {
+            return --a < 1 ? b.apply(this, arguments) : void 0;
+        };
+    }, x.keys = function(a) {
+        if (!x.isObject(a)) return [];
+        if (v) return v(a);
+        var b = [];
+        for (var c in a) x.has(a, c) && b.push(c);
+        return b;
+    }, x.values = function(a) {
+        for (var b = x.keys(a), c = b.length, d = new Array(c), e = 0; c > e; e++) d[e] = a[b[e]];
+        return d;
+    }, x.pairs = function(a) {
+        for (var b = x.keys(a), c = b.length, d = new Array(c), e = 0; c > e; e++) d[e] = [ b[e], a[b[e]] ];
+        return d;
+    }, x.invert = function(a) {
+        for (var b = {}, c = x.keys(a), d = 0, e = c.length; e > d; d++) b[a[c[d]]] = c[d];
+        return b;
+    }, x.functions = x.methods = function(a) {
+        var b = [];
+        for (var c in a) x.isFunction(a[c]) && b.push(c);
+        return b.sort();
+    }, x.extend = function(a) {
+        return y(h.call(arguments, 1), function(b) {
+            if (b) for (var c in b) a[c] = b[c];
+        }), a;
+    }, x.pick = function(a) {
+        var b = {}, c = i.apply(d, h.call(arguments, 1));
+        return y(c, function(c) {
+            c in a && (b[c] = a[c]);
+        }), b;
+    }, x.omit = function(a) {
+        var b = {}, c = i.apply(d, h.call(arguments, 1));
+        for (var e in a) x.contains(c, e) || (b[e] = a[e]);
+        return b;
+    }, x.defaults = function(a) {
+        return y(h.call(arguments, 1), function(b) {
+            if (b) for (var c in b) void 0 === a[c] && (a[c] = b[c]);
+        }), a;
+    }, x.clone = function(a) {
+        return x.isObject(a) ? x.isArray(a) ? a.slice() : x.extend({}, a) : a;
+    }, x.tap = function(a, b) {
+        return b(a), a;
+    };
+    var F = function(a, b, c, d) {
+        if (a === b) return 0 !== a || 1 / a == 1 / b;
+        if (null == a || null == b) return a === b;
+        a instanceof x && (a = a._wrapped), b instanceof x && (b = b._wrapped);
+        var e = j.call(a);
+        if (e != j.call(b)) return !1;
+        switch (e) {
+          case "[object String]":
+            return a == String(b);
 
-}());
+          case "[object Number]":
+            return a != +a ? b != +b : 0 == a ? 1 / a == 1 / b : a == +b;
+
+          case "[object Date]":
+          case "[object Boolean]":
+            return +a == +b;
+
+          case "[object RegExp]":
+            return a.source == b.source && a.global == b.global && a.multiline == b.multiline && a.ignoreCase == b.ignoreCase;
+        }
+        if ("object" != typeof a || "object" != typeof b) return !1;
+        for (var f = c.length; f--; ) if (c[f] == a) return d[f] == b;
+        var g = a.constructor, h = b.constructor;
+        if (g !== h && !(x.isFunction(g) && g instanceof g && x.isFunction(h) && h instanceof h) && "constructor" in a && "constructor" in b) return !1;
+        c.push(a), d.push(b);
+        var i = 0, k = !0;
+        if ("[object Array]" == e) {
+            if (i = a.length, k = i == b.length) for (;i-- && (k = F(a[i], b[i], c, d)); ) ;
+        } else {
+            for (var l in a) if (x.has(a, l) && (i++, !(k = x.has(b, l) && F(a[l], b[l], c, d)))) break;
+            if (k) {
+                for (l in b) if (x.has(b, l) && !i--) break;
+                k = !i;
+            }
+        }
+        return c.pop(), d.pop(), k;
+    };
+    x.isEqual = function(a, b) {
+        return F(a, b, [], []);
+    }, x.isEmpty = function(a) {
+        if (null == a) return !0;
+        if (x.isArray(a) || x.isString(a)) return 0 === a.length;
+        for (var b in a) if (x.has(a, b)) return !1;
+        return !0;
+    }, x.isElement = function(a) {
+        return !(!a || 1 !== a.nodeType);
+    }, x.isArray = u || function(a) {
+        return "[object Array]" == j.call(a);
+    }, x.isObject = function(a) {
+        return a === Object(a);
+    }, y([ "Arguments", "Function", "String", "Number", "Date", "RegExp" ], function(a) {
+        x["is" + a] = function(b) {
+            return j.call(b) == "[object " + a + "]";
+        };
+    }), x.isArguments(arguments) || (x.isArguments = function(a) {
+        return !(!a || !x.has(a, "callee"));
+    }), "function" != typeof /./ && (x.isFunction = function(a) {
+        return "function" == typeof a;
+    }), x.isFinite = function(a) {
+        return isFinite(a) && !isNaN(parseFloat(a));
+    }, x.isNaN = function(a) {
+        return x.isNumber(a) && a != +a;
+    }, x.isBoolean = function(a) {
+        return a === !0 || a === !1 || "[object Boolean]" == j.call(a);
+    }, x.isNull = function(a) {
+        return null === a;
+    }, x.isUndefined = function(a) {
+        return void 0 === a;
+    }, x.has = function(a, b) {
+        return k.call(a, b);
+    }, x.noConflict = function() {
+        return a._ = b, this;
+    }, x.identity = function(a) {
+        return a;
+    }, x.constant = function(a) {
+        return function() {
+            return a;
+        };
+    }, x.property = function(a) {
+        return function(b) {
+            return b[a];
+        };
+    }, x.matches = function(a) {
+        return function(b) {
+            if (b === a) return !0;
+            for (var c in a) if (a[c] !== b[c]) return !1;
+            return !0;
+        };
+    }, x.times = function(a, b, c) {
+        for (var d = Array(Math.max(0, a)), e = 0; a > e; e++) d[e] = b.call(c, e);
+        return d;
+    }, x.random = function(a, b) {
+        return null == b && (b = a, a = 0), a + Math.floor(Math.random() * (b - a + 1));
+    }, x.now = Date.now || function() {
+        return new Date().getTime();
+    };
+    var G = {
+        escape: {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#x27;"
+        }
+    };
+    G.unescape = x.invert(G.escape);
+    var H = {
+        escape: new RegExp("[" + x.keys(G.escape).join("") + "]", "g"),
+        unescape: new RegExp("(" + x.keys(G.unescape).join("|") + ")", "g")
+    };
+    x.each([ "escape", "unescape" ], function(a) {
+        x[a] = function(b) {
+            return null == b ? "" : ("" + b).replace(H[a], function(b) {
+                return G[a][b];
+            });
+        };
+    }), x.result = function(a, b) {
+        if (null == a) return void 0;
+        var c = a[b];
+        return x.isFunction(c) ? c.call(a) : c;
+    }, x.mixin = function(a) {
+        y(x.functions(a), function(b) {
+            var c = x[b] = a[b];
+            x.prototype[b] = function() {
+                var a = [ this._wrapped ];
+                return g.apply(a, arguments), M.call(this, c.apply(x, a));
+            };
+        });
+    };
+    var I = 0;
+    x.uniqueId = function(a) {
+        var b = ++I + "";
+        return a ? a + b : b;
+    }, x.templateSettings = {
+        evaluate: /<%([\s\S]+?)%>/g,
+        interpolate: /<%=([\s\S]+?)%>/g,
+        escape: /<%-([\s\S]+?)%>/g
+    };
+    var J = /(.)^/, K = {
+        "'": "'",
+        "\\": "\\",
+        "\r": "r",
+        "\n": "n",
+        "	": "t",
+        "\u2028": "u2028",
+        "\u2029": "u2029"
+    }, L = /\\|'|\r|\n|\t|\u2028|\u2029/g;
+    x.template = function(a, b, c) {
+        var d;
+        c = x.defaults({}, c, x.templateSettings);
+        var e = new RegExp([ (c.escape || J).source, (c.interpolate || J).source, (c.evaluate || J).source ].join("|") + "|$", "g"), f = 0, g = "__p+='";
+        a.replace(e, function(b, c, d, e, h) {
+            return g += a.slice(f, h).replace(L, function(a) {
+                return "\\" + K[a];
+            }), c && (g += "'+\n((__t=(" + c + "))==null?'':_.escape(__t))+\n'"), d && (g += "'+\n((__t=(" + d + "))==null?'':__t)+\n'"), 
+            e && (g += "';\n" + e + "\n__p+='"), f = h + b.length, b;
+        }), g += "';\n", c.variable || (g = "with(obj||{}){\n" + g + "}\n"), g = "var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};\n" + g + "return __p;\n";
+        try {
+            d = new Function(c.variable || "obj", "_", g);
+        } catch (h) {
+            throw h.source = g, h;
+        }
+        if (b) return d(b, x);
+        var i = function(a) {
+            return d.call(this, a, x);
+        };
+        return i.source = "function(" + (c.variable || "obj") + "){\n" + g + "}", i;
+    }, x.chain = function(a) {
+        return x(a).chain();
+    };
+    var M = function(a) {
+        return this._chain ? x(a).chain() : a;
+    };
+    x.mixin(x), y([ "pop", "push", "reverse", "shift", "sort", "splice", "unshift" ], function(a) {
+        var b = d[a];
+        x.prototype[a] = function() {
+            var c = this._wrapped;
+            return b.apply(c, arguments), "shift" != a && "splice" != a || 0 !== c.length || delete c[0], 
+            M.call(this, c);
+        };
+    }), y([ "concat", "join", "slice" ], function(a) {
+        var b = d[a];
+        x.prototype[a] = function() {
+            return M.call(this, b.apply(this._wrapped, arguments));
+        };
+    }), x.extend(x.prototype, {
+        chain: function() {
+            return this._chain = !0, this;
+        },
+        value: function() {
+            return this._wrapped;
+        }
+    }), "function" == typeof define && define.amd && define("underscore", [], function() {
+        return x;
+    });
+}).call(this), function() {
+    function a() {
+        qwest.get(k, {}, {
+            type: "html"
+        }).success(function(a) {
+            k = a, b(a);
+        });
+    }
+    function b(a, b) {
+        var b = b || 1;
+        m.className = m.className.replace(" loaded", ""), m.className += " loading", qwest.get(j, {
+            page: b
+        }, {
+            type: "json"
+        }).success(function(b) {
+            m.className = m.className.replace(" loading", ""), m.className += " loaded", setTimeout(function() {
+                m.className = m.className.replace(" loaded", "");
+            }, 500), l.innerHTML = "", o = b.recenttracks["@attr"].totalPages;
+            var i = [];
+            _.each(b.recenttracks.track, function(a) {
+                var b = {};
+                b.name = a.name, b.artist = a.artist["#text"], b.album = a.album["#text"], b.url = a.url, 
+                b.thumbnail = f(a.image, "large", b.artist), b.searchparam = encodeURIComponent(b.artist + " " + b.name), 
+                b.timestamp = h(a), b.nowplaying = g(a), i.push(b);
+            });
+            var j = _.template(a), k = j({
+                tracks: i
+            });
+            l.innerHTML += k, c(), e(), d(), 1 >= n && (document.querySelector("#prev-page").disabled = !0), 
+            n >= o && (document.querySelector("#next-page").disabled = !0);
+        });
+    }
+    function c() {
+        var a = document.createElement("div");
+        a.className = "pagination";
+        var c = document.createElement("button");
+        c.className = "btn", c.id = "next-page", c.textContent = "Older", c.onclick = function() {
+            b(k, ++n);
+        };
+        var d = document.createElement("button");
+        d.className = "btn", d.id = "prev-page", d.textContent = "Newer", d.onclick = function() {
+            b(k, --n);
+        }, a.appendChild(d), a.appendChild(c), l.appendChild(a);
+    }
+    function d() {
+        var a = document.querySelectorAll(".track img");
+        _.each(a, function(a) {
+            a.onerror = function() {
+                a.src = "http://placehold.it/128x128/333/eee&text=Image Missing";
+            };
+        });
+    }
+    function e() {
+        if (screen.width < 800) {
+            var a = l.offsetTop - 60;
+            window.scrollTo(0, a);
+        }
+    }
+    function f(a, b, c) {
+        var d = [], e = {
+            extralarge: 300,
+            large: 126,
+            medium: 64,
+            small: 43
+        };
+        return _.each(a, function(a) {
+            var b = e[a.size], f = e[a.size], g = e[a.size] + "x" + e[a.size], h = "" == a["#text"] ? "http://placehold.it/" + g + "/333/eee/&text=" + encodeURIComponent(c) : a["#text"];
+            d[a.size] = {
+                url: h,
+                width: b,
+                height: f,
+                scale: g
+            };
+        }), d[b];
+    }
+    function g(a) {
+        return a["@attr"] && a["@attr"].nowplaying;
+    }
+    function h(a) {
+        return g(a) ? "Now playing" : a.date && a.date["#text"] ? "Played " + i(a.date["#text"]) + " ago" : void 0;
+    }
+    function i(a) {
+        "object" != typeof a && (a = new Date(a));
+        var b, c = Math.floor((new Date() - a) / 1e3), d = Math.floor(c / 31536e3);
+        return d >= 1 ? b = "year" : (d = Math.floor(c / 2592e3), d >= 1 ? b = "month" : (d = Math.floor(c / 86400), 
+        d >= 1 ? b = "day" : (d = Math.floor(c / 3600), d >= 1 ? b = "hour" : (d = Math.floor(c / 60), 
+        d >= 1 ? b = "minute" : (d = c, b = "second"))))), (d > 1 || 0 === d) && (b += "s"), 
+        d + " " + b;
+    }
+    var j = "http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=philmau&api_key=ccfce33b35f8480c2413f2a642fa2c6a&format=json", k = "/assets/views/track.html", l = document.querySelector(".track-list"), m = document.querySelector(".load-icon"), n = 1, o = 1;
+    document.addEventListener("DOMContentLoaded", a, !1);
+}();
