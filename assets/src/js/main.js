@@ -41,6 +41,36 @@ function handleFixedNav(){
 	}
 }
 
+Appreciation = {
+  init: function(ele) {
+    this.ele = document.querySelector(ele);
+    this.button = this.ele.querySelector('.btn-appreciate');
+    this.bindEvents();
+  },
+  
+  bindEvents: function() {
+    this.button.onclick = function(e){
+      var entry = Appreciation.addEntry();
+      e.preventDefault();
+    };
+  },
+  
+  addEntry: function() {
+  	var button = this.button;
+    var id = button.getAttribute('data-page_id');
+    qwest.post('/appreciate', {
+		page_id:  id
+	}, {responseType: 'json'}).success(function(response){
+		console.log(response);
+		console.log(button);
+		button.innerText = 'Thank you!';
+    	button.className += ' appreciated';
+	});
+  }
+}
+
+Appreciation.init('.appreciate');
+
 (function(){
 	'use strict';
 	handleFixedNav();
