@@ -9,17 +9,18 @@ $items = ($page) ? $page->children()->visible()->flip() : false;
 <nav class="projects">
     <?php foreach($items AS $item): ?>
     	<div class="project">
-    		<a href="<?= $item->url() ?>">
-    			<h2><?= html($item->title()) ?></h2>
-    			<p class="summary"><?= $item->summary() ?></p>
-    		</a>
-            <?php $thumb = $item->files()->find('icon.svg'); ?>
-            <div class="icon">
-                <?php if( $thumb ): ?>
-                    <?php include $thumb->root() ?>
-                <?php endif ?>
-                <h3><?php echo $item->title() ?></h3>
-            </div>
+            <a href="<?= $item->url() ?>">
+                <?php $thumb = $item->files()->find('icon.svg'); ?>
+                <div class="project-icon">
+                    <?php if( $thumb ): ?>
+                        <?php include $thumb->root() ?>
+                    <?php endif ?>
+                </div>
+                <div class="project-details">
+                    <h2 class="project-title"><?= html($item->title()) ?></h2>
+                    <p class="project-summary"><?= $item->summary() ?></p>
+                </div>
+            </a>
     	</div>
     <?php endforeach ?>
 </nav>
