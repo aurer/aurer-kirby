@@ -159,8 +159,8 @@ function handleFixedNav() {
             page_id: b
         }, {
             responseType: "json"
-        }).success(function(b) {
-            console.log(b), console.log(a), a.innerText = "Thank you!", a.className += " appreciated";
+        }).success(function() {
+            a.innerText = "Thank you!", a.className += " appreciated";
         });
     }
 }, Appreciation.init(".appreciate"), function() {

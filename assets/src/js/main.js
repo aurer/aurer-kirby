@@ -61,8 +61,6 @@ Appreciation = {
     qwest.post('/appreciate', {
 		page_id:  id
 	}, {responseType: 'json'}).success(function(response){
-		console.log(response);
-		console.log(button);
 		button.innerText = 'Thank you!';
     	button.className += ' appreciated';
 	});
