@@ -3,7 +3,6 @@ form.standard{
 
 	.field{
 		margin: 0 0 @base-height;
-		overflow: hidden;
 		text-align: left;
 
 		label{
@@ -22,6 +21,7 @@ form.standard{
 
 			&:focus{
 				border-color: @highlight;
+				box-shadow: 0 0 0 2px fadeout(desaturate(@highlight, 20%), 60%);
 				outline: none;
 			}
 		}

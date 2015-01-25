@@ -4,6 +4,7 @@ class Appreciation {
 
 	// The filename to store the data in
 	public $appreciation_filename = 'appreciation.json';
+	public $cookie_name = 'ilikeit';
 
 	//
 	// Initialise the Appreciation object passing the Kirby site object
@@ -18,13 +19,38 @@ class Appreciation {
 	//
 	public function appreciate($url) {
 		$data = array(
-			'id' => uniqid(),
+			'id' => $this->get_cookie() ? $this->get_cookie() : uniqid(),
 			'page' => $url,
-			'timestamp' => date('c'),
-			'comments' => '',
-			'name' => ''
+			'timestamp' => time(),
+			'ip' => R::ip()
 		);
 		return $this->add_entry($data);
+	}
+
+	//
+	// Return array of all entries based on users cookie
+	//
+	public function get_user_entries($page=false) {
+		$id = $this->get_cookie();
+		
+		if( !$id ) {
+			return false;
+		}
+
+		$user_entries = array();
+		$all_entries = $this->get_all_appreciations()->entries;
+		foreach ($all_entries as $entry) {
+			if ($entry->id == $id) {
+				if ($page) {
+					if ($entry->page == $page) {
+						$user_entries[] = $entry;
+					}
+				} else {
+					$user_entries[] = $entry;
+				}
+			}
+		}
+		return $user_entries;
 	}
 
 	//
@@ -40,7 +66,10 @@ class Appreciation {
 		$appreciations = $this->get_all_appreciations();
 		$appreciations->entries[] = $data;
 		$this->save_appreciations($appreciations);
-		return $data;;
+
+		$this->set_cookie($data['id']);
+
+		return $data;
 	}
 
 	//
@@ -54,11 +83,11 @@ class Appreciation {
 		}
 
 		// Get all appreciations
-		$appreciations = $this->get_all_appreciations();
+		$appreciations = $this->get_all_appreciations()->entries;
 		
 		// Find the one we want to update
 		$appreciation = false;
-		foreach ($appreciations->entries as $entry) {
+		foreach ($appreciations as $entry) {
 			if ($entry->id == $id) {
 				$appreciation = $entry;
 			}
@@ -109,8 +138,8 @@ class Appreciation {
 	// Get a single appreciation by id
 	//
 	private function get_appreciation($id) {
-		$appreciations = $this->get_all_appreciations();
-		foreach ($appreciations->entries as $entry) {
+		$appreciations = $this->get_all_appreciations()->entries;
+		foreach ($appreciations as $entry) {
 			if ($entry->id == $id) {
 				return $entry;
 			}
@@ -125,6 +154,17 @@ class Appreciation {
 		$this->save_appreciations(array(
 			'entries' => array()
 		));
+	}
+
+	private function set_cookie($value) {
+		$expires = false;
+		$path = '/';
+		$domain = c::get('url');
+		setcookie($this->cookie_name, $value, $expires, $path);
+	}
+
+	private function get_cookie() {
+		return isset($_COOKIE[$this->cookie_name]) ? $_COOKIE[$this->cookie_name] : false;
 	}
 	
 	//

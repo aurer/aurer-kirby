@@ -44,7 +44,7 @@ function handleFixedNav(){
 Appreciation = {
   init: function(ele) {
     this.ele = document.querySelector(ele);
-    this.button = this.ele.querySelector('.btn-appreciate');
+    this.button = this.ele.querySelector('.btn--appreciate');
     this.bindEvents();
   },
   
@@ -57,7 +57,7 @@ Appreciation = {
   
   addEntry: function() {
   	var button = this.button;
-    var id = button.getAttribute('data-page_id');
+    var id = button.getAttribute('data-page_id');    
     qwest.post('/appreciate', {
 		page_id:  id
 	}, {responseType: 'json'}).success(function(response){

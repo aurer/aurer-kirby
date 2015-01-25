@@ -1,3 +1,11 @@
+<?php
+	$a = new Appreciation(site());
+	$entries = $a->get_user_entries($page->id());
+?>
 <div class="appreciate">
-  <button class="btn btn-appreciate" data-page_id="<?= $page->id() ?>">Appreciate this</button>
+	<?php if ($entries && count($entries) > 0) : ?>
+		<span class="btn btn--appreciated icon-checkmark">Appreciated</span>
+	<?php else : ?>
+  		<button class="btn btn--appreciate icon-heart" data-page_id="<?= $page->id() ?>"><span>Appreciate</span></button>
+  	<?php endif ?>
 </div>

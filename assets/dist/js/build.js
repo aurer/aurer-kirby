@@ -144,7 +144,7 @@ function handleFixedNav() {
     };
 }()), Appreciation = {
     init: function(a) {
-        this.ele = document.querySelector(a), this.button = this.ele.querySelector(".btn-appreciate"), 
+        this.ele = document.querySelector(a), this.button = this.ele.querySelector(".btn--appreciate"), 
         this.bindEvents();
     },
     bindEvents: function() {

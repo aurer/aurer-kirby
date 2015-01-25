@@ -1,6 +1,7 @@
 .btn{
 	padding: .7em 2em .8em;
 	font-size: .9em;
+	font-weight: bold;
 	box-sizing: border-box;
 	display: inline-block;
 	text-decoration: none;
@@ -8,17 +9,17 @@
 	line-height: 1.1;
 	margin: 0 .2em;
 	border: none;
-	border-radius: 4px;
+	border-radius: 3px;
+	background: rgb(36, 41, 45);
 	color: #fff;
-	background: #24292d;
-	transition: background .2s;
+	transition: all .2s;
+	position: relative;
+	border: 2px solid rgb(36, 41, 45);
 }
 .btn:hover,
-.btn:focus{
-	color: #fff;
-	background: @highlight;
-	cursor: pointer;
+.btn:focus {
 	outline: none;
+	background-color: #05BD70;
 }
 .btn[disabled]{
 	opacity: .3;
