@@ -7,17 +7,17 @@
     );
 
     // If a redirect is found - do it
-    $path = $site->uri()->path();
+    $path = kirby()->path();
     foreach ($redirects as $src => $dest) {
-    	if ( preg_match($src, $path) ) {
+        if ( preg_match($src, $path) ) {
             $newurl = preg_replace($src, $dest, $path);
             // Check the page exists in the site and redirect
-            if ( $pages->find($newurl)->uri == substr($newurl, 1) ){
+            if ( $pages->find($newurl)->uri() == substr($newurl, 1) ){
                 header("HTTP/1.1 301 Moved Permanently"); 
                 header("Location: $newurl");
             }
             break;
-    	}
+        }
     }
 
     $http = new httpResponse;
