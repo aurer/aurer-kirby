@@ -15,23 +15,23 @@
               'subject' => $validator->get_value('subject', 'Response from the Aurer site'),
               'body'    => $validator->get_value('contactname')." sent you a message\n\n".$validator->get_value('message')."\n\n".$validator->get_value('email'),
             ));
-
-            if(error($send)) {
-                header('Location: ' . $page->url() . '?sent=true');
+            if($email->send()) {
+                c::set('email_sent', true);
             } else {
-                header('Location: ' . $page->url() . '?sent=true');
+                c::set('email_sent', false);
             }
         }
     } 
 ?>
 <?= snippet('header') ?>
-    	
+    
     <section class="main">
   		<div class="row">
             <div class="content">
+                
                 <h1><?= html($page->title()) ?></h1>
                                 
-                <?php if(empty($_GET['sent'])) : ?>
+                <?php if(c::get('email_sent') !== true) : ?>
                     
                     <?= kirbytext($page->text()) ?>
 
