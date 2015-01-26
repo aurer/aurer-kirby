@@ -9,7 +9,7 @@
         $validator->custom_message('email', 'email', "Please enter a valid email, this will only be used to respond to your message");
         
         if($validator->run()==true){
-            $send = email(array(
+            $email = new Email(array(
               'to'      => 'Phil Mau <philmau@gmail.com>',
               'from'    => 'Aurer emailer <noreply@aurer.co.uk>',
               'subject' => $validator->get_value('subject', 'Response from the Aurer site'),
