@@ -34,14 +34,7 @@
                 <?= kirbytext($page->$statuscode()) ?>
                 
                 <?php if ($statuscode == 404) : ?>
-               
-                    <?php
-                        $search = new search(array(
-                            'searchfield' => 'q'
-                        ));
-                        $results = $search->results();
-                    ?>
-                    
+            
                     <form class="standard search" action="/search">
                         <div class="input">
                             <input type="text" placeholder="Search…" name="q" value="<?= substr($path, strrpos($path, '/')+1) ?>" autofocus />
