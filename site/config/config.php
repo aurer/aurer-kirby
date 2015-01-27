@@ -30,6 +30,10 @@ of the system, please check out http://getkirby.com/docs/advanced/options
 */
 c::set('kirbytext.video.width', 480); 
 c::set('kirbytext.video.height', 358);
+
+# Add these to the servers config
+c::set('mailgun_key', '');
+c::set('mailgun_domain', '');
 /*
 
 ---------------------------------------
@@ -37,7 +41,6 @@ Routes
 ---------------------------------------
 
 */
-
 c::set('routes', array(
 	array(
 		'method' => 'GET',

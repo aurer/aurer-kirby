@@ -1,4 +1,5 @@
 <?php
+    
     $validator = new Validator;
     if( isset($_POST['submit']) ){ 
         
@@ -10,29 +11,39 @@
         
         if($validator->run()==true){
             $email = new Email(array(
-              'to'      => 'Phil Mau <philmau@gmail.com>',
-              'from'    => 'Aurer emailer <noreply@aurer.co.uk>',
-              'subject' => $validator->get_value('subject', 'Response from the Aurer site'),
-              'body'    => $validator->get_value('contactname')." sent you a message\n\n".$validator->get_value('message')."\n\n".$validator->get_value('email'),
+                'to'      => 'Phil Mau <philmau@gmail.com>',
+                'from'    => 'Aurer emailer <noreply@aurer.co.uk>',
+                'subject' => $validator->get_value('subject', 'Response from the Aurer site'),
+                'body'    => $validator->get_value('contactname')." sent you a message\n\n".$validator->get_value('message')."\n\n".$validator->get_value('email'),
+                'service' => 'mailgun',
+                'options' => array(
+                    'key'    => c::get('mailgun_key'),
+                    'domain' => c::get('mailgun_domain'),
+                )
             ));
+
             if($email->send()) {
-                c::set('email_sent', true);
+                s::set('email_sent', true);
+                go($page->url());
             } else {
-                c::set('email_sent', false);
+                s::set('email_sent', false);
+                message::set('mail_error', 'There was a problem sending your message');
+                go($page->url());
             }
         }
-    } 
+    }
+
 ?>
 <?= snippet('header') ?>
     
     <section class="main">
   		<div class="row">
             <div class="content">
-                
+
                 <h1><?= html($page->title()) ?></h1>
                                 
-                <?php if(c::get('email_sent') !== true) : ?>
-                    
+                <?php if(s::get('email_sent') !== true) : ?>
+
                     <?= kirbytext($page->text()) ?>
 
                     <form action="<?= $page->url() ?>#contact-form" method="post" id="contact-form" class="standard contact" >
@@ -99,3 +110,4 @@
     </section>
         
 <?= snippet('footer') ?>
+<?php s::remove('email_sent'); ?>
