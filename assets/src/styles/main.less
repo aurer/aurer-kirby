@@ -88,6 +88,42 @@ body {
 	}
 }
 
+.messages-container {
+	background: #eee;
+	color: #444;
+	
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	li {
+		padding: .7em 2em;
+		border-radius: 3px;
+		box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.2);
+
+		& + li {
+			margin-top: 1em;
+		}
+	}
+	
+	.message-plain {
+		background-color: #444;
+		border-color: #000;
+		color: #fff;
+	}
+
+	.message-success {
+		background-color: #2D663F;
+		color: #fff;
+	}
+
+	.message-error {
+		background-color: #83230C;
+		color: #fff;
+	}
+}
+
 .main{
 	background: #eee;
 	color: #444;
