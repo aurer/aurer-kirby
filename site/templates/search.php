@@ -5,17 +5,10 @@
                 <div class="content">
                     <h1><?= html($page->title()) ?></h1>
                     <?= kirbytext($page->text()) ?>
-                    
-                    <?php
-                    $search = new search(array(
-                        'searchfield' => 'q'
-                    ));
-                    $results = $search->results();
-                    ?>
 
                     <form class="standard search" action="<?= thisURL() ?>">
                         <div class="input">
-                            <input type="text" placeholder="Search…" name="q" value="<?= $search->query() ?>" autofocus />
+                            <input type="text" placeholder="Search…" name="q" value="<?= $query ?>" autofocus />
                         </div>
                         <input type="submit" value="Search" />
                     </form>
