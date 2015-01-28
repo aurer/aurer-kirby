@@ -44,6 +44,9 @@ function handleFixedNav(){
 Appreciation = {
   init: function(ele) {
     this.ele = document.querySelector(ele);
+    if (!this.ele) {
+    	return;
+    }
     this.button = this.ele.querySelector('.btn--appreciate');
     this.bindEvents();
   },
