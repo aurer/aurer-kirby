@@ -28,4 +28,3 @@
     <body class="<?= snippet('body-class') ?>">
         
         <?= snippet('mast') ?>
-        <?= snippet('messages') ?>

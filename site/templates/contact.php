@@ -27,7 +27,7 @@
                 go($page->url());
             } else {
                 s::set('email_sent', false);
-                message::set('mail_error', 'There was a problem sending your message');
+                message::set('mail_error', 'It appears your message cannot be sent right now, many appologies.');
                 go($page->url());
             }
         }
@@ -35,7 +35,6 @@
 
 ?>
 <?= snippet('header') ?>
-    
     <section class="main">
   		<div class="row">
             <div class="content">
@@ -45,6 +44,8 @@
                 <?php if(s::get('email_sent') !== true) : ?>
 
                     <?= kirbytext($page->text()) ?>
+
+                    <?= snippet('messages') ?>
 
                     <form action="<?= $page->url() ?>#contact-form" method="post" id="contact-form" class="standard contact" >
                         <div class="field field-contactname <?= $validator->error_class('contactname'); ?>">
