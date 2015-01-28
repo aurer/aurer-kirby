@@ -6,5 +6,5 @@ Description: Kirby is awesome
 ----
 Keywords: kirby, cms, kirbycms, php, filesystem
 ----
-Copyright: &copy; (date: Year) Phil maurer
+Copyright: &copy; (date: Year) Phil Maurer
 ----
