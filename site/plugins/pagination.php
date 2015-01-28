@@ -7,11 +7,11 @@ function pagination($results, $rows=10){
         
         $html .= '<nav class="pagination">';
         if($results->pagination()->hasPrevPage()){
-         	$html .= '<a class="prev" href="' . $results->pagination()->prevPageURL() . '">&lt;</a>';
+         	$html .= '<a class="prev icon-arrow-left" href="' . $results->pagination()->prevPageURL() . '"><span>prev</span></a>';
         }
 
         if($results->pagination()->hasNextPage()){
-            $html .= '<a class="next" href="' . $results->pagination()->nextPageURL() . '">&gt;</a>';
+            $html .= '<a class="next icon-arrow-right" href="' . $results->pagination()->nextPageURL() . '"><span>next</span></a>';
         }
         $html .= '</nav>';
     }

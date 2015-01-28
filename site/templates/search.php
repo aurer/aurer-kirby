@@ -12,8 +12,10 @@
                         </div>
                         <input type="submit" value="Search" />
                     </form>
+                    
 
-                    <?php if($results): ?>
+                    <?php if($query) : ?>
+
                         <h3><?= $results->count() ?> items found.</h3>
                         <?php $results = $results->paginate(10) ?>
                         <ul class="display-list">
@@ -28,9 +30,7 @@
                         </ul>
                         
                         <?= pagination($results) ?>
-
-                    <?php elseif ($search->query() != '') : ?>
-                        <h3>No results.</h3>
+                        
                     <?php endif ?>
 
 
