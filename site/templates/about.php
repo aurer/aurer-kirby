@@ -15,10 +15,4 @@
         	</div>
         </section>
 
-        <section class="main site">
-        	<div class="row">
-        		<?= kirbytext($page->text_site()) ?>
-        	</div>
-        </section>
-
 <?= snippet('footer') ?>

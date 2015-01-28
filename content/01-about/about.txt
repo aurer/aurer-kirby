@@ -1,7 +1,6 @@
 Title: About
 ----
-Text:
-## About me
+Text: ## About me
 My name is Phil Maurer, I am a full-time web developer with a background in design, living and working in Suffolk, England. I have been working in web design and development for around 5 years, and I love every day of it.
 
 ### Background
@@ -9,9 +8,24 @@ I’ve always had a great appreciation for good design, I studied graphic design
 
 Eventually that helped me land a junior position in a web agency, and from that point on I expanded into other web technologies, and I continue to learn new things every day.
 
+## About this site
+
+This site runs on an architecture of:
+
+* (link: http://php.net text: PHP 5.4 target: _blank)
+* (link: http://wiki.nginx.org/Main text: Nginx target: _blank)
+* (link: https://www.linode.com/ text: Linode target: _blank)
+
+Server side and development technologies include:
+
+* (link: http://getkirby.com text: Kirby target: _blank)
+* (link: http://gulpjs.com/ text: Gulp.js target: _blank)
+* (link: http://sass-lang.com/ text : Sass target: _blank)
+
+You can view the source on (link: https://github.com/aurer/aurer-kirby text: Github target: _blank).
+
 ----
-Text_Experience:
-## Experience
+Text_Experience: ## Experience
 
 #### Languages
 - HTML
@@ -40,21 +54,3 @@ Text_Experience:
 - Sketch
 - Illustrator
 - Photoshop
-
------
-Text_Site:
-## About this site
-
-This site runs on an architecture of:
-
-* (link: http://php.net text: PHP 5.4 target: _blank)
-* (link: http://wiki.nginx.org/Main text: Nginx target: _blank)
-* (link: https://www.linode.com/ text: Linode target: _blank)
-
-Server side and development technologies include:
-
-* (link: http://getkirby.com text: Kirby target: _blank)
-* (link: http://gulpjs.com/ text: Gulp.js target: _blank)
-* (link: http://sass-lang.com/ text : Sass target: _blank)
-
-You can view the source on (link: https://github.com/aurer/aurer-kirby text: Github target: _blank).

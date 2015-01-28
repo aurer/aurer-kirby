@@ -345,43 +345,35 @@ body {
 	About
 */
 .page-about{
-	ul{
-		overflow: hidden;
-		margin: 0 0 @base-height;
+	
+	ul {
 		padding: 0;
-
-		li{
-			list-style: none;
-			padding: .5em 0;
-			@media @respond-small {
-				width: 50%;
-				float: left;
-				border-bottom: 1px dashed #ccc;
-			}
+		margin: 0 0 @base-height;
+		list-style: none;
+		-webkit-column-gap: 3em;
+		column-gap: 3em;
+		-webkit-column-rule: 1px dotted #999;
+		column-rule: 1px dotted #999;
+		
+		@media @respond-medium {
+			-webkit-column-count: 2;
+			column-count: 2;
 		}
 
+		@media @respond-large {
+			-webkit-column-count: 3;
+			column-count: 3;
+		}
+		
 		li:before{
-			content: '-';
+			content: '\1804';
 			margin-right: 1em;
-			color: #999;
-		} 
+			color: @color-primary;
+		}
 	}
 
 	.main.experience{
-		background: #303A42;
-		color: #fff;
-		 li{
-		 	border-color: #04263A;
-		 }
-	}
-
-	.main.site{
-		li{
-			border: none;
-			width: 100%;
-			float: none;
-			padding: 0 0 .5em;
-		}
+		background: #ddd;
 	}
 }
 
