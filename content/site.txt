@@ -2,9 +2,8 @@ Title: Aurer
 ----
 Author: Phil Maurer
 ----
-Description: Kirby is awesome
+Description: Welcome to Aurer, my name is Phil, I'm a front-end web developer
 ----
-Keywords: kirby, cms, kirbycms, php, filesystem
+Keywords: phil maurer, aurer, front-end, ui, web, development
 ----
 Copyright: &copy; (date: Year) Phil Maurer
-----
