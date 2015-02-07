@@ -10,8 +10,10 @@ nav a {
 	text-align: center;
 	width: 100%;
 	padding: 0 0 0;
-
+	font-family: @headings-font-family;
+	
 	@media @respond-medium {
+		font-size: 1.1em;
 		float: right;
 		clear: none;
 		width: auto;
@@ -21,12 +23,12 @@ nav a {
 
 	a{
 		padding: .5em;
-		color: #b5b5b5;
 		transition: color .2s, line-height .2s;
 		line-height: @logo-height-small;
 
 		@media @respond-medium {
 			margin: 0 .5em;
+			padding: 0 .5em;
 			line-height: @logo-height-medium;
 		}
 

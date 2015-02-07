@@ -12,15 +12,15 @@ function removeClass(a, b) {
 
 function handleFixedNav() {
     "use strict";
-    var a = (document.body.scrollHeight, window.screen.height, document.querySelector(".mast")), b = document.body, c = 0;
+    var a = (document.body.scrollHeight, window.screen.height, document.querySelector(".mast"), 
+    document.body), b = 0;
     window.onscroll = function() {
-        var d = document.body.scrollTop || document.documentElement.scrollTop || 0;
+        var c = document.body.scrollTop || document.documentElement.scrollTop || 0;
         if (document.body.scrollWidth > 700) {
-            d > 40 ? addClass(b, "off-top") : removeClass(b, "off-top");
-            var e = 2 + (d - 30) / 100;
-            e > 6 && (e = 6), c = -d / e;
+            c > 40 ? addClass(a, "off-top") : removeClass(a, "off-top");
+            var d = 2 + (c - 30) / 100;
+            d > 6 && (d = 6), b = -c / d;
         }
-        a.style.backgroundPosition = "center " + Math.round(c) + "px", b.style.backgroundPosition = "center " + Math.round(c) + "px";
     };
 }
 
@@ -163,7 +163,7 @@ function handleFixedNav() {
             a.innerText = "Thank you!", a.className += " appreciated";
         });
     }
-}, Appreciation.init(".appreciate"), function() {
+}, Appreciation.init("button.appreciate"), function() {
     "use strict";
     handleFixedNav();
 }();
