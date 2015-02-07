@@ -110,6 +110,7 @@ module.exports = function(grunt) {
 		    options: {
 		        proxy: 'v2.aurer.dev',
 		        watchTask: true,
+		        notify: false,
 		        ghostMode: {
 				    clicks: true,
 				    location: false,
