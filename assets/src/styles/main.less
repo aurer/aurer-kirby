@@ -374,14 +374,15 @@ body {
 	Words
 */
 .subpages {
-	
+	margin-bottom: 1em;
+	border-bottom: 1px dotted #999;
+
 	.subpage {
 		overflow: hidden;
 	}
 
-	.subpage + .subpage{
-		margin-top: 1em;
-		padding-top: 1em;
+	.subpage {
+		padding: 1em 0 1.5em;
 		border-top: 1px dotted #999;
 	}
 
@@ -393,19 +394,40 @@ body {
 		display: block;
 		font-style: italic;
 		margin-bottom: 1em;
+		font-family: @headings-font-family;
 	}
 
 	@media @respond-large {
 		.date {
-			float: left;
-			width: 15%;
+			float: right;
+			width: 10%;
 			padding: .5em 0 0;
+			text-align: center;
+
+			span {
+				display: block;
+			}
+		}
+
+		.date-day {
+			font-size: 2em;
+			line-height: 1;
+			color: @color-primary;
+		}
+
+		.date-month {
+			font-size: 1.1em;
+			letter-spacing: .1em;
+		}
+
+		.date-year {
+			font-size: .8em;
 		}
 
 		h2,
 		.summary {
-			float: right;
-			width: 85%;
+			float: left;
+			width: 90%;
 		}
 	}
 }

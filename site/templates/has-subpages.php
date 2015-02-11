@@ -10,7 +10,11 @@
 					  	<?php foreach($page->children()->sortBy('date', 'desc') AS $p): ?>
                             <div class="subpage">
                                 <h2><a <?= ($p->isOpen()) ? ' class="active"' : '' ?> href="<?= $p->url() ?>"><?= html($p->title()) ?></a></h2>
-                                <span class="date"><?= $p->date('jS M Y') ?></span>
+                                <div class="date">
+                                    <span class="date-day"><?= $p->date('d') ?></span>
+                                    <span class="date-month"><?= $p->date('M') ?></span>
+                                    <span class="date-year"><?= $p->date('Y') ?></span>
+                                </div>
                                 <div class="summary"><?= $p->summary() ?></div>
                             </div>
 						<?php endforeach ?>
