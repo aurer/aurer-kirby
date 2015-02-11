@@ -37,6 +37,18 @@ body {
 		width: 100%;
 	}
 
+	&:before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		background: rgba(0, 0, 0, .14);
+		opacity: 0;
+		transition: opacity .2s;
+	}
+
 	.logo {
 		display: block;
 		text-align: center;
@@ -163,8 +175,6 @@ body {
 	color: #fff;
 	text-align: center;
 	position: relative;
-	transition: min-height 1s, padding-top 1s;
-	font-size: 1.2em;
 
 	@media @respond-medium {
 		color: #fff;
@@ -177,7 +187,6 @@ body {
 
 		h1{
 			animation-duration: 1.5s;
-			margin-top: 0;
 		}
 
 		p{
@@ -186,18 +195,15 @@ body {
 		}
 	}
 	
-	@media @respond-medium and (min-height: 500px) {
-		min-height: 240px;
-		padding-top: 80px;
-	}
-	@media @respond-medium and (min-height: 800px) {
-		min-height: 380px;
-		padding-top: 110px;
-	}
-	
 	.row {
-		@media @respond-tiny {
-			padding-top: 0;
+		padding: 2em 1em 3em;
+		transition: padding .5s;
+
+		@media @respond-medium and (min-height: 500px) {
+			padding: 4em 0 5em;
+		}
+		@media @respond-medium and (min-height: 800px) {
+			padding: 7em 0 9em;
 		}
 	}
 }
