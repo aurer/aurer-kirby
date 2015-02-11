@@ -6,7 +6,7 @@ Date: 12/02/2013
 ----
 Text:
 
-## A database management library for the Laravel Frameork
+## A database management library for the Laravel Framework
 
 Laravel is a clean and classy framework for PHP web development. Freeing you
 from spaghetti code, Laravel helps you create wonderful applications using

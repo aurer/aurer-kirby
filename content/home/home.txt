@@ -2,6 +2,7 @@ Title: Home
 
 ----
 
-Text:
-# Welcome
-Hi I'm Phil, I'm a web developer living and working in Bury St Edmunds UK.
+Text: # Welcome
+
+My name is Phil, I'm a front-end web developer.
+This is a collection of some of my personal projects and a small amount of writing.
