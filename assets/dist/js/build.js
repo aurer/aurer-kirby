@@ -13,14 +13,10 @@ function removeClass(a, b) {
 function handleFixedNav() {
     "use strict";
     var a = (document.body.scrollHeight, window.screen.height, document.querySelector(".mast"), 
-    document.body), b = 0;
+    document.body);
     window.onscroll = function() {
-        var c = document.body.scrollTop || document.documentElement.scrollTop || 0;
-        if (document.body.scrollWidth > 700) {
-            c > 40 ? addClass(a, "off-top") : removeClass(a, "off-top");
-            var d = 2 + (c - 30) / 100;
-            d > 6 && (d = 6), b = -c / d;
-        }
+        var b = document.body.scrollTop || document.documentElement.scrollTop || 0;
+        document.body.scrollWidth > 700 && (b > 40 ? addClass(a, "off-top") : removeClass(a, "off-top"));
     };
 }
 
@@ -144,8 +140,7 @@ function handleFixedNav() {
     };
 }()), Appreciation = {
     init: function(a) {
-        this.ele = document.querySelector(a), this.ele && (this.button = this.ele.querySelector(".btn--appreciate"), 
-        this.bindEvents());
+        Appreciation.button = document.querySelector(a), Appreciation.button && this.bindEvents();
     },
     bindEvents: function() {
         this.button.onclick = function(a) {
@@ -163,7 +158,7 @@ function handleFixedNav() {
             a.innerText = "Thank you!", a.className += " appreciated";
         });
     }
-}, Appreciation.init("button.appreciate"), function() {
+}, Appreciation.init("button.btn--appreciate"), function() {
     "use strict";
     handleFixedNav();
 }();

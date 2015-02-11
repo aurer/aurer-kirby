@@ -19,8 +19,7 @@ function handleFixedNav(){
 	var docheight   = document.body.scrollHeight,
 		winheight   = window.screen.height,
 		mast        = document.querySelector('.mast'),
-		body        = document.body,
-		bgp         = 0;
+		body        = document.body;
 
 	window.onscroll = function(e){
 		var scrolltop = document.body.scrollTop || document.documentElement.scrollTop || 0;
@@ -30,24 +29,16 @@ function handleFixedNav(){
 			} else {
 				removeClass(body, 'off-top');
 			}
-			var range = 2 + ((scrolltop-30)/100);
-			if(range > 6){
-				range = 6;
-			}
-			bgp = -scrolltop / range;
 		};
-		// mast.style.backgroundPosition = 'center ' + Math.round(bgp) + 'px';
-		// body.style.backgroundPosition = 'center ' + Math.round(bgp) + 'px';
 	}
 }
 
 Appreciation = {
   init: function(ele) {
-    this.ele = document.querySelector(ele);
-    if (!this.ele) {
+    Appreciation.button = document.querySelector(ele);
+    if (!Appreciation.button) {
     	return;
     }
-    this.button = this.ele.querySelector('.btn--appreciate');
     this.bindEvents();
   },
   
@@ -70,7 +61,7 @@ Appreciation = {
   }
 }
 
-Appreciation.init('button.appreciate');
+Appreciation.init('button.btn--appreciate');
 
 (function(){
 	'use strict';
