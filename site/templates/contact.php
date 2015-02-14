@@ -27,7 +27,7 @@
                 go($page->url());
             } else {
                 s::set('email_sent', false);
-                message::set('mail_error', 'It appears your message cannot be sent right now, many appologies.');
+                message::set('mail_error', 'It appears your message cannot be sent right now, many appologies.', 'error');
                 go($page->url());
             }
         }
