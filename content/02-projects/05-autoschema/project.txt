@@ -8,6 +8,8 @@ Text:
 
 ## A database management library for the Laravel Framework
 
+(message: Please note this project was written for Laravel 2 and is no longer in development type: info)
+
 Laravel is a clean and classy framework for PHP web development. Freeing you
 from spaghetti code, Laravel helps you create wonderful applications using
 simple, expressive syntax. Development should be a creative experience that you
@@ -92,7 +94,7 @@ Load in and cache any definitions in your **config/autoschema.php** file.
 Create a table as defined in your **config/autoschema.php** file
     AutoSchema::create($table_name);
 
-### Droping tables
+### Dropping tables
 Drop a table from the database.
     AutoSchema::drop($table_name);
 
@@ -104,7 +106,7 @@ Update a table in the database using the definition in your **config/autoschema.
 
 ### Retrieving definitions to build a form
     AutoSchema::get_for_form($table, $showall=false);
-This function will return an array of field definitions to be used with laravels form methods.
+This function will return an array of field definitions to be used with Laravel's form methods.
 
 #### Example
 
