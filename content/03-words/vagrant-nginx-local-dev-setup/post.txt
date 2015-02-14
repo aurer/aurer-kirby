@@ -4,7 +4,7 @@ Date: 2015/01/04
 ----
 Summary: My current local development set up using VM's, DNSMasq and a clever Nginx config.
 ----
-Text: I thought I'd share my simple local web development setup here. It took a while to get to this stage but aftr trying many other setups this feels like a good way of doing things.
+Text: I thought I'd share my simple local web development setup here. It took a while to get to this stage but after trying many other setups this feels like a good way of doing things.
 
 ## Overview 
 First of all an overview of the technologies used:
@@ -19,7 +19,7 @@ First of all an overview of the technologies used:
 Additional/optional tools:
 
 * (link:http://www.sublimetext.com/ text:Sublime Text) - The current best text editor/IDE in my opinion
-* (link:http://gruntjs.com/ text:Grunt) - Almost an essential tool nowdays: task runner, CSS preprocessor/prefixer, JS concatinator etc.
+* (link:http://gruntjs.com/ text:Grunt) - Almost an essential tool nowadays: task runner, CSS preprocessor/prefixer, JS concatinator etc.
 * Dnsmasq - Used to redirect all .dev domains to the virtual machine, see this article to get it set up on your mac (link:http://passingcuriosity.com/2013/dnsmasq-dev-osx/)
 
 ### How it works
@@ -67,7 +67,7 @@ If you don't care about the /public style sites you could use something like thi
 	    include        configs/favicon.conf;
 	}
 
-The three include files in the configs are pointing to some preset config files which you can find on github: (link:https://github.com/aurer/nginx-conf)
+The three include files in the configs are pointing to some pre-set config files which you can find on github: (link:https://github.com/aurer/nginx-conf)
 
 ## Conclusion
 

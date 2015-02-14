@@ -12,7 +12,7 @@ Text: The (link:/projects/music text:music page) on this site is a fairly simple
 
 ### Last.fm API
 
-The Last.fm api is a simple and well documented service that provides data for virtauly anything they do, in my case I made use of the (link:http://www.last.fm/api/show/user.getRecentTracks text:user.getRecentTracks) method to get a paginated list of all the tracks I've listened to. The actual call to the API looks something like this: 
+The Last.fm api is a simple and well documented service that provides data for virtually anything they do, in my case I made use of the (link:http://www.last.fm/api/show/user.getRecentTracks text:user.getRecentTracks) method to get a paginated list of all the tracks I've listened to. The actual call to the API looks something like this: 
 
 	http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=philmau&format=json&api_key=xxx
 
@@ -69,7 +69,7 @@ This returns a JSON response with the track data, 10 tracks are returned by defa
 
 Some of the keys are prefixed with a hash, for example the artist name has a key of "#text", this means that you have to access the value with array style rather than object style notation in javascript i.e. `artist.#text` will fail so `artist['#text']` must be used instead, the same goes for the "@attr" values.
 
-Another slight chanllege is the thumbnail images, firstly there is an array of different sizes available, to get the one you want you must loop over the array, check for the "size" you want and return the "#text" value. You must also take into account the fact that the image might not exist, either at the size you want or at all. I hanlded this with a fallback using the (link:http://placehold.it text:placehold.it) service to generate an image of the correct size with the song name as text e.g. `http://placehold.it/128x128/333/eee&text=Deep+sea` will produce a tidy image like this: 
+Another slight chanllege is the thumbnail images, firstly there is an array of different sizes available, to get the one you want you must loop over the array, check for the "size" you want and return the "#text" value. You must also take into account the fact that the image might not exist, either at the size you want or at all. I handled this with a fallback using the (link:http://placehold.it text:placehold.it) service to generate an image of the correct size with the song name as text e.g. `http://placehold.it/128x128/333/eee&text=Deep+sea` will produce a tidy image like this: 
 
 (image:http://placehold.it/128x128/333/eee&text=Deep+sea)
 
