@@ -1,4 +1,4 @@
-<?php if ( !empty(s::get('messages')) ) : ?>
+<?php if ( s::get('messages') ) : ?>
 	<section class="messages-container">
 		<div class="row">
 			<?= message::all() ?>
