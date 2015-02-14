@@ -34,6 +34,7 @@ c::set('kirbytext.video.height', 358);
 # Add these to the servers config
 c::set('mailgun_key', '');
 c::set('mailgun_domain', '');
+c::set('site_email', '');
 /*
 
 ---------------------------------------
