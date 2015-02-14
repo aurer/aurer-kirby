@@ -98,36 +98,36 @@ body {
 	}
 }
 
-.messages-container {
-	
-	ul {
-		list-style: none;
-		padding: 0;
-	}
+ul.messages {
+	list-style: none;
+	padding: 0;
+	text-align: left;
 
-	li {
+	.messages-message {
 		padding: .7em 2em;
 		border-radius: 3px;
 		box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.2);
+		background-color: #444;
+		border-color: #000;
+		color: #fff;
 
 		& + li {
 			margin-top: 1em;
 		}
 	}
 	
-	.message-plain {
-		background-color: #444;
-		border-color: #000;
-		color: #fff;
+	.messages-message--info {
+		background-color: #5198CB;
+		border-color: #145E93;
 	}
 
-	.message-success {
-		background-color: #2D663F;
-		color: #fff;
+	.messages-message--success {
+		background-color: #95E070;
+		color: #000;
 	}
 
-	.message-error {
-		background-color: #83230C;
+	.messages-message--error {
+		background-color: #E43E16;
 		color: #fff;
 	}
 }
