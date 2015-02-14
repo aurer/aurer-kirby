@@ -2,7 +2,7 @@ Title: Aurer
 ----
 Author: Phil Maurer
 ----
-Description: Welcome to Aurer, my name is Phil, I'm a front-end web developer
+Description: My name is Phil, I'm a front-end web developer, this is a collection of some of my personal projects and writing.
 ----
 Keywords: phil maurer, aurer, front-end, ui, web, development
 ----

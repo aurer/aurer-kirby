@@ -5,4 +5,4 @@ Title: Home
 Text: # Welcome
 
 My name is Phil, I'm a front-end web developer.
-This is a collection of some of my personal projects and a small amount of writing.
+This is a collection of some of my personal projects and writing.
