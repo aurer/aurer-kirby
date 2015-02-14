@@ -6,9 +6,9 @@
 					<a href="<?= $p->url() ?>"><?= $p->title() ?></a>
 				<?php endforeach ?>
 			</nav>
-			<span class="copyright">
+			<div class="copyright">
 				<?= kirbytext($site->copyright()) ?>
-			</span>
+			</div>
 		</footer>
 	</section>
 	<?= js(asset_path('assets/dist/js', 'build.js')) ?>
