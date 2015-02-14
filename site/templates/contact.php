@@ -32,6 +32,7 @@
             }
         }
     }
+    message::set('mail_error', 'It appears your message cannot be sent right now, many appologies.');
 
 ?>
 <?= snippet('header') ?>

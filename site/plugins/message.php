@@ -11,7 +11,7 @@ class message {
 		$messages[$name] = $message;
 		s::set('messages', $messages);
 	}
-
+	
 	public static function all() {
 		$messages = s::get('messages');
 		s::remove('messages');
@@ -36,13 +36,12 @@ class message {
 
 	public static function get($name) {
 		$messages = s::get('messages');
-		// s::remove('messages');
-		var_dump($messages);
 		foreach ($messages as $key => $message) {
 			if ($message->name == $name) {
 				return $message->value;
 			}
 		}
+		s::remove('messages');
 	}
 
 	function __toString() {
