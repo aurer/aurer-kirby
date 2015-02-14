@@ -27,7 +27,7 @@ It turns out it’s quite simple to do, the hex string contains 6 characters, th
 
 Do that for the start and end colours, then using those numbers you can work out the ones in between.
 
-To work out the numbers in the middle, take difference beween the start and end numbers and divide by the number of steps you want. Using the result as an increment, simply remove or add it to the start number until you reached the end number, recording each one along the way and converting back into hex.
+To work out the numbers in the middle, take difference between the start and end numbers and divide by the number of steps you want. Using the result as an increment, simply remove or add it to the start number until you reached the end number, recording each one along the way and converting back into hex.
 
 So maybe there’s a better way to do it, but this does work ok it seems.
 
