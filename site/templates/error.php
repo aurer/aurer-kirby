@@ -31,11 +31,11 @@
             
                     <form class="standard search" action="/search">
                         <div class="input">
-                            <input type="text" placeholder="Search…" name="q" value="<?= substr($path, strrpos($path, '/')+1) ?>" autofocus />
+                            <input type="text" placeholder="Search…" name="q" value="<?= str_replace('/', ' ', $path) ?>" autofocus />
                         </div>
                         <input type="submit" value="Search" />
                     </form>
-               
+
                 <?php endif ?>
             
             </div>
