@@ -35,13 +35,18 @@ c::set('kirbytext.video.height', 358);
 c::set('mailgun_key', '');
 c::set('mailgun_domain', '');
 c::set('site_email', '');
-/*
 
----------------------------------------
-Routes
----------------------------------------
 
-*/
+
+// Redirects
+c::set('redirects', array(
+	'/^posts$/' => '/words/archive',
+    '/^project\/(.*)/' => '/projects/$1',
+    '/^[\d]{4}\/[\d]{2}\/([\w-]+)/' => '/words/archive/$1'
+));
+
+
+// Routes
 c::set('routes', array(
 	array(
 		'method' => 'GET',

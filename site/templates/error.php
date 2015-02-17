@@ -1,14 +1,8 @@
 <?php 
 
-    // Add any additional rediect here
-    $redirects = array(
-    	'/^project\/(.*)/' => '/projects/$1',
-        '/^[\d]{4}\/[\d]{2}\/([\w-]+)/' => '/words/archive/$1'
-    );
-
     // If a redirect is found - do it
     $path = kirby()->path();
-    foreach ($redirects as $src => $dest) {
+    foreach (c::get('redirects') as $src => $dest) {
         if ( preg_match($src, $path) ) {
             $newurl = preg_replace($src, $dest, $path);
             // Check the page exists in the site and redirect
