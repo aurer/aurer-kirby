@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Appreciation {
 
@@ -18,13 +18,28 @@ class Appreciation {
 	//	Add a single appreciation entry
 	//
 	public function appreciate($url) {
+		$ip_geodata = $this->get_lat_long(R::ip());
 		$data = array(
 			'id' => $this->get_cookie() ? $this->get_cookie() : uniqid(),
 			'page' => $url,
 			'timestamp' => time(),
-			'ip' => R::ip()
+			'ip' => R::ip(),
+			'lat' => $ip_geodata->latitude,
+			'lng' => $ip_geodata->longitude,
 		);
 		return $this->add_entry($data);
+	}
+
+	//
+	// Get lat/long for ipaddress
+	//
+	public function get_lat_long($ipaddress) {
+		$endpoint = "http://freegeoip.net/json/$ipaddress";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_URL, $endpoint);
+		$result = curl_exec($ch);
+		return json_decode($result);
 	}
 
 	//
@@ -32,7 +47,7 @@ class Appreciation {
 	//
 	public function get_user_entries($page=false) {
 		$id = $this->get_cookie();
-		
+
 		if( !$id ) {
 			return false;
 		}
@@ -62,7 +77,7 @@ class Appreciation {
 		if (!is_file($appreciation_file)) {
 			$this->create_appreciation_file();
 		}
-		
+
 		$appreciations = $this->get_all_appreciations();
 		$appreciations->entries[] = $data;
 		$this->save_appreciations($appreciations);
@@ -84,7 +99,7 @@ class Appreciation {
 
 		// Get all appreciations
 		$appreciations = $this->get_all_appreciations()->entries;
-		
+
 		// Find the one we want to update
 		$appreciation = false;
 		foreach ($appreciations as $entry) {
@@ -105,7 +120,7 @@ class Appreciation {
 
 		// Save the json
 		$this->save_appreciations($appreciations);
-		
+
 		// Return the updated entry
 		return $appreciation;
 	}
@@ -166,7 +181,7 @@ class Appreciation {
 	private function get_cookie() {
 		return isset($_COOKIE[$this->cookie_name]) ? $_COOKIE[$this->cookie_name] : false;
 	}
-	
+
 	//
 	// Add a comment to an appreciation entry
 	//

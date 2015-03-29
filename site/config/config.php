@@ -28,7 +28,7 @@ make Kirby work. For more fine-grained configuration
 of the system, please check out http://getkirby.com/docs/advanced/options
 
 */
-c::set('kirbytext.video.width', 480); 
+c::set('kirbytext.video.width', 480);
 c::set('kirbytext.video.height', 358);
 
 # Add these to the servers config
@@ -50,6 +50,13 @@ c::set('redirects', array(
 c::set('routes', array(
 	array(
 		'method' => 'GET',
+		'pattern' => 'test',
+		'action' => function() {
+			Appreciation::get_lat_long('190.234.12.116');
+		}
+	),
+	array(
+		'method' => 'GET',
 		'pattern' => 'sitemap.xml',
 		'action' => function(){
 			$ignore = array('sitemap', 'error');
@@ -57,7 +64,7 @@ c::set('routes', array(
 			echo '<?xml version="1.0" encoding="utf-8"?>';
 		    echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 		    foreach (kirby()->site->pages()->index() as $p) {
-		    	if(in_array($p->uri(), $ignore)) continue;	
+		    	if(in_array($p->uri(), $ignore)) continue;
 		    	echo "<url>";
 		    	echo "<loc>" . html($p->url()) . "</loc>";
 		    	echo "<lastmod>" . $p->modified('c') . "</lastmod>";
