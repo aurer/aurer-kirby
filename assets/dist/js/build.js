@@ -12,7 +12,7 @@ function removeClass(a, b) {
 
 function handleFixedNav() {
     "use strict";
-    var a = (document.body.scrollHeight, window.screen.height, document.querySelector(".mast"), 
+    var a = (document.body.scrollHeight, window.screen.height, document.querySelector(".mast"),
     document.body);
     window.onscroll = function() {
         var b = document.body.scrollTop || document.documentElement.scrollTop || 0;
@@ -22,9 +22,7 @@ function handleFixedNav() {
 
 function loadPens() {
     var a = document.querySelector(".pens");
-    qwest.get("/pens.json", {
-        responseType: "json"
-    }).success(function(b) {
+    qwest.get("/pens.json").success(function(b) {
         a.className += " js-loaded";
         for (var c = 0; c < b.length; c++) {
             var d = "http://codepen.io/api/oembed/?url=" + b[c].link + "&format=js&callback=renderPen", e = document.createElement("script");
@@ -41,7 +39,7 @@ function renderPen(a) {
 }
 
 !function() {
-    for (var a, b = function() {}, c = [ "assert", "clear", "count", "debug", "dir", "dirxml", "error", "exception", "group", "groupCollapsed", "groupEnd", "info", "log", "markTimeline", "profile", "profileEnd", "table", "time", "timeEnd", "timeStamp", "trace", "warn" ], d = c.length, e = window.console = window.console || {}; d--; ) a = c[d], 
+    for (var a, b = function() {}, c = [ "assert", "clear", "count", "debug", "dir", "dirxml", "error", "exception", "group", "groupCollapsed", "groupEnd", "info", "log", "markTimeline", "profile", "profileEnd", "table", "time", "timeEnd", "timeStamp", "trace", "warn" ], d = c.length, e = window.console = window.console || {}; d--; ) a = c[d],
     e[a] || (e[a] = b);
 }(), function(a) {
     "function" == typeof define ? define(a) : "undefined" != typeof module ? module.exports = a : this.qwest = a;
@@ -82,7 +80,7 @@ function renderPen(a) {
         }, handleResponse = function() {
             var i, req, p;
             if (--requests, request_stack.length) {
-                for (req = request_stack.shift(), p = qwest(req.method, req.url, req.data, req.options, req.before), 
+                for (req = request_stack.shift(), p = qwest(req.method, req.url, req.data, req.options, req.before),
                 i = 0; func = req.success[i]; ++i) p.success(func);
                 for (i = 0; func = req.error[i]; ++i) p.error(func);
                 for (i = 0; func = req.complete[i]; ++i) p.complete(func);
@@ -131,19 +129,19 @@ function renderPen(a) {
             error: [],
             complete: []
         }), promises_limit;
-        if (++requests, win.ArrayBuffer && (data instanceof ArrayBuffer || data instanceof Blob || data instanceof Document || data instanceof FormData) ? "GET" == method && (data = null) : (data = buildData(data), 
-        serialized = !0), "GET" == method && (vars += data), null == cache && (cache = "POST" == method), 
-        cache || (vars && (vars += "&"), vars += "__t=" + Date.now()), vars && (url += (/\?/.test(url) ? "&" : "?") + vars), 
+        if (++requests, win.ArrayBuffer && (data instanceof ArrayBuffer || data instanceof Blob || data instanceof Document || data instanceof FormData) ? "GET" == method && (data = null) : (data = buildData(data),
+        serialized = !0), "GET" == method && (vars += data), null == cache && (cache = "POST" == method),
+        cache || (vars && (vars += "&"), vars += "__t=" + Date.now()), vars && (url += (/\?/.test(url) ? "&" : "?") + vars),
         xhr.open(method, url, async, user, password), type && version2) try {
             xhr.responseType = type, typeSupported = xhr.responseType == type;
         } catch (e) {}
         version2 ? xhr.onload = handleResponse : xhr.onreadystatechange = function() {
             4 == xhr.readyState && handleResponse();
         };
-        for (i in headers) j = i.replace(/(^|-)([^-])/g, toUpper), headers[j] = headers[i], 
+        for (i in headers) j = i.replace(/(^|-)([^-])/g, toUpper), headers[j] = headers[i],
         delete headers[i], xhr.setRequestHeader(j, headers[j]);
-        return !headers["Content-Type"] && serialized && "POST" == method && xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"), 
-        headers.Accept || xhr.setRequestHeader("Accept", accepts[type]), before && before.apply(xhr), 
+        return !headers["Content-Type"] && serialized && "POST" == method && xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"),
+        headers.Accept || xhr.setRequestHeader("Accept", accepts[type]), before && before.apply(xhr),
         xhr.send("POST" == method ? data : null), promises;
     };
     return {
