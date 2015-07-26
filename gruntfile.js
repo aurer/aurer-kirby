@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-  	
+
 	/*
 		Setup actions
 	*/
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 			},
 			music: {
 				files: {
-					'assets/dist/js/music.js': ['assets/src/js/vendor/underscore.js', 'assets/src/js/music.js']		
+					'assets/dist/js/music.js': ['assets/src/js/vendor/underscore.js', 'assets/src/js/music.js']
 				}
 			}
 		},
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 		svg2png: {
 	        all: {
 	            files: [
-	                { 
+	                {
 	                	src: 'assets/dist/gfx/*.svg'
 	                },
 	            ]
@@ -94,10 +94,6 @@ module.exports = function(grunt) {
 				files: 'assets/src/styles/**/*',
 				tasks: ['less', 'autoprefixer']
 			},
-			images: {
-				files: 'assets/src/gfx/**/*',
-				tasks: ['imagemin', 'svg2png']
-			},
 			grunt: {
 				files: 'gruntfile.js'
 			}
@@ -108,7 +104,7 @@ module.exports = function(grunt) {
 		        src : ['assets/dist/css/*.css', 'content/**/*', 'site/templates/*.php']
 		    },
 		    options: {
-		        proxy: 'v2.aurer.dev',
+		        proxy: 'aurer.dev',
 		        watchTask: true,
 		        notify: false,
 		        ghostMode: {
