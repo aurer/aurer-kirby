@@ -76,7 +76,7 @@ c::set('routes', array (
 	// Return pens from codepen
 	array (
 		'method' => 'GET',
-		'pattern' => 'pens.json',
+		'pattern' => 'pens',
 		'action' => function() {
 			$rss = file_get_contents('http://codepen.io/aurer/public/feed');
 			$xml = new SimpleXMLElement($rss);

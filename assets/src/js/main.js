@@ -35,7 +35,7 @@ function handleFixedNav(){
 
 function loadPens() {
 	var pensContainer = document.querySelector('.pens');
-	qwest.get('/pens.json', {responseType: 'json'})
+	qwest.get('/pens', {responseType: 'json'})
 		.success(function(data) {
 			pensContainer.className += ' js-loaded';
 			for (var i = 0; i < data.length; i++) {
