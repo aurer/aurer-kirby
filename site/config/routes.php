@@ -92,6 +92,3 @@ c::set('routes', array (
 		}
 	),
 ));
-
-
-http://codepen.io/api/oembed/?url=http://codepen.io/aurer/pen/qdKLRL&format=js&callback=coolDude
