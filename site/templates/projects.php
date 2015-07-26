@@ -10,4 +10,13 @@
             </div>
         </section>
 
+        <section class="main">
+            <div class="row">
+                <div class="content">
+                    <h1>Codepen</h1>
+                    <div class="pens"></div>
+                </div>
+            </div>
+        </section>
+
 <?= snippet('footer') ?>

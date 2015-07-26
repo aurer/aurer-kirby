@@ -71,7 +71,7 @@ body {
 	a{
 		color: #fff;
 		font-weight: lighter;
-	
+
 		&:hover{
 			color: @link-hover;
 		}
@@ -115,7 +115,7 @@ ul.messages {
 			margin-top: 1em;
 		}
 	}
-	
+
 	.messages-message--info {
 		background-color: #5198CB;
 		border-color: #145E93;
@@ -152,7 +152,7 @@ ul.messages {
 	padding-top: @base-height/2;
 	font-size: .9em;
 	text-align: center;
-	
+
 	a{
 		color: #fff;
 		display: inline-block;
@@ -189,10 +189,10 @@ ul.messages {
 
 		p{
 			animation-duration: 1.2s;
-			animation-delay: .2s;	
+			animation-delay: .2s;
 		}
 	}
-	
+
 	.row {
 		padding: 2em 1em 3em;
 		transition: padding .5s;
@@ -217,7 +217,7 @@ ul.messages {
 	About
 */
 .page-about{
-	
+
 	ul {
 		padding: 0;
 		margin: 0 0 @base-height;
@@ -226,7 +226,7 @@ ul.messages {
 		column-gap: 3em;
 		-webkit-column-rule: 1px dotted #999;
 		column-rule: 1px dotted #999;
-		
+
 		@media @respond-medium {
 			-webkit-column-count: 2;
 			column-count: 2;
@@ -236,7 +236,7 @@ ul.messages {
 			-webkit-column-count: 3;
 			column-count: 3;
 		}
-		
+
 		li:before{
 			content: '-';
 			margin-right: 1em;
@@ -301,8 +301,8 @@ ul.messages {
 		position: absolute;
 		left: 0;
 	}
-	
-	
+
+
 	.trackname,
 	.trackartist{
 		display: block;
@@ -311,13 +311,13 @@ ul.messages {
 	.trackartist{
 		font-size: .9em;
 	}
-	
+
 	.icon{
 		display: inline-block;
 		margin-top: .5em;
 		fill: #333;
 		transition: fill .2s, opacity .2s;
-		
+
 		&:hover,
 		&:focus{
 			fill: #d00c03;
@@ -365,6 +365,32 @@ ul.messages {
 		width: 100%;
 		opacity: 0;
 		transition: all .4s;
+	}
+}
+
+/*
+	Pens
+*/
+.pens {
+	margin-left: -10px;
+	background-image: url(/assets/dist/gfx/loading.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 50px;
+
+	&.js-loaded {
+		background-image: none;
+	}
+
+	.pens-item {
+		background: url(/assets/dist/gfx/loading.svg) no-repeat center;
+
+		@media @respond-large {
+			display: inline-block;
+			width: 50%;
+			padding: 0 0 2em 1em;
+			box-sizing: border-box;
+		}
 	}
 }
 
@@ -484,7 +510,7 @@ ul.sitemap{
 	padding-top: 56.22%;
 	position: relative;
 	margin-bottom: @base-height;
-	
+
 	iframe{
 		position: absolute;
 		top: 0;
@@ -551,13 +577,13 @@ figure.video {
 		color: #05BD70;
 		border-color: #05BD70;
 		background-color: transparent;
-		transition: 
-			border-radius .5s .1s, 
-			background-color .5s, 
+		transition:
+			border-radius .5s .1s,
+			background-color .5s,
 			border-color .5s,
 			color .5s,
 			padding .5s cubic-bezier(.37, -1, .6, 1);
-		
+
 		&:before {
 			margin-left: -.4em;
 			margin-right: .7em;
@@ -582,13 +608,13 @@ figure.video {
 				transform: scale(1.5);
 			}
 		}
-		
+
 		&.appreciated {
 			border-radius: 30px;
 			padding: .7em 0 .8em;
 			background-color: #05BD70;
 			color: #05BD70;
-			
+
 			&:before {
 				font-size: 0;
 			}

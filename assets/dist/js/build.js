@@ -20,6 +20,26 @@ function handleFixedNav() {
     };
 }
 
+function loadPens() {
+    var a = document.querySelector(".pens");
+    qwest.get("/pens.json", {
+        responseType: "json"
+    }).success(function(b) {
+        a.className += " js-loaded";
+        for (var c = 0; c < b.length; c++) {
+            var d = "http://codepen.io/api/oembed/?url=" + b[c].link + "&format=js&callback=renderPen", e = document.createElement("script");
+            e.src = d;
+            var f = document.querySelector("head");
+            f.appendChild(e), f.removeChild(e);
+        }
+    });
+}
+
+function renderPen(a) {
+    var b = document.querySelector(".pens"), c = document.createElement("div");
+    c.className = "pens-item", c.innerHTML = a.html, b.appendChild(c);
+}
+
 !function() {
     for (var a, b = function() {}, c = [ "assert", "clear", "count", "debug", "dir", "dirxml", "error", "exception", "group", "groupCollapsed", "groupEnd", "info", "log", "markTimeline", "profile", "profileEnd", "table", "time", "timeEnd", "timeStamp", "trace", "warn" ], d = c.length, e = window.console = window.console || {}; d--; ) a = c[d], 
     e[a] || (e[a] = b);
@@ -160,5 +180,5 @@ function handleFixedNav() {
     }
 }, Appreciation.init("button.btn--appreciate"), function() {
     "use strict";
-    handleFixedNav();
+    handleFixedNav(), loadPens();
 }();

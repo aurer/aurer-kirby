@@ -15,7 +15,7 @@ function removeClass(ele, classname){
 
 function handleFixedNav(){
 	'use strict';
-	
+
 	var docheight   = document.body.scrollHeight,
 		winheight   = window.screen.height,
 		mast        = document.querySelector('.mast'),
@@ -33,6 +33,30 @@ function handleFixedNav(){
 	}
 }
 
+function loadPens() {
+	var pensContainer = document.querySelector('.pens');
+	qwest.get('/pens.json', {responseType: 'json'})
+		.success(function(data) {
+			pensContainer.className += ' js-loaded';
+			for (var i = 0; i < data.length; i++) {
+				var src = 'http://codepen.io/api/oembed/?url=' + data[i].link + '&format=js&callback=renderPen';
+				var script = document.createElement('script');
+				script.src = src;
+				var head = document.querySelector('head');
+				head.appendChild(script);
+				head.removeChild(script);
+			};
+		})
+}
+
+function renderPen(data) {
+	var pensContainer = document.querySelector('.pens');
+	var penOutput = document.createElement('div');
+	penOutput.className = 'pens-item';
+	penOutput.innerHTML = data.html;
+	pensContainer.appendChild(penOutput);
+}
+
 Appreciation = {
   init: function(ele) {
     Appreciation.button = document.querySelector(ele);
@@ -41,17 +65,17 @@ Appreciation = {
     }
     this.bindEvents();
   },
-  
+
   bindEvents: function() {
     this.button.onclick = function(e){
       var entry = Appreciation.addEntry();
       e.preventDefault();
     };
   },
-  
+
   addEntry: function() {
   	var button = this.button;
-    var id = button.getAttribute('data-page_id');    
+    var id = button.getAttribute('data-page_id');
     qwest.post('/appreciate', {
 		page_id:  id
 	}, {responseType: 'json'}).success(function(response){
@@ -66,4 +90,5 @@ Appreciation.init('button.btn--appreciate');
 (function(){
 	'use strict';
 	handleFixedNav();
+	loadPens();
 }());
