@@ -11,7 +11,9 @@
 			</div>
 		</footer>
 	</section>
-	<?= js(asset_path('assets/dist/js', 'build.js')) ?>
+
+	<?= js(asset_path('assets/js', 'build.js')) ?>
+
 	<script defer>
 	    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
 	    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

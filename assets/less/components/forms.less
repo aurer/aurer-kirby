@@ -1,0 +1,91 @@
+// Textbox style inputs
+.form {
+	fieldset {
+		border: none;
+		padding: 0;
+	}
+
+	legend {
+		
+	}
+}
+
+input[type=button],
+button,
+.button,
+.btn {
+	display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 0;
+  font-size: 1em;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background: none;
+  border: 1px solid @color-neutral-light;
+  box-shadow: 0 1px 1px rgba(0,0,0,.075);
+	transition: all .2s;
+	outline: none;
+
+  &:hover,
+  &:focus {
+  	background-color: @color-primary;
+  	border-color: @color-primary;
+  	color: contrast(@color-primary);
+  	box-shadow: 0 1px 3px fade(@color-primary, 25%);
+  }
+}
+
+.form-field {
+	margin-top: @space-sm;
+
+	&:first-of-type {
+		margin-top: 0;
+	}
+
+	label {
+		display: inline-block;
+  	max-width: 100%;
+  	margin-bottom: @space-xs;
+		font-weight: bold;
+	}
+
+	.form--inline & {
+  	display: inline-block;
+  	margin-left: @space-sm;
+
+  	&:first-of-type {
+			margin-left: 0;
+		}
+  }
+}
+
+.form-inputs {
+	input[type='text'], 
+	input[type='search'],
+	input[type='tel'],
+	input[type='url'],
+	input[type='email'],
+	input[type='password'],
+	input[type='date'],
+	input[type='time'],
+	input[type='number'] ,
+	textarea {
+		box-sizing: border-box;
+		display: block;
+	  width: 100%;
+	  padding: 5px 10px;
+	  border: 1px solid @color-neutral-light;
+	  box-shadow: inset 0 1px 1px fade(@color-neutral-darkest, 15%);
+	  transition: border-color .2s, box-shadow .2s;
+
+	  &:focus {
+	  	border-color: @color-primary;
+	  	box-shadow: 0 1px 3px fade(@color-primary, 25%);
+			outline: 0;
+	  }
+	}
+}

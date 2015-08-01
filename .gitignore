@@ -3,7 +3,5 @@ panel/
 site/panel
 docs
 node_modules
-*.sublime-project
-*.sublime-workspace
-*.sublime-grunt.cache
 content/appreciation.json
+*.sublime-workspace

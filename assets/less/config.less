@@ -1,0 +1,41 @@
+@base-font-size: 16px;
+
+// Breakpoints
+@mq-sm-width: 24em;
+@mq-md-width: 36em;
+@mq-lg-width: 48em;
+@mq-xl-width: 60em;
+
+// Media queries
+@mq-xs: ~"screen and (max-width: @{mq-sm-width})";
+@mq-sm: ~"screen and (min-width: @{mq-sm-width})";
+@mq-md: ~"screen and (min-width: @{mq-md-width})";
+@mq-lg: ~"screen and (min-width: @{mq-lg-width})";
+@mq-xl: ~"screen and (min-width: @{mq-xl-width})";
+@mq-sm-only: ~"screen and (min-width: @{mq-sm-width}) and (max-width: @{mq-md-width})";
+@mq-md-only: ~"screen and (min-width: @{mq-md-width}) and (max-width: @{mq-lg-width})";
+@mq-lg-only: ~"screen and (min-width: @{mq-lg-width}) (min-width: @{mq-xl-width})";
+
+// Spacing
+@space-xs: @space / 4;
+@space-sm: @space / 2;
+@space: @base-font-size*1.5;
+@space-lg: @space * 2;
+@space-xl: @space * 4;
+
+// Grid
+@grid-columns: 8;
+@grid-font-size: 1rem;
+@grid-space: 1rem;
+
+@color-primary: #664C8E;
+
+@color-secondary: #ccc;
+
+@color-neutral-lightest: lighten(@color-neutral, 50%);
+@color-neutral-lighter: lighten(@color-neutral, 30%);
+@color-neutral-light: lighten(@color-neutral, 15%);
+@color-neutral: #aaa;
+@color-neutral-dark: darken(@color-neutral, 15%);
+@color-neutral-darker: darken(@color-neutral, 30%);
+@color-neutral-darkest: darken(@color-neutral, 50%);
