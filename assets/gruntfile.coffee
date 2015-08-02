@@ -85,7 +85,11 @@ module.exports = (grunt) ->
 
 		browserSync: {
 			bsFiles: {
-					src : ['<%= distDir %>/css/*.css', '<%= distDir %>/js/*.js']
+				src : [
+					'<%= distDir %>/css/*.css',
+					'<%= distDir %>/js/*.js',
+					'../site/**/*.php'
+				]
 			},
 			options: {
 				proxy: '<%= proxy %>'
