@@ -1,13 +1,11 @@
 <?= snippet('header') ?>
 
-        <section class="main">
-      		<div class="row">
-                <div class="content">
-                    <h1><?= html($page->title()) ?></h1>
-                    <?= kirbytext($page->text()) ?>
-                </div>
-                <?= snippet('appreciate') ?>
-            </div>
-        </section>
+  <div class="section section--main">
+		<div class="section-inner">
+      <h1><?= html($page->title()) ?></h1>
+      <?= kirbytext($page->text()) ?>
+      <?= snippet('appreciate') ?>
+    </div>
+  </div>
 
 <?= snippet('footer') ?>

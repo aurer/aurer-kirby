@@ -1,18 +1,18 @@
 <?= snippet('header') ?>
 
-        <section class="main">
-            <div class="row">
-                <div class="content">
-                    <h1><?= html($page->title()) ?></h1>
-                    <?= kirbytext($page->text()) ?>
-                </div>
-            </div>
-        </section>
+	<div class="section section--main">
+		<div class="section-inner">
+			<div class="content">
+				<h1><?= html($page->title()) ?></h1>
+				<?= kirbytext($page->text()) ?>
+			</div>
+		</div>
+	</div>
 
-        <section class="main experience">
-        	<div class="row">
-        		<?= kirbytext($page->text_experience()) ?>
-        	</div>
-        </section>
+	<div class="section section--experience">
+		<div class="section-inner">
+			<?= kirbytext($page->text_experience()) ?>
+		</div>
+	</div>
 
 <?= snippet('footer') ?>

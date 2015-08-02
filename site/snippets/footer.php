@@ -1,6 +1,6 @@
-	<section class="foot">
-		<footer class="row">
-			<nav class="extra">
+	<div class="section section--footer">
+		<footer class="section-inner">
+			<nav class="navigation navigation--footer">
 				<?php foreach ($pages->invisible() as $p): ?>
 					<?php if(in_array($p->uri(), array('error'))) continue ?>
 					<a href="<?= $p->url() ?>"><?= $p->title() ?></a>
@@ -10,7 +10,7 @@
 				<?= kirbytext($site->copyright()) ?>
 			</div>
 		</footer>
-	</section>
+	</div>
 
 	<?= js(asset_path('assets/js', 'build.js')) ?>
 

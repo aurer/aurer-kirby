@@ -1,18 +1,18 @@
 <?= snippet('header') ?>
-        
-        <section class="intro">
-            <div class="row">
-                <?= kirbytext($page->text()) ?>
-            </div>
-        </section>
 
-        <section class="main">
-            <div class="row">
-                <h2>Projects</h2>
-                <div class="content">
-                    <?= snippet('projects') ?>
-                </div>
-            </div>
-        </section>
+	<div class="section section--intro">
+		<div class="section-inner">
+			<?= kirbytext($page->text()) ?>
+		</div>
+	</div>
+
+	<div class="section section--main">
+		<div class="section-inner">
+			<h2>Projects</h2>
+			<div class="content">
+				<?= snippet('projects') ?>
+			</div>
+		</div>
+	</div>
 
 <?= snippet('footer') ?>
