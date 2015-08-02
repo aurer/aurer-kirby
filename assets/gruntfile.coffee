@@ -61,7 +61,7 @@ module.exports = (grunt) ->
 			dynamic: {
 				files: [{
 					expand: true
-					optimizationLevel: 7
+					optimizationLevel: 4
 					cwd: '<%= srcDir %>/images/'
 					src: ['**/*']
 					dest: '<%= distDir %>/images'
