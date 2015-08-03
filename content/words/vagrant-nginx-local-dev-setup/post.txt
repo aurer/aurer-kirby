@@ -2,11 +2,11 @@ Title: Development with Vagrant, Virtualbox and Nginx
 ----
 Date: 2015/01/04
 ----
-Summary: My current local development set up using VM's, DNSMasq and a clever Nginx config.
+Summary: My current local development set up using Vagrant, DNSMasq and a regex Nginx config.
 ----
 Text: I thought I'd share my simple local web development setup here. It took a while to get to this stage but after trying many other setups this feels like a good way of doing things.
 
-## Overview 
+## Overview
 First of all an overview of the technologies used:
 
 * OSX - Host OS
@@ -15,7 +15,7 @@ First of all an overview of the technologies used:
 * (link:https://www.vagrantup.com target:_blank text:Vagrant) - Virtual environment manager
 * (link:http://nginx.org/en/docs  target:_blanktext:Nginx) - HTTP server software
 * (link:http:php-fpm.org target:_blank text:PHP-FPM) - Server side scripting language
- 
+
 Additional/optional tools:
 
 * (link:http://www.sublimetext.com/ text:Sublime Text) - The current best text editor/IDE in my opinion
@@ -44,10 +44,10 @@ Below is my automatic virtualhost config file for Nginx. Basically all it has to
 	server {
 	    listen         80;
 		server_name		~^(?<domain>((?!public).)*)(.(?<public>public))?.dev$;
-		root			/srv/http/$domain.dev/$public;    
+		root			/srv/http/$domain.dev/$public;
 		access_log     	/srv/http/logs/$domain.access.log;
 	    error_log      	/srv/http/logs/error.log;
-	    
+
 		include        configs/php.conf;
 	    include        configs/cache.conf;
 	    include        configs/favicon.conf;
@@ -61,7 +61,7 @@ If you don't care about the /public style sites you could use something like thi
 		root			/srv/http/$domain.dev;
 		access_log     	/srv/http/logs/$domain.access.log;
 	    error_log      	/srv/http/logs/error.log;
-	    
+
 		include        configs/php.conf;
 	    include        configs/cache.conf;
 	    include        configs/favicon.conf;
