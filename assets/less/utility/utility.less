@@ -32,7 +32,7 @@
   padding: 0;
   position: absolute;
   width: 1px;
-	
+
 	// Extends the .visuallyhidden class to allow the element
 	// to be focusable when navigated to via the keyboard:
   &.focusable {
@@ -53,12 +53,11 @@
 }
 
 // Clearfix: contain floats
-.u-clearfix:before,
-.u-clearfix:after {
+.u-group:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
   content: " ";
-  display: table;
-}
-
-.u-clearfix:after {
   clear: both;
+  height: 0;
 }

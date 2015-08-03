@@ -17,25 +17,36 @@
 @mq-lg-only: ~"screen and (min-width: @{mq-lg-width}) (min-width: @{mq-xl-width})";
 
 // Spacing
-@space-xs: @space / 4;
+@space-xs: @space / 3;
 @space-sm: @space / 2;
 @space: @base-font-size*1.5;
 @space-lg: @space * 2;
-@space-xl: @space * 4;
+@space-xl: @space * 3;
+@space-xxl: @space * 4;
 
 // Grid
 @grid-columns: 8;
 @grid-font-size: 1rem;
 @grid-space: 1rem;
 
-@color-primary: #664C8E;
+@color-primary-lighter: #50C9FD;
+@color-primary-light: #2584AB;
+@color-primary: #214D5E;
+@color-primary-dark: #2D3E45;
+@color-primary-darker: #1B2529;
 
-@color-secondary: #ccc;
+@color-secondary-lighter: #89D3D4;
+@color-secondary-light: #419E9E;
+@color-secondary: #297575;
+@color-secondary-dark: #174242;
+@color-secondary-darker: #213333;
 
 @color-neutral-lightest: lighten(@color-neutral, 50%);
 @color-neutral-lighter: lighten(@color-neutral, 30%);
 @color-neutral-light: lighten(@color-neutral, 15%);
-@color-neutral: #aaa;
+@color-neutral: rgb(127, 127, 127);
 @color-neutral-dark: darken(@color-neutral, 15%);
 @color-neutral-darker: darken(@color-neutral, 30%);
-@color-neutral-darkest: darken(@color-neutral, 50%);
+@color-neutral-darkest: darken(@color-neutral, 38%);
+
+@color-white: #F0F5F5;

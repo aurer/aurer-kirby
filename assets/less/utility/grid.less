@@ -1,10 +1,16 @@
 // Grid
 .grid {
+  font-size: 0;
+
   &:before,
   &:after {
     display: table;
     content: '';
     clear: both;
+  }
+
+  [class^=col-] {
+    vertical-align: top;
   }
 }
 
@@ -27,11 +33,17 @@
   &:extend(.grid--padVertical all);
 }
 
+.grid--alignMiddle {
+  [class^=col-] {
+    vertical-align: middle;
+  }
+}
+
 [class^=col-] {
+  font-size: @base-font-size;
   box-sizing: border-box;
-  float: left;
+  display: inline-block;
   width: 100%;
-  vertical-align: top;
 }
 
 // Columns

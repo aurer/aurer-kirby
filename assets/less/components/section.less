@@ -1,8 +1,10 @@
 .section {
   clear: both;
-  
+  background-color: @color-white;
+  color: @color-primary-darker;
+
   &-inner {
-    padding: @space;
+    padding: @space-xl @space;
     max-width: @mq-xl-width;
     margin: 0 auto;
 
@@ -13,7 +15,7 @@
 	    clear: both;
 	  }
   }
-  
+
   &--tall &-inner {
     padding-top: @space-lg;
     padding-bottom: @space-lg;
@@ -27,4 +29,76 @@
   &--nopad &-inner {
   	padding: 0;
   }
+}
+
+// Header
+.section--header {
+  &:extend(.u-group all);
+  background-color: @color-primary-darker;
+  color: @color-white;
+  text-align: center;
+
+  .section-inner {
+    padding: @space;
+  }
+
+  a {
+    color: inherit;
+
+    &:hover, &:focus {
+      color: @color-secondary-lighter;
+    }
+  }
+
+  .logo {
+    display: inline-block;
+    max-width: 10em;
+  }
+}
+
+.section--footer {
+  background-color: @color-neutral-darkest;
+  color: @color-white;
+  text-align: center;
+
+  .section-inner {
+    padding-top: @space-lg;
+  }
+}
+
+.section--main {
+
+}
+
+.section--intro {
+  background-color: @color-primary;
+  background-image: url(/assets/images/knitting.png);
+  color: @color-white;
+  text-align: center;
+
+  .section-inner {
+    padding-top: @space-xxl;
+    padding-bottom: @space-xxl;
+  }
+
+  h1 {
+    color: @color-secondary-lighter;
+    animation: in-right 1.5s;
+  }
+
+  p {
+    animation: in-left 1.5s;
+  }
+}
+
+.section--projects {
+  h2 {
+    text-align: center;
+  }
+}
+
+.section--experience {
+  background-color: @color-secondary;
+  background-image: url(/assets/images/knitting.png);
+  color: @color-secondary-lighter;
 }
