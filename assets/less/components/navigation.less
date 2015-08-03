@@ -1,0 +1,30 @@
+.navigation {
+	a {
+		text-decoration: none;
+	}
+
+	&--main {
+		@media @mq-md {
+			text-align: right;
+		}
+
+		a {
+			display: inline-block;
+			padding: @space-xs 2%;
+
+			&.active {
+				color: @color-secondary-light;
+			}
+		}
+	}
+
+	&--footer {
+		margin-bottom: @space;
+		letter-spacing: .1em;
+
+		a {
+			color: @color-secondary-lighter;
+			padding: 0 2%;
+		}
+	}
+}

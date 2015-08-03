@@ -6,10 +6,10 @@
 		</div>
 	</div>
 
-	<div class="section section--main">
+	<div class="section section--projects">
 		<div class="section-inner">
 			<h2>Projects</h2>
-			<div class="content">
+			<div class="projects">
 				<?= snippet('projects') ?>
 			</div>
 		</div>

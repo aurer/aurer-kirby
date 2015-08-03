@@ -1,0 +1,55 @@
+.projects {
+	padding-top: @space-lg;
+}
+
+.project {
+	background-color: @color-primary-light;
+	color: @color-white;
+	text-align: center;
+
+	a {
+		padding: @space @space;
+		text-decoration: none;
+		color: inherit;
+		display: block;
+		min-height: 15em;
+	}
+
+	.project-icon {
+		transform: scale(1.5) translateY(2em);
+	}
+
+	.project-icon,
+	.project-title,
+	.project-summary {
+		transition-duration: .4s;
+	}
+
+	.project-title {
+		color: inherit;
+		transform: translateY(1.5em);
+	}
+
+	.project-summary {
+		transform: translateY(2em);
+		transition-delay: 0s;
+		opacity: 0;
+	}
+
+	a:hover {
+		.project-icon {
+			transform: scale(1) translateY(0);
+			opacity: 0;
+		}
+
+		.project-title,
+		.project-summary {
+			transform: translateY(0);
+			opacity: 1;
+		}
+
+		.project-summary {
+			transition-delay: .1s;
+		}
+	}
+}
