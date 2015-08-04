@@ -11,7 +11,7 @@ class message {
 		$messages[$name] = $message;
 		s::set('messages', $messages);
 	}
-	
+
 	public static function all() {
 		$messages = s::get('messages');
 		s::remove('messages');
@@ -28,7 +28,7 @@ class message {
 		// Build list HTML
 		$out = "<ul class=\"messages\">\n";
 		foreach ($messages as $message) {
-			$out .= "<li class=\"messages-message messages-message--$message->type\">$message->value</li>\n";
+			$out .= "<li class=\"messages-item messages-item--$message->type\">$message->value</li>\n";
 		}
 		$out .= "</ul>\n";
 		return $out;

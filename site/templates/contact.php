@@ -33,9 +33,10 @@
 		}
 	}
 
+message::set('mail_error', 'It appears your message cannot be sent right now, many appologies.', 'error');
 ?>
 <?= snippet('header') ?>
-	<div class="section section--main">
+	<div class="section section--contact">
 		<div class="section-inner">
 				<h1><?= html($page->title()) ?></h1>
 
@@ -46,30 +47,36 @@
 					<?= snippet('messages') ?>
 
 					<form action="<?= $page->url() ?>#contact-form" method="post" id="contact-form" class="standard contact" >
-						<div class="field field-contactname <?= $validator->error_class('contactname'); ?>">
-							<label>Name *</label>
-							<div class="input">
-								<input type="text" name="contactname" value="<?= $validator->get_value('contactname'); ?>" />
-								<?= $validator->field_error('contactname') ?>
+						<div class="grid grid--padHorizontal">
+							<div class="col-lg-1of2">
+								<div class="field field-contactname <?= $validator->error_class('contactname'); ?>">
+									<label>Name *</label>
+									<div class="form-input">
+										<input type="text" name="contactname" value="<?= $validator->get_value('contactname'); ?>" />
+										<?= $validator->field_error('contactname') ?>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="field field-email <?= $validator->error_class('email'); ?>">
-							<label>Email *</label>
-							<div class="input">
-								<input type="email" name="email" value="<?= $validator->get_value('email'); ?>" />
-								<?= $validator->field_error('email') ?>
+							<div class="col-lg-1of2">
+								<div class="field field-email <?= $validator->error_class('email'); ?>">
+									<label>Email *</label>
+									<div class="form-input">
+										<input type="email" name="email" value="<?= $validator->get_value('email'); ?>" />
+										<?= $validator->field_error('email') ?>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="field field-subject <?= $validator->error_class('subject'); ?>">
 							<label>Subject</label>
-							<div class="input">
+							<div class="form-input">
 								<input type="text" name="subject" value="<?= $validator->get_value('subject'); ?>" />
 								<?= $validator->field_error('subject') ?>
 							</div>
 						</div>
 						<div class="field field-message <?= $validator->error_class('message'); ?>">
 							<label>Message *</label>
-							<div class="input">
+							<div class="form-input">
 								<textarea name="message" id="in-message" cols="30" rows="10"><?= $validator->get_value('message'); ?></textarea>
 								<?= $validator->field_error('message') ?>
 							</div>

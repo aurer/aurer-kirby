@@ -1,7 +1,3 @@
 <?php if ( s::get('messages') ) : ?>
-	<section class="messages-container">
-		<div class="row">
-			<?= message::all() ?>
-		</div>
-	</section>
+	<?= message::all() ?>
 <?php endif ?>
