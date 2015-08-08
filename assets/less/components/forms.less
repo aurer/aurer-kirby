@@ -1,21 +1,22 @@
 // Textbox style inputs
 .form {
+	background-color: @color-primary-light;
+	padding: @space;
+	border-radius: 3px;
+
 	fieldset {
 		border: none;
 		padding: 0;
 	}
-
-	legend {
-
-	}
 }
 
+input[type=submit],
 input[type=button],
 button,
 .button,
 .btn {
 	display: inline-block;
-  padding: @space-sm @space-lg;
+  padding: @space-sm @space;
   margin-bottom: 0;
   font-size: 1em;
   min-height: 3em;
@@ -25,6 +26,7 @@ button,
   cursor: pointer;
   user-select: none;
   background: @color-primary;
+  color: @color-white;
   border: 1px solid transparent;
   border-radius: 3px;
 	transition: all .2s;
@@ -101,4 +103,27 @@ button,
 	background: fade(@color-primary-darker, 80%);
 	padding: .2em @space-sm;
 	display: inline-block;
+}
+
+.form--contact {
+	padding: 0;
+}
+
+.form--search {
+	margin-bottom: @space-lg;
+
+	.grid {
+		input[type=text] {
+			border-radius: 3px 0 0 3px;
+		}
+
+		input[type=submit] {
+			width: 100%;
+			border-radius: 0 3px 3px 0;
+		}
+	}
+
+	.form-input {
+		margin: 0;
+	}
 }
