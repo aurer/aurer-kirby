@@ -24,14 +24,8 @@ Server side and development technologies include:
 
 You can view the source on (link: https://github.com/aurer/aurer-kirby text: Github target: _blank).
 
-## Web development stack and workflow
-
-Virtualbox, Vagrant, Centos, OSX/Ubuntu
-
 ----
-Text_Experience: ## Experience
-
-#### Languages
+Languages:
 - HTML
 - CSS/LESS/SASS
 - Javascript/jQuery
@@ -40,7 +34,8 @@ Text_Experience: ## Experience
 - Bash
 - Ruby
 
-#### Frameworks and technologies
+----
+Frameworks:
 - Drupal
 - Kirby
 - Laravel
@@ -51,7 +46,8 @@ Text_Experience: ## Experience
 - Apache
 - Linux
 
-#### Applications
+----
+Applications:
 - Chrome
 - Sublime Text
 - Terminal
@@ -60,3 +56,9 @@ Text_Experience: ## Experience
 - Photoshop
 - Sketch
 - Illustrator
+
+----
+Workflow:
+## Web development stack and workflow
+
+Virtualbox, Vagrant, Centos, OSX/Ubuntu
