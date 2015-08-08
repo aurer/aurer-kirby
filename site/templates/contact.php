@@ -44,7 +44,7 @@
 
 					<?= snippet('messages') ?>
 
-					<form action="<?= $page->url() ?>#contact-form" method="post" id="contact-form" class="standard contact" >
+					<form action="<?= $page->url() ?>#contact-form" method="post" id="contact-form" class="form form--contact" >
 						<div class="grid grid--padHorizontal">
 							<div class="col-lg-1of2">
 								<div class="field field-contactname <?= $validator->error_class('contactname'); ?>">
