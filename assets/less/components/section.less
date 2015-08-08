@@ -56,6 +56,12 @@
   }
 }
 
+.section--main {
+  h1 {
+    margin-bottom: @space-xl;
+  }
+}
+
 .section--footer {
   background-color: @color-neutral-darkest;
   color: @color-white;
@@ -64,10 +70,10 @@
   .section-inner {
     padding-top: @space-lg;
   }
-}
 
-.section--main {
-
+  a {
+    color: @color-primary-light;
+  }
 }
 
 .section--intro {
@@ -91,16 +97,60 @@
   }
 }
 
+.section--words,
 .section--projects {
-  h2 {
+  .section-title {
     text-align: center;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.section--words {
+  background-color: @color-primary-dark;
+  background-image: url(/assets/images/inflicted.png);
+  color: @color-white;
+
+  h2, h3, a {
+    color: @color-secondary-lighter;
   }
 }
 
 .section--experience {
-  background-color: @color-secondary;
+  background-color: lighten(@color-secondary, 5%);
   background-image: url(/assets/images/knitting.png);
-  color: @color-secondary-lighter;
+  color: @color-white;
+
+  .section-inner {
+    max-width: @mq-lg-width;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: @space-lg;
+  }
+
+  h2, h3, h4 {
+    color: @color-secondary-darker;
+    text-shadow: 0 1px 3px fade(@color-secondary-darker, 20%);
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin: 0 @space @space-sm 0;
+
+    &:before {
+      content: '\2605';
+      color: @color-secondary-dark;
+      margin-right: @space-xs;
+    }
+  }
 }
 
 .section--contact {
