@@ -7,7 +7,7 @@ $items = ($page) ? $page->children()->visible()->flip() : false;
 <?php if($items && $items->count()): ?>
 	<div class="grid grid--pad">
 		<?php foreach($items AS $item): ?>
-			<div class="col-md-1of2 col-lg-1of3">
+			<div class="col-md-1of2 col-xl-1of3">
 				<div class="project">
 					<a href="<?= $item->url() ?>">
 						<div class="project-icon">
