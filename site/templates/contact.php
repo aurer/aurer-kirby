@@ -1,5 +1,4 @@
 <?php
-
 	$validator = new Validator;
 	if( isset($_POST['submit']) ){
 
@@ -32,9 +31,8 @@
 			}
 		}
 	}
-
-message::set('mail_error', 'It appears your message cannot be sent right now, many appologies.', 'error');
 ?>
+
 <?= snippet('header') ?>
 	<div class="section section--contact">
 		<div class="section-inner">
