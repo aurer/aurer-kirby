@@ -1,182 +1,251 @@
 ;(function(){
-    var lastFm = "http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=philmau&api_key=ccfce33b35f8480c2413f2a642fa2c6a&format=json";
-    var template = "/assets/views/track.html";
-    var tracklist = document.querySelector('.track-list');
-    var loadingIcon = document.querySelector('.load-icon');
-    var currentPage = 1;
-    var totalPages = 1;
-    
-    document.addEventListener('DOMContentLoaded', init, false);
+	var music = {
+		// Global variables and settings
+		lastFm: "http://ws.audioscrobbler.com/2.0/",
+		template: "/views/track.html",
+		currentPage: 1,
+		totalPages: 1,
+		trackList: document.querySelector('.track-list'),
+		trackPagination: document.querySelector('.track-pagination'),
+		data: {},
 
-    // Load the track template html
-    function init(){
-        qwest.get(template, {}, {type: 'html'}).success(function(templateData){
-            template = templateData;
-            getTracks(templateData);   
-        });
-    }
+		// Initialise
+		init: function(){
+			promise.get(music.template).then(function(error, response){
+				music.data.template = _.template(response);
+				music.currentPage = music.getPageParam();
+				music.loadTracks();
+			});
+		},
 
-    // Fetch paged tracks from LastFM API and render on page
-    function getTracks(template, page){
-        var page = page || 1;
-        loadingIcon.className = loadingIcon.className.replace(' loaded', '');
-        loadingIcon.className += ' loading';
-        qwest.get(lastFm, {page: page}, {type: 'json'}).success(function(trackData){
-            // Remove the loading icon
-            loadingIcon.className = loadingIcon.className.replace(' loading', '');
-            loadingIcon.className += ' loaded';
-            setTimeout(function(){
-                loadingIcon.className = loadingIcon.className.replace(' loaded', '');
-            }, 500);
+		// Load tracks based on the current page
+		loadTracks: function() {
+			music.trackList.className += ' loading';
+			var page = music.currentPage;
+			var settings = {
+				method: 'user.getrecenttracks',
+				user: 'philmau',
+				api_key: 'ccfce33b35f8480c2413f2a642fa2c6a',
+				format: 'json',
+				page: page
+			};
+			promise.get(music.lastFm, settings).then(function(error, response) {
+				music.data.trackData = JSON.parse(response);
+				music.totalPages = music.data.trackData.recenttracks['@attr'].totalPages;
+				music.renderTracks();
+			});
+		},
 
-            // Empty the tracklist
-            tracklist.innerHTML = '';
+		// Render all tracks from data.trackData using the html view
+		renderTracks: function() {
+			var tracks = [];
 
-            totalPages = trackData.recenttracks['@attr'].totalPages;
+			// Map data into sensible forms
+			_.each(music.data.trackData.recenttracks.track, function(item){
+				var track = {};
+				track.name = item.name;
+				track.artist = item.artist['#text'];
+				track.album = item.album['#text'];
+				track.url = item.url;
+				track.thumbnail = music.thumbnail(item.image, 'extralarge', track.artist);
+				track.searchparam = encodeURIComponent(track.artist +  " " + track.name);
+				track.timestamp = music.getTimeStamp(item);
+				track.nowplaying = music.isPlaying(item);
+				tracks.push(track);
+			});
 
-            // Add in all the tracks
-            var tracks = [];
-            _.each(trackData.recenttracks.track, function(item){
-                var track = {};
-                track.name = item.name;
-                track.artist = item.artist['#text'];
-                track.album = item.album['#text'];
-                track.url = item.url;
-                track.thumbnail = thumbnail(item.image, 'large', track.artist);
-                track.searchparam = encodeURIComponent(track.artist +  " " + track.name);
-                track.timestamp = getTimeStamp(item);
-                track.nowplaying = isPlaying(item);
-                tracks.push(track);
-                
-            });
-            var compiled = _.template(template);
-            var html = compiled({tracks: tracks});
-            tracklist.innerHTML += html;
-            addPagination();
-            scrollToTracks();
-            handleImageLoadErrors();
-            if (currentPage <= 1) {
-                document.querySelector('#prev-page').disabled = true;
-            }
-            if (currentPage >= totalPages) {
-                document.querySelector('#next-page').disabled = true;
-            }
-        });
-    }
+			// Append tracks into the containing div
+			var html = music.data.template({tracks: tracks});
+			music.trackList.innerHTML = html;
 
-    // Add pagination for tracks
-    function addPagination(){
-        var pagination = document.createElement('div')
-            pagination.className = 'pagination';
-        
-        var nextButton = document.createElement('button')
-            nextButton.className = 'btn';
-            nextButton.id = 'next-page';
-            nextButton.textContent = 'Older';
-            nextButton.onclick = function(){getTracks(template, ++currentPage)}
+			// Remove the loading class
+			music.trackList.className = music.trackList.className.replace(' loading', '');
 
-        var prevButton = document.createElement('button')
-            prevButton.className = 'btn';
-            prevButton.id = 'prev-page';
-            prevButton.textContent = 'Newer';
-            prevButton.onclick = function(){getTracks(template, --currentPage)}
-        
-        pagination.appendChild(prevButton)
-        pagination.appendChild(nextButton);
-        tracklist.appendChild(pagination);
-    }
+			// Add pagination
+			music.addPagination();
 
-    // Image often fail to load :( so I'm adding a fallback
-    function handleImageLoadErrors(){
-        var images = document.querySelectorAll('.track img');
-        _.each(images, function(image){
-            image.onerror = function(){
-                image.src = 'http://placehold.it/128x128/333/eee&text=Image Missing';
-            }
-        });
+			// Scroll to the top of the tracks
+      music.scrollToTracks();
 
-    }
+      // Handle image load errors
+      music.handleImageLoadErrors();
+		},
 
-    // Scroll to the top of the tracklist
-    function scrollToTracks(){
-        if( screen.width < 800){
-            var top = tracklist.offsetTop - 60;
-            window.scrollTo(0, top);
-        }
-    }
+		// Add pagination for tracks
+		addPagination: function(){
+			var totalPages = music.totalPages;
+			var pagination = document.createElement('div')
+			pagination.className = 'pagination';
 
-    // Return image and attributes for a lastFM track image
-    function thumbnail(images, size, text){
-        var newImages = [];
-        var sizes = {'extralarge': 300, 'large': 126, 'medium': 64, 'small': 43};
-        _.each(images, function(image){
-            var width = sizes[image.size];
-            var height = sizes[image.size];
-            var scale = sizes[image.size] + 'x' + sizes[image.size]; 
-            var url = (image['#text'] == '') ? 'http://placehold.it/'+scale+'/333/eee/&text='+encodeURIComponent(text) : image['#text'];
-            newImages[image.size] = {
-                url: url,
-                width: width,
-                height: height,
-                scale: scale
-            }
-        });
-        return newImages[size];
-    }
+			// Create 'next' button
+			var nextButton = document.createElement('button')
+			nextButton.className = 'pagination-next';
+			nextButton.textContent = 'Older';
+			nextButton.onclick = music.nextPage;
 
-    function isPlaying(item){
-        return ( item['@attr'] && item['@attr'].nowplaying );
-    }
+			// Create 'previous' button
+			var prevButton = document.createElement('button')
+			prevButton.className = 'pagination-prev';
+			prevButton.textContent = 'Newer';
+			prevButton.onclick = music.prevPage;
 
-    function getTimeStamp(item){
-        if ( isPlaying(item) ) {
-            return 'Now playing';
-        } else if (item.date && item.date['#text']) {
-            return "Played " + timeSince(item.date['#text']) + ' ago';
-        }
-    }
+			// Disable next/previous buttons at each end
+			if (music.currentPage <= 1) {
+	      prevButton.disabled = true;
+	    } else if (music.currentPage >= music.totalPages) {
+	      nextButton.disabled = true;
+	    }
 
-    function timeSince(date) {
-        if (typeof date !== 'object') {
-            date = new Date(date);
-        }
+	    // Create a sensible range of pages
+			var rangeStart = music.currentPage-2;
+			if (music.currentPage < 4) {
+				rangeStart = 1;
+			}	else if (music.currentPage > totalPages-5) {
+				rangeStart = totalPages-5;
+			}
 
-        var seconds = Math.floor((new Date() - date) / 1000);
-        var intervalType;
+			// Create the range array
+			var range = _.range(rangeStart, rangeStart+5);
 
-        var interval = Math.floor(seconds / 31536000);
-        if (interval >= 1) {
-            intervalType = 'year';
-        } else {
-            interval = Math.floor(seconds / 2592000);
-            if (interval >= 1) {
-                intervalType = 'month';
-            } else {
-                interval = Math.floor(seconds / 86400);
-                if (interval >= 1) {
-                    intervalType = 'day';
-                } else {
-                    interval = Math.floor(seconds / 3600);
-                    if (interval >= 1) {
-                        intervalType = "hour";
-                    } else {
-                        interval = Math.floor(seconds / 60);
-                        if (interval >= 1) {
-                            intervalType = "minute";
-                        } else {
-                            interval = seconds;
-                            intervalType = "second";
-                        }
-                    }
-                }
-            }
-        }
+			// Add previos page button
+			pagination.appendChild(prevButton);
 
-        if (interval > 1 || interval === 0) {
-            intervalType += 's';
-        }
+			// Loop and add each page link
+			_.each(range, function(i) {
+				var link = document.createElement('a');
+				link.className = (i == music.currentPage) ? 'pagination-page active' : 'pagination-page';
+				link.href = '?p=' + i;
+				link.text = i;
+				pagination.appendChild(link);
+			});
 
-        return interval + ' ' + intervalType;
-    };
+			// Add next page button
+			pagination.appendChild(nextButton);
 
+			// Add pagination to the DOM
+			music.trackPagination.innerHTML = '';
+			music.trackPagination.appendChild(pagination);
+		},
+
+		// Load the next page
+		nextPage: function() {
+			music.currentPage = music.getPageParam();
+			music.currentPage += 1;
+			history.pushState(null, 'Music page ' + music.currentPage , '?p=' + music.currentPage );
+			music.loadTracks();
+		},
+
+		// load the previous page
+		prevPage: function() {
+			music.currentPage = music.getPageParam();
+			music.currentPage -= 1;
+			history.pushState(null, 'Music page ' + music.currentPage , '?p=' + music.currentPage );
+			music.loadTracks();
+		},
+
+    // Images often fail to load so I'm adding a fallback
+  	handleImageLoadErrors: function(){
+  		var images = document.querySelectorAll('.track img');
+  		_.each(images, function(image){
+  			image.onerror = function(e){
+  				image.src = 'http://placehold.it/128x128/214D5E/fff&text=Image Missing';
+  				this.onerror = false; // Prevent endless calls if fallback also fails
+  			}
+  		});
+  	},
+
+    // Scroll to the top of the trackList
+    scrollToTracks: function(){
+    	if( screen.width < 800){
+    		var top = music.trackList.offsetTop - 60;
+    		window.scrollTo(0, top);
+    	}
+    },
+
+		// Return image and attributes for a lastFM track image
+		thumbnail: function(images, size, text){
+			var newImages = [];
+			var sizes = {'extralarge': 300, 'large': 126, 'medium': 64, 'small': 43};
+			_.each(images, function(image){
+				var width = sizes[image.size];
+				var height = sizes[image.size];
+				var scale = sizes[image.size] + 'x' + sizes[image.size];
+				var url = (image['#text'] == '') ? 'http://placehold.it/'+scale+'/214D5E/fff/&text='+encodeURIComponent(text) : image['#text'];
+				newImages[image.size] = {
+					url: url,
+					width: width,
+					height: height,
+					scale: scale
+				}
+			});
+			return newImages[size];
+		},
+
+		// Is the track playing now?
+		isPlaying: function(item) {
+			return ( item['@attr'] && item['@attr'].nowplaying );
+		},
+
+		// Get the page from the querystring
+		getPageParam: function(key) {
+			var page = window.location.search.match(/p=([0-9]+)/);
+			return page ? parseInt(page[1]) : 1;
+		},
+
+		// Format the timestamp for a lastFM track
+		getTimeStamp: function(item) {
+			if ( music.isPlaying(item) ) {
+				return 'Now playing';
+			} else if (item.date && item.date['#text']) {
+				return "Played " + music.timeSince(item.date['#text']) + ' ago';
+			}
+		},
+
+		// Format a timestamp as x seconds/minutes/hours ago
+		timeSince: function(date)  {
+			if (typeof date !== 'object') {
+				date = new Date(date);
+			}
+
+			var seconds = Math.floor((new Date() - date) / 1000);
+			var intervalType;
+
+			var interval = Math.floor(seconds / 31536000);
+			if (interval >= 1) {
+				intervalType = 'year';
+			} else {
+				interval = Math.floor(seconds / 2592000);
+				if (interval >= 1) {
+					intervalType = 'month';
+				} else {
+					interval = Math.floor(seconds / 86400);
+					if (interval >= 1) {
+						intervalType = 'day';
+					} else {
+						interval = Math.floor(seconds / 3600);
+						if (interval >= 1) {
+							intervalType = "hour";
+						} else {
+							interval = Math.floor(seconds / 60);
+							if (interval >= 1) {
+								intervalType = "minute";
+							} else {
+								interval = seconds;
+								intervalType = "second";
+							}
+						}
+					}
+				}
+			}
+
+			if (interval > 1 || interval === 0) {
+				intervalType += 's';
+			}
+
+			return interval + ' ' + intervalType;
+		}
+	}
+
+	// ...Run it!
+	music.init();
 }());

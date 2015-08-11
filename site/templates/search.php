@@ -5,14 +5,14 @@
 			<?= kirbytext($page->text()) ?>
 
 			<!-- Form -->
-			<form class="form form--search" action="<?= thisURL() ?>">
+			<form class="form form--search" action="<?= thisURL() ?>#results">
 				<div class="grid">
-					<div class="col-4of5">
+					<div class="col-md-4of5">
 						<div class="form-input">
 							<input type="text" placeholder="Search…" name="q" value="<?= $query ?>" autofocus />
 						</div>
 					</div>
-					<div class="col-1of5">
+					<div class="col-md-1of5">
 						<input class="btn" type="submit" value="Search" />
 					</div>
 				</div>
@@ -20,9 +20,9 @@
 
 			<!-- Results -->
 			<?php if(	$query) : ?>
-				<div class="searchResults">
-					<h3><?= $results->count() ?> items found.</h3>
+				<div class="searchResults" id="results">
 					<?php $results = $results->paginate(10) ?>
+					<h3><?= $results->pagination()->numStart() ?> - <?= $results->pagination()->numEnd() ?> of <?= $results->pagination()->items() ?> results.</h3>
 					<ul class="searchResults-list">
 						<?php foreach($results as $result): ?>
 							<li class="searchResult">

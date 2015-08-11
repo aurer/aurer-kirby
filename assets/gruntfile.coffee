@@ -38,21 +38,21 @@ module.exports = (grunt) ->
 
 		uglify: {
 			options: {
-				beautify: false
+				beautify: true
 			}
 			main: {
 				files: {
-					'<%= distDir %>/js/build.js': ['<%= srcDir %>/js/plugins.js', '<%= srcDir %>/js/vendor/quest.js', '<%= srcDir %>/js/main.js']
+					'<%= distDir %>/js/build.js': [
+						'<%= srcDir %>/js/vendor/promise.js'
+						'<%= srcDir %>/js/vendor/underscore.js'
+						'<%= srcDir %>/js/music.js'
+						'<%= srcDir %>/js/main.js'
+					]
 				}
 			}
 			shiv: {
 				files: {
 					'<%= distDir %>/js/html5shiv.min.js': '<%= srcDir %>/js/vendor/html5shiv.min.js'
-				}
-			}
-			music: {
-				files: {
-					'<%= distDir %>/js/music.js': ['<%= srcDir %>/js/vendor/underscore.js', '<%= srcDir %>/js/music.js']
 				}
 			}
 		}
@@ -95,12 +95,6 @@ module.exports = (grunt) ->
 				proxy: '<%= proxy %>'
 				watchTask: true
 				notify: false
-				ghostMode: {
-					clicks: true,
-					location: false,
-					forms: true,
-					scroll: false
-				}
 			}
 		}
 	}

@@ -1,0 +1,113 @@
+.track-list	{
+	min-height: 100px;
+	position: relative;
+	overflow: hidden;
+
+	.track {
+		&:after {
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    transition: opacity .3s;
+	    background-color: fade(@color-primary-light, 70%);
+	    z-index: 100;
+	    opacity: 0;
+	  }
+
+	  &:after {
+	  	background-image: url(/assets/images/loading.svg);
+	  	background-repeat: no-repeat;
+	  	background-position: center;
+	  }
+	}
+
+	&.loading {
+		.track:after {
+			opacity: 1;
+		}
+	}
+
+	.track-cover {
+		img {
+			height: 300px;
+		}
+	}
+}
+
+
+.track {
+  max-width: 300px;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+
+  .track-cover {
+    img {
+      transition: transform .4s;
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .track-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: fade(#fff, 95%);
+    text-align: center;
+    padding-bottom: @space-sm;
+
+    // Shift track details down with transform
+    // if transforms are not supported full details still show
+    @media screen and (min-width: 36em) {
+      transform: translateY(100%);
+      transition: transform .3s;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    .track-name,
+    .track-artist,
+    .track-status {
+      display: block;
+      padding: .3em @space-sm;
+    }
+
+    // Shift track name up so it's visible when track details are shifted down
+    .track-name {
+      position: absolute;
+      bottom: 100%;
+      padding: .5em @space-sm;
+      left: 0;
+      right: 0;
+      background-color: fade(#fff, 95%);
+      font-size: 1.1em;
+    }
+
+    .track-status {
+      color: #bbb;
+    }
+  }
+
+  // Shift details up on hover
+  &:hover {
+    .track-cover img {
+      transform: translateY(-5%) scale(1.1);
+    }
+
+    .track-details {
+      transform: translateY(0);
+    }
+  }
+}

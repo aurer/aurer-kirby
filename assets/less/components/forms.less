@@ -113,13 +113,20 @@ button,
 	margin-bottom: @space-lg;
 
 	.grid {
-		input[type=text] {
-			border-radius: 3px 0 0 3px;
-		}
-
 		input[type=submit] {
 			width: 100%;
-			border-radius: 0 3px 3px 0;
+			margin-top: @space-xs;
+		}
+
+		@media @mq-md {
+			input[type=text] {
+				border-radius: 3px 0 0 3px;
+			}
+
+			input[type=submit] {
+				margin: 0;
+				border-radius: 0 3px 3px 0;
+			}
 		}
 	}
 

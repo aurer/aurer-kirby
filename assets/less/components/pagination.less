@@ -2,11 +2,12 @@
   display: block;
   text-align: center;
   margin-top: @space;
+  padding-top: @space-sm;
+  border-top: 1px dotted @color-neutral-lighter;
 
-  a,
-  span {
+  .pagination-page {
     display: inline-block;
-    margin: 0 @space-xs 0 0;
+    margin: 0 3px;
     border-radius: 3px;
     padding: 4px 10px;
     text-decoration: none;
@@ -28,20 +29,32 @@
   }
 
 
-  a.pagination-prev,
-  a.pagination-next {
-    background-color: @color-primary;
+  .pagination-prev,
+  .pagination-next {
+    background-color: transparent;
+    color: @color-primary;
+    padding: 4px 10px;
+    text-decoration: none;
 
     &:hover {
-      background: @color-primary-darker;
-      color: @color-white;
+      border-color: transparent;
+
+      &:not([disabled]):not(span) {
+        color: @color-primary-lighter;
+      }
     }
   }
 
-  span,
-  span:hover {
-    background-color: @color-neutral-light;
-    color: @color-neutral-lighter;
+  .pagination-prev {
+    &:before {
+      content: '< ';
+    }
+  }
+
+  .pagination-next {
+    &:after {
+      content: ' >';
+    }
   }
 
   .pagination-range {

@@ -9,7 +9,7 @@ function pagination($results){
 
         $html .= '<nav class="pagination">';
         if($pagination->hasPrevPage()){
-         	$html .= '<a class="pagination-prev" href="' . $pagination->prevPageURL() . '">prev</a>';
+         	$html .= '<a class="pagination-prev" href="' . $pagination->prevPageURL() . '#results">prev</a>';
         } else {
             $html .= '<span class="pagination-prev">prev</span>';
         }
@@ -28,7 +28,7 @@ function pagination($results){
         }
 
         if($pagination->hasNextPage()){
-            $html .= '<a class="pagination-next" href="' . $pagination->nextPageURL() . '">next</a>';
+            $html .= '<a class="pagination-next" href="' . $pagination->nextPageURL() . '#results">next</a>';
         } else {
             $html .= '<span class="pagination-next">next</span>';
         }

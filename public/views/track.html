@@ -1,0 +1,18 @@
+<div class="grid grid--pad">
+	<% _.each(tracks, function(track) { %>
+		<div class="col-md-1of2 col-lg-1of3">
+			<div class="track">
+			    <a class="track-cover" href="<%= track.url %>" title="View this track on Last.FM" target="_blank">
+			        <img src="<%= track.thumbnail.url %>" width="300" height="300" />
+			    </a>
+			    <div class="track-details">
+				    <a class="track-info" href="<%= track.url %>" title="View this track on Last.FM" target="_blank">
+				        <b class="track-name"><%= track.name %></b>
+				        <span class="track-artist"><%= track.artist %></span>
+				        <small class="track-status"><%= track.timestamp %></small>
+				    </a>
+			    </div>
+			</div>
+		</div>
+	<% }) %>
+</div>
