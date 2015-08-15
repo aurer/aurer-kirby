@@ -14,12 +14,17 @@
 		text-decoration: none;
 		color: inherit;
 		display: block;
-		min-height: 15em;
+
+		@media @mq-md {
+			min-height: 15em;
+		}
 	}
 
 	.project-icon {
-		margin-top: @space;
-		transform: scale(1.5) translateY(2em);
+		@media @mq-md {
+			margin-top: @space;
+			transform: scale(1.5) translateY(2em);
+		}
 
 		svg {
 			fill: @color-secondary-dark;
@@ -34,13 +39,18 @@
 
 	.project-title {
 		color: inherit;
-		transform: translateY(1.5em);
+
+		@media @mq-md{
+			transform: translateY(1.5em);
+		}
 	}
 
 	.project-summary {
-		transform: translateY(2em);
-		transition-delay: 0s;
-		opacity: 0;
+		@media @mq-md {
+			transform: translateY(2em);
+			transition-delay: 0s;
+			opacity: 0;
+		}
 	}
 
 	a:hover {
