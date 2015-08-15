@@ -76,16 +76,12 @@ Appreciation = {
   addEntry: function() {
   	var button = this.button;
     var id = button.getAttribute('data-page_id');
-    qwest.post('/appreciate', {
-		page_id:  id
-	}, {responseType: 'json'}).success(function(response){
-		button.innerText = 'Thank you!';
-    	button.className += ' appreciated';
-	});
+    button.className = 'appreciate appreciate--clicked appreciate--active';
+    promise.post('/appreciate', {page_id: id});
   }
 }
 
-Appreciation.init('button.btn--appreciate');
+Appreciation.init('button.appreciate');
 
 (function(){
 	'use strict';

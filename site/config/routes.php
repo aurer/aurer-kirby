@@ -46,11 +46,34 @@ c::set('routes', array (
 		'method' => 'POST',
 		'pattern' => 'appreciate',
 		'action' => function() {
+			// Return if no ID was sent
 			if (get('page_id') == '') {
 				return go(kirby()->request()->referer());
 			}
+
+			// Create the appreciation
 			$a = new Appreciation(site());
 			$entry = $a->appreciate(get('page_id'));
+
+			// Send an email
+			$email = new Email(array(
+				'to'      => c::get('site_email'),
+				'from'    => 'Aurer emailer <noreply@aurer.co.uk>',
+				'subject' => 'Someone appreciates your work',
+				'body'    => 'Page: ' . $entry['page'] . "\nTime: " . date('D, jS M, Y, G:i', $entry['timestamp']) . "\nIP: " . $entry['ip'],
+				'service' => 'mailgun',
+				'options' => array(
+					'key'    => c::get('mailgun_key'),
+					'domain' => c::get('mailgun_domain'),
+				)
+			));
+
+			// Log email failures
+			if(!$email->send()) {
+				error_log($email->error());
+			}
+
+			// Return JSON result
 			return response::json($entry);
 		}
 	),

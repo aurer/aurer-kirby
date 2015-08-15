@@ -1,0 +1,62 @@
+.section--appreciate {
+  text-align: center;
+
+  .section-inner {
+    padding: @space-lg 0 0;
+  }
+}
+
+.appreciate {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  position: relative;
+  color: transparent;
+  outline: none;
+  background-color: @color-secondary;
+  text-align: center;
+
+  &:hover {
+    background-color: @color-secondary-light;
+  }
+
+  &:after {
+    content: 'Thanks!';
+    position: absolute;
+    color: #D62A41;
+    font-size: .9em;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform .5s;
+  }
+
+  &--clicked {
+    &:after {
+      animation: appreciate-text 1.5s;
+    }
+  }
+
+  &--active {
+    background-color: #D62A41;
+    background-size: 50%;
+    cursor: default;
+
+    svg {
+      transform: translate(-50%, -50%) scale(1.4);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: #D62A41;
+    }
+  }
+}

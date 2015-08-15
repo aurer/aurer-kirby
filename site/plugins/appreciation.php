@@ -18,28 +18,13 @@ class Appreciation {
 	//	Add a single appreciation entry
 	//
 	public function appreciate($url) {
-		$ip_geodata = $this->get_lat_long(R::ip());
 		$data = array(
 			'id' => $this->get_cookie() ? $this->get_cookie() : uniqid(),
 			'page' => $url,
 			'timestamp' => time(),
 			'ip' => R::ip(),
-			'lat' => $ip_geodata->latitude,
-			'lng' => $ip_geodata->longitude,
 		);
 		return $this->add_entry($data);
-	}
-
-	//
-	// Get lat/long for ipaddress
-	//
-	public function get_lat_long($ipaddress) {
-		$endpoint = "http://freegeoip.net/json/$ipaddress";
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL, $endpoint);
-		$result = curl_exec($ch);
-		return json_decode($result);
 	}
 
 	//
@@ -47,13 +32,17 @@ class Appreciation {
 	//
 	public function get_user_entries($page=false) {
 		$id = $this->get_cookie();
+		if (!$id) {
+			return false;
+		}
 
-		if( !$id ) {
+		$appreciations = $this->get_all_appreciations();
+		if (!$appreciations) {
 			return false;
 		}
 
 		$user_entries = array();
-		$all_entries = $this->get_all_appreciations()->entries;
+		$all_entries = $appreciations->entries;
 		foreach ($all_entries as $entry) {
 			if ($entry->id == $id) {
 				if ($page) {
