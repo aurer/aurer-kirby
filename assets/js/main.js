@@ -35,18 +35,21 @@ function handleFixedNav(){
 
 function loadPens() {
 	var pensContainer = document.querySelector('.pens');
-	qwest.get('/pens', {responseType: 'json'})
-		.success(function(data) {
-			pensContainer.className += ' js-loaded';
-			for (var i = 0; i < data.length; i++) {
-				var src = 'http://codepen.io/api/oembed/?url=' + data[i].link + '&format=js&callback=renderPen';
-				var script = document.createElement('script');
-				script.src = src;
-				var head = document.querySelector('head');
-				head.appendChild(script);
-				head.removeChild(script);
-			};
-		})
+
+	// Exit if container does not exist
+	if (!pensContainer) return;
+
+	promise.get('/pens').then(function(error, data) {
+		pensContainer.className += ' js-loaded';
+		for (var i = 0; i < data.length; i++) {
+			var src = 'http://codepen.io/api/oembed/?url=' + data[i].link + '&format=js&callback=renderPen';
+			var script = document.createElement('script');
+			script.src = src;
+			var head = document.querySelector('head');
+			head.appendChild(script);
+			head.removeChild(script);
+		};
+	})
 }
 
 function renderPen(data) {
