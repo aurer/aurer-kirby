@@ -61,7 +61,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: fade(#fff, 95%);
+    background-color: #fff;
     text-align: center;
     padding-bottom: @space-sm;
 
@@ -69,7 +69,7 @@
     // if transforms are not supported full details still show
     @media screen and (min-width: 36em) {
       transform: translateY(100%);
-      transition: transform .3s;
+      transition: transform .3s cubic-bezier(.29,.15,.03,1);
     }
 
     a {
@@ -91,7 +91,7 @@
       padding: .5em @space-sm;
       left: 0;
       right: 0;
-      background-color: fade(#fff, 95%);
+      background-color: #fff;
       font-size: 1.1em;
     }
 

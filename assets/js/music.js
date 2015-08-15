@@ -64,9 +64,6 @@
 			// Add pagination
 			music.addPagination();
 
-			// Scroll to the top of the tracks
-      music.scrollToTracks();
-
       // Handle image load errors
       music.handleImageLoadErrors();
 		},
@@ -115,7 +112,7 @@
 				var link = document.createElement('a');
 				link.className = (i == music.currentPage) ? 'pagination-page active' : 'pagination-page';
 				link.href = '?p=' + i;
-				link.text = i;
+				link.innerText = i;
 				pagination.appendChild(link);
 			});
 
@@ -153,14 +150,6 @@
   			}
   		});
   	},
-
-    // Scroll to the top of the trackList
-    scrollToTracks: function(){
-    	if( screen.width < 800){
-    		var top = music.trackList.offsetTop - 60;
-    		window.scrollTo(0, top);
-    	}
-    },
 
 		// Return image and attributes for a lastFM track image
 		thumbnail: function(images, size, text){
@@ -246,6 +235,8 @@
 		}
 	}
 
-	// ...Run it!
-	music.init();
+	// ...Run it!\
+	if (document.querySelector('.track-list')) {
+		music.init();
+	}
 }());

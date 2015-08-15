@@ -3,7 +3,13 @@
   text-align: center;
   margin-top: @space;
   padding-top: @space-sm;
+  padding-bottom: @space-lg;
   border-top: 1px dotted @color-neutral-lighter;
+  position: relative;
+
+  @media @mq-md {
+    padding-bottom: 0;
+  }
 
   .pagination-page {
     display: inline-block;
@@ -35,6 +41,12 @@
     color: @color-primary;
     padding: 4px 10px;
     text-decoration: none;
+    position: absolute;
+    top: 3em;
+
+    @media @mq-md {
+      position: static;
+    }
 
     &:hover {
       border-color: transparent;
@@ -46,12 +58,16 @@
   }
 
   .pagination-prev {
+    left: 15%;
+
     &:before {
       content: '< ';
     }
   }
 
   .pagination-next {
+    right: 15%;
+
     &:after {
       content: ' >';
     }
