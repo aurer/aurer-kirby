@@ -5,10 +5,10 @@
 			<h1><?= html($page->title()) ?></h1>
 			<?= kirbytext($page->text()) ?>
 
-			<div class="track-list"><!-- Tracks loaded here --></div>
+			<div class="track-list" id="tracklist"><!-- Tracks loaded here --></div>
 			<div class="track-pagination"><!-- Pagination loaded here --></div>
 
-			<!-- <?= snippet('appreciate') ?> -->
+			<?= snippet('appreciate') ?>
 		</div>
 	</div>
 
