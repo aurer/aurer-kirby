@@ -1,8 +1,8 @@
 module.exports = (grunt) ->
 	grunt.initConfig {
 		# Main options
-		srcDir: '.'
-		distDir: '../public/assets'
+		srcDir: 'assets'
+		distDir: 'public/assets'
 		proxy: 'aurer.dev'
 
 		# Load packages
@@ -11,6 +11,11 @@ module.exports = (grunt) ->
 		##############
 		# Define tasks
 		##############
+
+		clean : {
+			build: ['<%= distDir %>/css/', '<%= distDir %>/images/', '<%= distDir %>/js/']
+		}
+
 		less: {
 			options: {
 				compress: true,
@@ -101,10 +106,11 @@ module.exports = (grunt) ->
 
 	grunt.loadNpmTasks 'grunt-autoprefixer'
 	grunt.loadNpmTasks 'grunt-browser-sync'
+	grunt.loadNpmTasks 'grunt-contrib-clean'
+	grunt.loadNpmTasks 'grunt-contrib-imagemin'
 	grunt.loadNpmTasks 'grunt-contrib-less'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
-	grunt.loadNpmTasks 'grunt-contrib-imagemin'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
 
-	grunt.registerTask('default', ['less', 'autoprefixer', 'uglify', 'imagemin'])
-	grunt.registerTask('dev', ['less', 'browserSync', 'watch'])
+	grunt.registerTask('default', ['clean', 'less', 'autoprefixer', 'uglify', 'imagemin'])
+	grunt.registerTask('dev', ['clean', 'less', 'browserSync', 'watch'])
