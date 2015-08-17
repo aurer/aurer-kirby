@@ -9,7 +9,7 @@
 				<div class="grid">
 					<div class="col-md-4of5">
 						<div class="form-input">
-							<input type="text" placeholder="Search…" name="q" value="<?= $query ?>" autofocus />
+							<input type="text" placeholder="Search…" name="q" value="<?= htmlentities($query) ?>" autofocus />
 						</div>
 					</div>
 					<div class="col-md-1of5">
@@ -20,20 +20,24 @@
 
 			<!-- Results -->
 			<?php if(	$query) : ?>
+				<?php $results = $results->paginate(10) ?>
 				<div class="searchResults" id="results">
-					<?php $results = $results->paginate(10) ?>
-					<h3><?= $results->pagination()->numStart() ?> - <?= $results->pagination()->numEnd() ?> of <?= $results->pagination()->items() ?> results.</h3>
-					<ul class="searchResults-list">
-						<?php foreach($results as $result): ?>
-							<li class="searchResult">
-								<a class="searchResult-title" href="<?php echo $result->url() ?>">
-									<span class="searchResult-title"><?php echo $result->title() ?></span>
-									<small class="searchResult-url"><?php echo $result->url() ?></small>
-								</a>
-							</li>
-						<?php endforeach ?>
-					</ul>
-					<?= pagination($results) ?>
+					<?php if ($results->pagination()->items()): ?>
+						<h3><?= $results->pagination()->numStart() ?> - <?= $results->pagination()->numEnd() ?> of <?= $results->pagination()->items() ?> results.</h3>
+						<ul class="searchResults-list">
+							<?php foreach($results as $result): ?>
+								<li class="searchResult">
+									<a class="searchResult-title" href="<?= $result->url() ?>">
+										<span class="searchResult-title"><?= $result->title() ?></span>
+										<small class="searchResult-url"><?= $result->url() ?></small>
+									</a>
+								</li>
+							<?php endforeach ?>
+						</ul>
+						<?= pagination($results) ?>
+					<?php else: ?>
+						<p class="searchResults-noResults">Your search for <strong>"<?= htmlentities($query) ?>"</strong> returned no results.</p>
+					<?php endif ?>
 				</div>
 			<?php endif ?>
 		</div>
