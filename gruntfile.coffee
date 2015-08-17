@@ -113,5 +113,5 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-watch'
 
 	grunt.registerTask('default', ['less', 'autoprefixer', 'uglify', 'imagemin'])
-	grunt.registerTask('dev', ['clean', 'less', 'browserSync', 'watch'])
+	grunt.registerTask('dev', ['less', 'browserSync', 'watch'])
 	grunt.registerTask('build', ['clean', 'less', 'autoprefixer', 'uglify', 'imagemin'])
