@@ -102,27 +102,8 @@ module.exports = (grunt) ->
 				notify: false
 			}
 		}
-
-		filerev: {
-			css: {
-				src: ['<%= distDir %>/css/*.css']
-			}
-			js: {
-				src: ['<%= distDir %>/js/build.js']
-			}
-		}
-
-		assetsReplace: {
-			options: {
-				manifest: '<%= distDir %>/manifest.json'
-			}
-			files: {
-				'<%= distDir %>': ['<%= distDir %>/**/*']
-			}
-		}
 	}
 
-	grunt.loadNpmTasks 'assetflow'
 	grunt.loadNpmTasks 'grunt-autoprefixer'
 	grunt.loadNpmTasks 'grunt-browser-sync'
 	grunt.loadNpmTasks 'grunt-contrib-clean'
@@ -130,8 +111,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-less'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
-	grunt.loadNpmTasks 'grunt-filerev'
 
 	grunt.registerTask('default', ['less', 'autoprefixer', 'uglify', 'imagemin'])
 	grunt.registerTask('dev', ['clean', 'less', 'browserSync', 'watch'])
-	grunt.registerTask('build', ['clean', 'less', 'autoprefixer', 'uglify', 'imagemin', 'assetsReplace'])
+	grunt.registerTask('build', ['clean', 'less', 'autoprefixer', 'uglify', 'imagemin'])
