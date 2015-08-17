@@ -20,7 +20,7 @@ function pagination($results){
 
         foreach($range as $paging) {
             $active_class = $paging == $pagination->page() ? ' active' : '';
-            $html .= '<a class="pagination-page' . $active_class . '" href="' . $pagination->pageURL($paging) . '">' . $paging . '</a>';
+            $html .= '<a class="pagination-page' . $active_class . '" href="' . $pagination->pageURL($paging) . '#results">' . $paging . '</a>';
         }
 
         if ($pagination->rangeEnd() < $pagination->pages()) {
