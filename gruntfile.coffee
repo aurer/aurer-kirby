@@ -74,6 +74,17 @@ module.exports = (grunt) ->
 			}
 		}
 
+		filerev: {
+	    css: {
+	      src: '<%= distDir %>/css/*.css'
+	      dest: '<%= distDir %>/css'
+	    }
+	    js: {
+	      src: '<%= distDir %>/js/*'
+	      dest: '<%= distDir %>/js'
+	    }
+	  }
+
 		watch: {
 			less: {
 				files: '<%= srcDir %>/less/**/*.less'
@@ -105,6 +116,7 @@ module.exports = (grunt) ->
 	}
 
 	grunt.loadNpmTasks 'grunt-autoprefixer'
+	grunt.loadNpmTasks 'grunt-filerev'
 	grunt.loadNpmTasks 'grunt-browser-sync'
 	grunt.loadNpmTasks 'grunt-contrib-clean'
 	grunt.loadNpmTasks 'grunt-contrib-imagemin'
@@ -112,6 +124,12 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
 
+	# Create a manifest file from filerev summary
+	grunt.registerTask('rev-manifest', 'Create a filerev manifest', =>
+		grunt.file.write('public/assets/rev-manifest.json', JSON.stringify(grunt.filerev.summary));
+	)
+
 	grunt.registerTask('default', ['less', 'autoprefixer', 'uglify', 'imagemin'])
 	grunt.registerTask('dev', ['less', 'browserSync', 'watch'])
-	grunt.registerTask('build', ['clean', 'less', 'autoprefixer', 'uglify', 'imagemin'])
+	grunt.registerTask('build', ['clean', 'less', 'autoprefixer', 'uglify', 'imagemin', 'filerev', 'rev-manifest'])
+
