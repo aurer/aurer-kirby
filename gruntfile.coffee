@@ -17,34 +17,31 @@ module.exports = (grunt) ->
 		}
 
 		less: {
-			options: {
-				compress: true,
-				sourceMap: true,
-				sourceMapRootpath: '/'
-			}
-			dist: {
+			development: {
+				options: {
+					compress: false
+					sourceMap: true
+					sourceMapRootpath: '/'
+				},
 				files: {
-					'<%= distDir %>/css/screen.css': '<%= srcDir %>/less/screen.less'
+					"<%= distDir %>/css/screen.css": "<%= srcDir %>/less/screen.less"
 				}
 			}
 		}
 
-		autoprefixer: {
-			options: {
-				browsers: ['last 2 version', 'ie 8', 'ie 9']
-			}
-			files: {
-				expand: true
-				flatten: true
-				src: '<%= distDir %>/css/*.css'
-				dest: '<%= distDir %>/css/'
-			}
-		}
+		pleeease: {
+      options: {
+        autoprefixer: {'browsers': ['last 2 versions', 'ios 6', 'ie 8', 'ie 9']},
+        minifier: true,
+        mqpacker: true
+        sourcemaps: true,
+      },
+      files: {
+        '<%= distDir %>/css/screen.css': '<%= distDir %>/css/screen.css'
+      }
+	  },
 
 		uglify: {
-			options: {
-				beautify: true
-			}
 			main: {
 				files: {
 					'<%= distDir %>/js/build.js': [
@@ -77,25 +74,24 @@ module.exports = (grunt) ->
 		filerev: {
 	    css: {
 	      src: '<%= distDir %>/css/*.css'
-	      dest: '<%= distDir %>/css'
 	    }
 	    js: {
 	      src: '<%= distDir %>/js/*'
-	      dest: '<%= distDir %>/js'
 	    }
 	  }
 
 		watch: {
 			less: {
 				files: '<%= srcDir %>/less/**/*.less'
-				tasks: ['less', 'autoprefixer']
+				tasks: ['less', 'pleeease']
 			}
 			js: {
 				files: '<%= srcDir %>/js/*.js'
 				tasks: ['uglify']
 			}
-			grunt: {
-				files: 'gruntfile.coffee'
+			images: {
+				files: '<%= srcDir %>/images/*'
+				tasks: ['imagemin']
 			}
 		}
 
@@ -115,7 +111,6 @@ module.exports = (grunt) ->
 		}
 	}
 
-	grunt.loadNpmTasks 'grunt-autoprefixer'
 	grunt.loadNpmTasks 'grunt-filerev'
 	grunt.loadNpmTasks 'grunt-browser-sync'
 	grunt.loadNpmTasks 'grunt-contrib-clean'
@@ -123,13 +118,14 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-less'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
+	grunt.loadNpmTasks 'grunt-pleeease'
 
 	# Create a manifest file from filerev summary
 	grunt.registerTask('rev-manifest', 'Create a filerev manifest', =>
 		grunt.file.write('public/assets/rev-manifest.json', JSON.stringify(grunt.filerev.summary));
 	)
 
-	grunt.registerTask('default', ['less', 'autoprefixer', 'uglify', 'imagemin'])
+	grunt.registerTask('default', ['clean', 'less', 'pleeease', 'uglify', 'imagemin'])
 	grunt.registerTask('dev', ['less', 'browserSync', 'watch'])
-	grunt.registerTask('build', ['clean', 'less', 'autoprefixer', 'uglify', 'imagemin', 'filerev', 'rev-manifest'])
+	grunt.registerTask('build', ['default', 'filerev', 'rev-manifest'])
 
