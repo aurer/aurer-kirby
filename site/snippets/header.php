@@ -16,7 +16,7 @@
 
 <!--[if lt IE 9]>
 	<?= css(asset_path('assets/css', 'ie8.css')) ?>
-  <script src="/assets/js/html5shiv.min.js"></script>
+	<?= js(asset_path('assets/js', 'html5shiv.min.js')) ?>
 <![endif]-->
 </head>
 <body class="<?= snippet('body-class') ?>">
