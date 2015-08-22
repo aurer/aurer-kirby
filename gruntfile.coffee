@@ -19,7 +19,7 @@ module.exports = (grunt) ->
 		less: {
 			development: {
 				options: {
-					compress: false
+					compress: true
 					sourceMap: true
 					sourceMapRootpath: '/'
 				},
