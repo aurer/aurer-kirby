@@ -84,10 +84,21 @@ Appreciation = {
   }
 }
 
-Appreciation.init('button.appreciate');
+function loadCss(path) {
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = path;
+  var head = document.getElementsByTagName('head')[0];
+  head.parentNode.insertBefore(link, head);
+}
 
-(function(){
+Appreciation.init('button.appreciate');
+setTimeout(function(){
+	loadCss('http://fonts.googleapis.com/css?family=Oxygen:400,300');
+},0)
+
+window.addEventListener('load', function(){
 	'use strict';
 	handleFixedNav();
 	loadPens();
-}());
+});
