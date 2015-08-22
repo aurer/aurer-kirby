@@ -46,9 +46,15 @@ module.exports = (grunt) ->
 				files: {
 					'<%= distDir %>/js/build.js': [
 						'<%= srcDir %>/js/vendor/promise.js'
+						'<%= srcDir %>/js/main.js'
+					]
+				}
+			}
+			music: {
+				files: {
+					'<%= distDir %>/js/music.js': [
 						'<%= srcDir %>/js/vendor/underscore.js'
 						'<%= srcDir %>/js/music.js'
-						'<%= srcDir %>/js/main.js'
 					]
 				}
 			}
@@ -126,6 +132,6 @@ module.exports = (grunt) ->
 	)
 
 	grunt.registerTask('default', ['clean', 'less', 'pleeease', 'uglify', 'imagemin'])
-	grunt.registerTask('dev', ['less', 'browserSync', 'watch'])
+	grunt.registerTask('dev', ['default', 'browserSync', 'watch'])
 	grunt.registerTask('build', ['default', 'filerev', 'rev-manifest'])
 
