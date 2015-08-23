@@ -17,14 +17,19 @@ module.exports = (grunt) ->
 		}
 
 		less: {
-			development: {
-				options: {
-					compress: true
-					sourceMap: true
-					sourceMapRootpath: '/'
-				},
+			options: {
+				compress: true
+				sourceMap: true
+				sourceMapRootpath: '/'
+			},
+			screen: {
 				files: {
 					"<%= distDir %>/css/screen.css": "<%= srcDir %>/less/screen.less"
+				}
+			}
+			ie: {
+				files: {
+					"<%= distDir %>/css/ie.css": "<%= srcDir %>/less/ie.less"
 				}
 			}
 		}

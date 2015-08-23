@@ -15,7 +15,7 @@
 <?= css(asset_path('assets/css', 'screen.css')) ?>
 
 <!--[if lt IE 9]>
-	<?= css(asset_path('assets/css', 'ie8.css')) ?>
+	<?= css(asset_path('assets/css', 'ie.css')) ?>
 	<?= js(asset_path('assets/js', 'html5shiv.min.js')) ?>
 <![endif]-->
 </head>
