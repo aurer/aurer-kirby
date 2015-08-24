@@ -9,7 +9,7 @@
     clear: both;
   }
 
-  [class^=col-] {
+  [class*=col-] {
     vertical-align: top;
   }
 }
@@ -17,13 +17,13 @@
 .grid--padHorizontal {
   margin-left: -@grid-space;
 
-  > [class^=col-] {
+  > [class*=col-] {
     padding-left: @grid-space;
   }
 }
 
 .grid--padVertical {
-  > [class^=col-] {
+  > [class*=col-] {
     padding-bottom: @grid-space;
   }
 }
@@ -34,12 +34,12 @@
 }
 
 .grid--alignMiddle {
-  [class^=col-] {
+  [class*=col-] {
     vertical-align: middle;
   }
 }
 
-[class^=col-] {
+[class*=col-] {
   font-size: @base-font-size;
   box-sizing: border-box;
   display: inline-block;

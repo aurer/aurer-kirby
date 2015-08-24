@@ -69,15 +69,20 @@
 
 .section--footer {
   background-color: @color-neutral-darkest;
-  color: @color-white;
+  color: @color-neutral;
   text-align: center;
+  font-size: .9em;
 
   .section-inner {
     padding-top: @space-lg;
   }
 
   a {
-    color: @color-secondary-light;
+    color: @color-neutral-light;
+
+    &:hover {
+      color: @color-white;
+    }
   }
 }
 
@@ -94,11 +99,11 @@
 
   h1 {
     color: @color-secondary-lighter;
-    animation: in-right 1.5s;
+    animation: intro 1.5s;
   }
 
   p {
-    animation: in-left 1.5s;
+    animation: intro 1.5s;
   }
 }
 
