@@ -29,17 +29,23 @@
 @grid-font-size: 1rem;
 @grid-space: 1rem;
 
-@color-primary-lighter: #50C9FD;
-@color-primary-light: #2584AB;
 @color-primary: #214D5E;
-@color-primary-dark: #183844;
-@color-primary-darker: #1B2529;
+@color-primary-lighter: saturate(lighten(@color-primary, 40%), 35%);
+@color-primary-light: saturate(lighten(@color-primary, 15%), 15%);
+@color-primary-dark: desaturate(darken(@color-primary, 7%), 5%);
+@color-primary-darker: desaturate(darken(@color-primary, 12%), 15%);
 
-@color-secondary-lighter: #9BD3D4;
-@color-secondary-light: #419E9E;
 @color-secondary: #297575;
-@color-secondary-dark: #174242;
-@color-secondary-darker: #213333;
+@color-secondary-lighter: desaturate(lighten(@color-secondary, 40%), 5%);
+@color-secondary-light: saturate(lighten(@color-secondary, 10%), 5%);
+@color-secondary-dark: desaturate(darken(@color-secondary, 13%), 1%);
+@color-secondary-darker: desaturate(darken(@color-secondary, 15%), 23%);
+
+@color-tertiary: #FF7E00;
+@color-tertiary-lighter: spin(lighten(@color-tertiary, 15%), 15%);
+@color-tertiary-light: spin(lighten(@color-tertiary, 13%), 5%);
+@color-tertiary-dark: spin(darken(@color-tertiary, 5%), -4%);
+@color-tertiary-darker: spin(darken(@color-tertiary, 10%), -15%);
 
 @color-neutral-lightest: lighten(@color-neutral, 50%);
 @color-neutral-lighter: lighten(@color-neutral, 30%);

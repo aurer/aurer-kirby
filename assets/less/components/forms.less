@@ -16,7 +16,7 @@ button,
 .button,
 .btn {
 	display: inline-block;
-  padding: @space-sm @space;
+  padding: 0 @space;
   margin-bottom: 0;
   font-size: 1em;
   min-height: 3em;
@@ -31,6 +31,7 @@ button,
   border-radius: 3px;
 	transition: all .2s;
 	outline: none;
+	font: inherit;
 
   &:hover,
   &:focus {
@@ -113,17 +114,17 @@ button,
 	margin-bottom: @space-lg;
 
 	.grid {
-		input[type=submit] {
+		[type=submit] {
 			width: 100%;
 			margin-top: @space-xs;
 		}
 
 		@media @mq-md {
-			input[type=text] {
+			[type=text] {
 				border-radius: 3px 0 0 3px;
 			}
 
-			input[type=submit] {
+			[type=submit] {
 				margin: 0;
 				border-radius: 0 3px 3px 0;
 			}
