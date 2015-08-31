@@ -34,83 +34,86 @@
 ?>
 
 <?= snippet('header') ?>
-	<div class="section section--contact">
-		<div class="section-inner">
-				<h1><?= html($page->title()) ?></h1>
 
-				<?php if(s::get('email_sent') !== true) : ?>
+<div class="section section--contact">
+	<div class="section-inner">
+		<h1><?= html($page->title()) ?></h1>
 
-					<?= kirbytext($page->text()) ?>
+		<?php if(s::get('email_sent') !== true) : ?>
 
-					<?= snippet('messages') ?>
+			<?= kirbytext($page->text()) ?>
 
-					<form action="<?= $page->url() ?>#contact-form" method="post" id="contact-form" class="form form--contact" >
-						<div class="grid grid--padHorizontal">
-							<div class="col-lg-1of2">
-								<div class="field field-contactname <?= $validator->error_class('contactname'); ?>">
-									<label>Name *</label>
-									<div class="form-input">
-										<input type="text" name="contactname" value="<?= $validator->get_value('contactname'); ?>" />
-										<?= $validator->field_error('contactname') ?>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-1of2">
-								<div class="field field-email <?= $validator->error_class('email'); ?>">
-									<label>Email *</label>
-									<div class="form-input">
-										<input type="email" name="email" value="<?= $validator->get_value('email'); ?>" />
-										<?= $validator->field_error('email') ?>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="field field-subject <?= $validator->error_class('subject'); ?>">
-							<label>Subject</label>
+			<?= snippet('messages') ?>
+
+			<form action="<?= $page->url() ?>#contact-form" method="post" id="contact-form" class="form form--contact" >
+				<div class="grid grid--padHorizontal">
+					<div class="col-lg-1of2">
+						<div class="field field-contactname <?= $validator->error_class('contactname'); ?>">
+							<label>Name *</label>
 							<div class="form-input">
-								<input type="text" name="subject" value="<?= $validator->get_value('subject'); ?>" />
-								<?= $validator->field_error('subject') ?>
+								<input type="text" name="contactname" value="<?= $validator->get_value('contactname'); ?>" />
+								<?= $validator->field_error('contactname') ?>
 							</div>
 						</div>
-						<div class="field field-message <?= $validator->error_class('message'); ?>">
-							<label>Message *</label>
-							<div class="form-input">
-								<textarea name="message" id="in-message" cols="30" rows="10"><?= $validator->get_value('message'); ?></textarea>
-								<?= $validator->field_error('message') ?>
-							</div>
-						</div>
-						<div class="field field-submit">
-							<input type="submit" name="submit" class="btn" value="Send" />
-						</div>
-					</form>
-				<?php else: ?>
-					<div class="sent">
-						<h2>Thanks for getting in touch.</h2>
-						<p>I will try to get back you you as soon as possible.</p>
 					</div>
-				<?php endif ?>
-		</div>
+					<div class="col-lg-1of2">
+						<div class="field field-email <?= $validator->error_class('email'); ?>">
+							<label>Email *</label>
+							<div class="form-input">
+								<input type="email" name="email" value="<?= $validator->get_value('email'); ?>" />
+								<?= $validator->field_error('email') ?>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="field field-subject <?= $validator->error_class('subject'); ?>">
+					<label>Subject</label>
+					<div class="form-input">
+						<input type="text" name="subject" value="<?= $validator->get_value('subject'); ?>" />
+						<?= $validator->field_error('subject') ?>
+					</div>
+				</div>
+				<div class="field field-message <?= $validator->error_class('message'); ?>">
+					<label>Message *</label>
+					<div class="form-input">
+						<textarea name="message" id="in-message" cols="30" rows="10"><?= $validator->get_value('message'); ?></textarea>
+						<?= $validator->field_error('message') ?>
+					</div>
+				</div>
+				<div class="field field-submit">
+					<input type="submit" name="submit" class="btn" value="Send" />
+				</div>
+			</form>
+		<?php else: ?>
+			<div class="sent">
+				<h2>Thanks for getting in touch.</h2>
+				<p>I will try to get back you you as soon as possible.</p>
+			</div>
+		<?php endif ?>
 	</div>
+</div>
 
-	<script>
-		(function(){
-			var supportsPlaceholder = function(){
-				var i = document.getElementsByTagName('input');
-				return i ? 'placeholder' in i[0] : false;
+<script>
+	(function(){
+		var supportsPlaceholder = function(){
+			var i = document.getElementsByTagName('input');
+			return i ? 'placeholder' in i[0] : false;
+		}
+		if (supportsPlaceholder()) {
+			var labels = document.querySelectorAll('#contact-form label');
+			for(var i = 0; i < labels.length; i++){
+				var label = labels[i];
+				var parent = label.parentNode;
+				var siblings = parent.children;
+				var input = siblings[1].children[0];
+				input.placeholder = label.innerText;
+				label.style.display = 'none';
 			}
-			if (supportsPlaceholder()) {
-				var labels = document.querySelectorAll('#contact-form label');
-				for(var i = 0; i < labels.length; i++){
-					var label = labels[i];
-					var parent = label.parentNode;
-					var siblings = parent.children;
-					var input = siblings[1].children[0];
-					input.placeholder = label.innerText;
-					label.style.display = 'none';
-				}
-			};
-		}());
-	</script>
+		};
+	}());
+</script>
+
+<?= snippet('content-types/social') ?>
 
 <?= snippet('footer') ?>
 <?php s::remove('email_sent'); ?>

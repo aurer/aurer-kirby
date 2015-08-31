@@ -6,22 +6,7 @@
 		</div>
 	</div>
 
-	<div class="section section--projects">
-		<div class="section-inner">
-			<h2 class="section-title"><a href="/projects">Projects</a></h2>
-			<div class="projects">
-				<?= snippet('projects') ?>
-			</div>
-		</div>
-	</div>
-
-	<div class="section section--words">
-		<div class="section-inner">
-			<h2 class="section-title"><a href="/words">Words</a></h2>
-			<div class="words">
-				<?= snippet('words') ?>
-			</div>
-		</div>
-	</div>
+	<?= snippet('content-types/posts', ['title' => 'Some things I wrote']) ?>
+	<?= snippet('content-types/social', ['title' => 'Find me on...']) ?>
 
 <?= snippet('footer') ?>
