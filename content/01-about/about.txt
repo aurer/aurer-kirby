@@ -18,44 +18,44 @@ This site runs on an architecture of:
 
 Server side and development technologies include:
 
-* (link: http://getkirby.com text: Kirby target: _blank)
-* (link: http://gulpjs.com/ text: Gulp.js target: _blank)
-* (link: http://sass-lang.com/ text : Sass target: _blank)
+* (link:http://getkirby.com text:Kirby target:_blank)
+* (link:http://gruntjs.com/ text:Grunt target:_blank)
+* (link:http://lesscss.org/ text:Less target:_blank)
+* (link:https://www.vagrantup.com/ text:Vagrant target:_blank)
 
-You can view the source on (link: https://github.com/aurer/aurer-kirby text: Github target: _blank).
+You can view the sites source on (link: https://github.com/aurer/aurer-kirby text: Github target: _blank title: View site source on github).
 
 ----
 Languages:
-- HTML
+- Bash
 - CSS/LESS/SASS
+- HTML
 - Javascript/jQuery
 - PHP
-- SQL
-- Bash
 - Ruby
+- SQL
 
 ----
 Frameworks:
+- Apache
 - Drupal
+- Git/SVN
 - Kirby
 - Laravel
-- Codeigniter
-- Git/SVN
-- Vagrant
-- Nginx
-- Apache
 - Linux
+- Nginx
+- Vagrant
 
 ----
 Applications:
 - Chrome
+- Illustrator
+- Photoshop
+- Sequel Pro
+- Sketch
+- SourceTree
 - Sublime Text
 - Terminal
-- SourceTree
-- Sequel Pro
-- Photoshop
-- Sketch
-- Illustrator
 
 ----
 Workflow:

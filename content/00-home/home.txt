@@ -6,3 +6,5 @@ Text: # Welcome
 
 My name is Phil, I'm a front-end web developer.
 This is a collection of some of my personal projects and other things.
+
+(link:/projects text:Here are some projects)
