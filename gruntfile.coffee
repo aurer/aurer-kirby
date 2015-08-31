@@ -35,22 +35,23 @@ module.exports = (grunt) ->
 		}
 
 		pleeease: {
-      options: {
-        autoprefixer: {'browsers': ['last 2 versions', 'ios 6', 'ie 8', 'ie 9']},
-        minifier: true,
-        mqpacker: true
-        sourcemaps: true,
-      },
-      files: {
-        '<%= distDir %>/css/screen.css': '<%= distDir %>/css/screen.css'
-      }
-	  },
+			options: {
+				autoprefixer: {'browsers': ['last 2 versions', 'ios 6', 'ie 8', 'ie 9']},
+				minifier: true,
+				mqpacker: true
+				sourcemaps: true,
+			},
+			files: {
+				'<%= distDir %>/css/screen.css': '<%= distDir %>/css/screen.css'
+			}
+		},
 
 		uglify: {
 			main: {
 				files: {
 					'<%= distDir %>/js/build.js': [
 						'<%= srcDir %>/js/vendor/promise.js'
+						'<%= srcDir %>/js/vendor/svg4everybody.legacy.js'
 						'<%= srcDir %>/js/main.js'
 					]
 				}
@@ -72,6 +73,9 @@ module.exports = (grunt) ->
 
 		imagemin: {
 			dynamic: {
+				options: {
+					svgoPlugins: [{cleanupIDs: false}]
+				}
 				files: [{
 					expand: true
 					optimizationLevel: 4
@@ -83,13 +87,13 @@ module.exports = (grunt) ->
 		}
 
 		filerev: {
-	    css: {
-	      src: '<%= distDir %>/css/*.css'
-	    }
-	    js: {
-	      src: '<%= distDir %>/js/*'
-	    }
-	  }
+			css: {
+				src: '<%= distDir %>/css/*.css'
+			}
+			js: {
+				src: '<%= distDir %>/js/*'
+			}
+		}
 
 		watch: {
 			less: {
