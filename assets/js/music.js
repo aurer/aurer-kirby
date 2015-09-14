@@ -27,6 +27,7 @@
 				user: 'philmau',
 				api_key: 'ccfce33b35f8480c2413f2a642fa2c6a',
 				format: 'json',
+				limit: '12',
 				page: page
 			};
 			promise.get(music.lastFm, settings).then(function(error, response) {
@@ -237,6 +238,8 @@
 
 	// ...Run it!\
 	if (document.querySelector('.track-list')) {
-		music.init();
+		window.addEventListener('load', function(){
+			music.init();
+		});
 	}
 }());
