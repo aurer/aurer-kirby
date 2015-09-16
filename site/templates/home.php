@@ -6,7 +6,7 @@
 		</div>
 	</div>
 
-	<?= snippet('content-types/posts', ['title' => 'Some things I wrote']) ?>
-	<?= snippet('content-types/social', ['title' => 'Find me on...']) ?>
+	<?= snippet('content-types/posts', ['title' => 'A few words']) ?>
+	<?= snippet('content-types/social', ['title' => 'Profiles']) ?>
 
 <?= snippet('footer') ?>

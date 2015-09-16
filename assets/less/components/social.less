@@ -5,8 +5,13 @@
 	text-align: center;
 
 	.section-inner {
-		padding-top: @space;
-		padding-bottom: @space;
+		padding-top: @space-lg;
+		padding-bottom: @space-lg;
+
+		@media @mq-lg {
+			padding-top: @space-lg;
+			padding-bottom: @space-lg;
+		}
 	}
 
 	.section-title,

@@ -88,22 +88,46 @@
 
 .section--intro {
   background-color: @color-primary;
-  background-image: url(/assets/images/knitting.png);
+  background-image: url(/assets/images/knitting.png), url(/assets/images/blurred.svg);
+  background-size: 13px 11px, cover;
+  background-repeat: repeat, no-repeat;
   color: @color-white;
   text-align: center;
+  padding: @space;
+
+  @media @mq-md {
+    padding: @space-lg @space;
+  }
+
+  @media @mq-lg {
+    padding: @space-xxl @space;
+  }
 
   .section-inner {
-    padding-top: @space-xxl;
-    padding-bottom: @space-xxl;
+    max-width: @mq-sm-width;
+    padding-top: @space-lg;
+    padding-bottom: @space-lg;
+    background-color: fade(@color-primary-dark, 50%);
+    transition: max-width 1s;
+    animation: intro 1.5s;
+
+    @media @mq-lg {
+      max-width: @mq-md-width;
+    }
   }
 
   h1 {
-    color: @color-secondary-lighter;
-    animation: intro 1.5s;
-  }
+    color: inherit;
+    font-size: 2.6em;
+    display: inline-block;
+    padding: 0 0 @space-sm;
+    border-bottom: 4px double @color-white;
 
-  p {
-    animation: intro 1.5s;
+    @media @mq-md {
+      font-size: 3em;
+      padding: 0 @space-sm @space;
+      margin-bottom: @space * 1.5;
+    }
   }
 }
 
@@ -122,8 +146,7 @@
 }
 
 .section--words {
-  background-color: @color-secondary-lighter;
-  background-image: url(/assets/images/knitting.png);
+  background-color: @color-neutral-lightest;
   color: @color-secondary-dark;
 
   a {
