@@ -28,11 +28,17 @@
 
 				<?php if ($statuscode == 404) : ?>
 
-					<form class="standard search" action="/search">
-						<div class="input">
-							<input type="text" placeholder="Search…" name="q" value="<?= str_replace('/', ' ', $path) ?>" autofocus />
+					<form class="form form--search" action="<?= thisURL() ?>#results">
+						<div class="grid">
+							<div class="col-md-4of5">
+								<div class="form-input">
+									<input type="text" placeholder="Search…" name="q" value="<?= htmlentities(str_replace('/', ' ', $path)) ?>" autofocus />
+								</div>
+							</div>
+							<div class="col-md-1of5">
+								<input class="btn" type="submit" value="Search" />
+							</div>
 						</div>
-						<input type="submit" value="Search" />
 					</form>
 
 				<?php endif ?>
