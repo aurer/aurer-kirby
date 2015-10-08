@@ -15,7 +15,8 @@
 <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
 <link rel="icon" type="image/png" href="/favicons/favicon-194x194.png" sizes="194x194">
 
-<?= css(asset_path('assets/css', 'screen.css')) ?>
+<?= css(asset_path('assets/css', 'screen.css'), 'all') ?>
+<?= css(asset_path('assets/css', 'print.css'), 'print') ?>
 
 <!--[if lt IE 9]>
 	<?= css(asset_path('assets/css', 'ie.css')) ?>

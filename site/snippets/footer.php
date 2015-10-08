@@ -12,7 +12,7 @@
 		</footer>
 	</div>
 
-	<?= js(asset_path('assets/js', 'build.js')) ?>
+	<?= js(asset_path('assets/js', 'main.js')) ?>
 
 	<script defer>
 	    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

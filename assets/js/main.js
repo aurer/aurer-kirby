@@ -53,7 +53,8 @@ Appreciation = {
   	var button = this.button;
     var id = button.getAttribute('data-page_id');
     button.className = 'appreciate appreciate--clicked appreciate--active';
-    promise.post('/appreciate', {page_id: id});
+    var ajax = new Ajax();
+    ajax.post('/appreciate', {page_id: id});
   }
 }
 

@@ -95,23 +95,4 @@ c::set('routes', array (
 			return response::json($entry);
 		}
 	),
-
-	// Return pens from codepen
-	array (
-		'method' => 'GET',
-		'pattern' => 'pens',
-		'action' => function() {
-			$rss = file_get_contents('http://codepen.io/aurer/public/feed');
-			$xml = new SimpleXMLElement($rss);
-
-			$pens = array();
-			foreach ($xml->channel->item as $item) {
-				$pen = new StdClass;
-				$pen->title = (String)$item->title;
-				$pen->link = (String)$item->link;
-				$pens[] = $pen;
-			}
-			return response::json($pens);
-		}
-	),
 ));

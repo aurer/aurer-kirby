@@ -22,15 +22,14 @@ module.exports = (grunt) ->
 				sourceMap: true
 				sourceMapRootpath: '/'
 			},
-			screen: {
-				files: {
-					"<%= distDir %>/css/screen.css": "<%= srcDir %>/less/screen.less"
-				}
-			}
-			ie: {
-				files: {
-					"<%= distDir %>/css/ie.css": "<%= srcDir %>/less/ie.less"
-				}
+			less: {
+				files: [{
+					expand: true
+					cwd: "<%= srcDir %>/less/"
+					src: "*.less"
+					dest: "<%= distDir %>/css/"
+					ext: '.css'
+				}]
 			}
 		}
 
@@ -49,9 +48,9 @@ module.exports = (grunt) ->
 		uglify: {
 			main: {
 				files: {
-					'<%= distDir %>/js/build.js': [
-						'<%= srcDir %>/js/vendor/promise.js'
-						'<%= srcDir %>/js/vendor/svg4everybody.legacy.js'
+					'<%= distDir %>/js/main.js': [
+						'<%= srcDir %>/components/svg4everybody.legacy.min.js'
+						'<%= srcDir %>/components/ajax/dist/ajax.min.js'
 						'<%= srcDir %>/js/main.js'
 					]
 				}
@@ -59,14 +58,17 @@ module.exports = (grunt) ->
 			music: {
 				files: {
 					'<%= distDir %>/js/music.js': [
-						'<%= srcDir %>/js/vendor/underscore.js'
-						'<%= srcDir %>/js/music.js'
+						'<%= srcDir %>/components/underscore/underscore-min.js'
+						'<%= srcDir %>/components/jquery/dist/jquery.min.js'
+						'<%= srcDir %>/components/backbone/backbone-min.js'
+						'<%= srcDir %>/components/jquery-timeago/jquery.timeago.js'
+						'<%= srcDir %>/js/music/app.js'
 					]
 				}
 			}
 			shiv: {
 				files: {
-					'<%= distDir %>/js/html5shiv.min.js': '<%= srcDir %>/js/vendor/html5shiv.min.js'
+					'<%= distDir %>/js/html5shiv.min.js': '<%= srcDir %>/components/html5shiv/dist/html5shiv.min.js'
 				}
 			}
 		}
@@ -100,9 +102,13 @@ module.exports = (grunt) ->
 				files: '<%= srcDir %>/less/**/*.less'
 				tasks: ['less', 'pleeease']
 			}
-			js: {
+			jsMain: {
 				files: '<%= srcDir %>/js/*.js'
-				tasks: ['uglify']
+				tasks: ['uglify:main', 'uglify:shiv']
+			}
+			jsMusic: {
+				files: '<%= srcDir %>/js/music/*.js'
+				tasks: ['uglify:music']
 			}
 			images: {
 				files: '<%= srcDir %>/images/*'
@@ -113,9 +119,10 @@ module.exports = (grunt) ->
 		browserSync: {
 			bsFiles: {
 				src : [
-					'<%= distDir %>/css/*.css',
-					'<%= distDir %>/js/*.js',
-					'../site/**/*.php'
+					'<%= distDir %>/css/*.css'
+					'<%= distDir %>/js/*.js'
+					'site/**/*.php'
+					'content/**/*'
 				]
 			},
 			options: {

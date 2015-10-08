@@ -1,0 +1,15 @@
+{
+  "name": "Aurer assets",
+  "version": "1.0.0",
+  "homepage": "http://aurer.co.uk",
+  "authors": [
+    "Phil Maurer"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "assets/components"
+  ]
+}
