@@ -1,0 +1,45 @@
+Title: Greene King Mainstream High Street Pubs
+
+----
+Links: (link:http://www.kingsarms-burystedmunds.co.uk target:_blank)
+
+----
+Hero: (image: hero.jpg)
+
+----
+Description:
+Built using the Drupal framework, this multi-site installation consists of around 100 pub sites all managed through a single Drupal installation. The build time was around 7 weeks from initial installation to go live.
+
+Each pubs site can be customised with location specific promotions, menus and imagery.
+
+Working along side the lead developer and designer I was responsible for installing Drupal, configuring and modifying required modules, creating custom templates and realising the design though a custom Drupal theme.
+
+----
+Features:
+* Promotions
+* Members / Sign-up
+* Pub information
+* Google maps
+* TripAdvisor feed
+* Food menus
+* Events
+* Table booking enquiry
+
+----
+Technologies:
+* Less
+* jQuery
+* Font Awesome
+* Modernizr
+* Featherlight
+* Select2
+* Cycle2
+* Google maps
+
+----
+Gallery:
+(image:menus.jpg caption:Dynamic menus system)
+(image:news-article.jpg caption:News article page)
+(image:signup.jpg caption:Member signup page)
+
+

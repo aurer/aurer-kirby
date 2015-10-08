@@ -1,0 +1,43 @@
+Title: Greene King IPA
+
+----
+Links: (link:http://greenekingipa.co.uk target:_blank)
+
+----
+Hero: (image: hero.jpg caption:The Green King IPA homepage)
+
+----
+Description:
+Built using the Drupal framework, this installation consists of a simple Drupal site with art directed pages centered around product guide, news and information about the brewery itself.
+
+The site features rich, full width imagery and in-line videos as well as a product guide and news listing.
+
+The build time was around 4 weeks from initial installation to go live. Working along side the lead developer and designer I was responsible for creating custom templates and realising the design though a custom Drupal theme.
+
+----
+Features:
+* Age gate
+* Art directed pages
+* contact form
+* sign-up
+* news
+* videos
+* product listing/details
+* Promotions
+* location info
+* maps
+
+----
+Technologies:
+* Less
+* jQuery
+* Quicklook
+* Modernizr
+* Google maps
+
+----
+Gallery:
+(image: brewery.jpg caption:Brewery page)
+(image: news.jpg caption:News listing page)
+(image: product.jpg caption:Product info page)
+(image:rugby.jpg caption:Rugby event page)

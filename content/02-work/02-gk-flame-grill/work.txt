@@ -1,0 +1,46 @@
+Title: Greene King Flame Grill
+
+----
+Links: (link:http://gkflamegrill.co.uk target:_blank)
+
+----
+Hero: (image: hero.jpg)
+
+----
+Description:
+Built using the Drupal framework, this installation consists of a central hub search page leading to around 100 pub sites all managed through a single Drupal installation.
+
+The hub site uses the Geolocation API to find pubs near the user, the search results are shown on a map and in list form along with a little information about the pub.
+
+The build time was around 6 weeks from initial installation to go live. Working along side the lead developer and designer I was responsible for installing Drupal, configuring and modifying required modules, creating custom templates and realising the design though a custom Drupal theme.
+
+----
+Features:
+* Hub page
+* Pub finder
+* Geolocation
+* Promotions
+* Memeber / sign-up
+* Pub information
+* Google maps
+* Food menus
+* Events
+* Table booking enquiry
+* Contact form
+
+----
+Technologies:
+* Less
+* jQuery
+* Font-awesome
+* Modernizr
+* Featherlight
+* Select2
+* Cycle2
+* Google maps
+
+----
+Gallery:
+(image:hub.jpg caption:Flame Grill hub search page)
+(image:menus.jpg caption:Dynamic menus system)
+(image:bookings.jpg caption:Table booking page)

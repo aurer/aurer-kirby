@@ -1,0 +1,47 @@
+Title: Greene King Metropolitan Pubs
+
+----
+Links:
+(link:http://www.thebaldfacedstagn2.co.uk target:_blank)
+(link:http://www.williamsspitalfields.com target:_blank)
+(link:http://www.blackswanockham.com target:_blank)
+
+----
+Hero: (image: hero.jpg caption:Homepage using the food theme)
+
+----
+Description:
+Built using the Drupal framework, this multi-site installation consists of around 100 pub sites all managed through a single Drupal installation. The build time was around 12 weeks from initial installation to go live.
+
+Each pub site can be fully customised with it's own colors, fonts, features and pages. There are 4 themes to choose from and each theme can be customised with around 40 color options and any two google fonts. This flexibility leads to huge variations in each look and feel.
+
+Working with another front-end developer and the lead developer and designer I was responsible for configuring and modifying required modules, creating custom templates and realising the design though 4 custom drupal themes all sharing a common parent.
+
+----
+Technologies:
+* Less
+* jQuery
+* Modernizr
+* Cycle2
+* Google maps
+
+----
+Features:
+* Promotions
+* Members / sign-up
+* Pub information
+* Google maps
+* Food menus
+* Events
+* Table booking enquiry
+* Instagram feed
+* Secret DJ feed
+* Matchpint feed
+* Gallery
+
+----
+Gallery:
+(image:city-theme.jpg caption:Homepage using the city theme)
+(image:country-theme.jpg caption:Homepage using the country theme)
+(image:event-theme.jpg caption:Homepage using the event theme)
+

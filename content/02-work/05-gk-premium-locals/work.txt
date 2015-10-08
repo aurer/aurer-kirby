@@ -1,0 +1,50 @@
+Title: Greene King Premium Locals pubs
+
+----
+Links:
+(link:http://www.osp-hammersmith.co.uk target:_blank)
+(link:http://www.bushel-burystedmunds.co.uk target:_blank)
+(link:http://www.eelbrook-fulham.co.uk target:_blank)
+(link:http://www.copa-cheltenham.co.uk target:_blank)
+(link:http://www.george-southwark.co.uk target:_blank)
+(link:http://www.garrickarms-charingcross.co.uk target:_blank)
+(link:http://www.brewmaster-stjames.co.uk target:_blank)
+
+----
+Hero: (image: hero.jpg caption:)
+
+----
+Description:
+Built using the Drupal framework, this multi-site installation consists of around 100 pub sites all managed through a single Drupal installation. The build time was around 10 weeks from initial installation to go live.
+
+Each pub site can be customised with a choice of 4 themes, each with a dark and a light version. Each site features bright full width imagery along with Instagram feeds, menus and a gallery.
+
+Working with another front-end developer and the lead developer and designer I was responsible for configuring and modifying required modules, creating custom templates and realising the design though 4 custom Drupal themes all sharing a common parent.
+
+----
+Technologies:
+* Less
+* jQuery
+* Modernizr
+* Cycle2
+* Google maps
+* Headroom
+* Masonry
+* Imagesloaded
+
+----
+Features:
+* Promotions
+* Members / sign-up
+* Pub information
+* Google maps
+* Food menus
+* Events
+* Table booking enquiry
+* Gallery
+
+----
+Gallery:
+(image:urban-2.jpg caption:Urban 2 theme homepage)
+(image:traditional-1.jpg caption:Traditional theme 1 homepage)
+(image:traditional-2.jpg caption:Traditional theme 2 homepage)
