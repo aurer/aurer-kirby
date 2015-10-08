@@ -1,0 +1,114 @@
+.section--works {
+	.section-inner {
+		padding-top: 0;
+	}
+}
+
+.section--workHero {
+	background-color: @color-neutral-lighter;
+
+	.col--primary {
+		float: right;
+
+		h1 {
+			font-size: 1.8em;
+			text-align: left;
+			margin-bottom: @space;
+		}
+	}
+
+	.col--secondary {
+		float: left;
+		padding-right: @space;
+	}
+
+}
+
+.workPreview {
+	a {
+		text-decoration: none;
+
+		&:hover, &:focus {
+			img {
+				opacity: .8;
+			}
+
+			.workPreview-title {
+				color: @color-primary;
+			}
+		}
+	}
+
+	.workPreview-title {
+		margin: @space-xs 0 @space;
+		text-align: center;
+		font-size: 1.2em;
+		color: @color-neutral;
+		transition: color .2s;
+	}
+
+	img {
+		box-shadow: 0 1px 4px fade(#000, 20%);
+		transition: opacity .2s;
+	}
+}
+
+.section--workNav {
+	text-align: center;
+
+	> .section-inner {
+		border-top: 1px dotted @color-neutral;
+	}
+
+	.workNav {
+		background-color: #fff;
+		display: inline-block;
+		box-shadow: 0 1px 4px fade(#000, 20%);
+		padding: @space-sm;
+		position: relative;
+
+		img {
+			display: inline-block;
+		}
+
+		&--prev {
+			.workNav-title:after {
+				content: 'Previous';
+			}
+		}
+
+		&--next {
+			.workNav-title:after {
+				content: 'Next';
+			}
+		}
+
+		.workNav-title {
+			display: block;
+			text-decoration: none;
+			font-weight: bold;
+			padding-top: @space-xs;
+
+			&:after {
+				position: absolute;
+				background-color: fade(#fff, 90%);
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				line-height: 10vw;
+				opacity: 0;
+				transition: opacity .2s;
+			}
+
+			&:hover:after {
+				opacity: 1;
+			}
+		}
+
+		.workNav-pager {
+			display: block;
+			background-color: @color-neutral-lightest;
+		}
+	}
+}
