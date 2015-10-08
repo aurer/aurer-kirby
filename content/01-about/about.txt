@@ -1,12 +1,12 @@
 Title: About
 ----
 Text: ## About me
-My name is Phil Maurer, I am a full-time web developer with a background in design, living and working in Suffolk, England. I have been working in web design and development for around 5 years, and I love every day of it.
+My name is Phil Maurer, I am a full-time web developer with a background in design, living and working in Suffolk, England. I have been working in web design and development for around 5 years.
 
 ### Background
 I’ve always had a great appreciation for good design, I studied graphic design in college through to a degree before branching into web design. From the design side of the web I quickly became interested in development and taught myself the fundamentals of HTML and CSS, building small sites for friends and relatives.
 
-Eventually that helped me land a junior position in a web agency, and from that point on I expanded into other web technologies, and I continue to learn new things every day.
+Eventually that helped me land a position in a web agency, and from that point on I expanded into other web technologies, and I continue to learn new things every day.
 
 ## About this site
 
