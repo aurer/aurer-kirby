@@ -4,4 +4,5 @@ site/panel
 docs
 node_modules
 content/appreciation.json
+thumbs/*
 *.sublime-workspace
