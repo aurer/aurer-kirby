@@ -93,26 +93,6 @@
 	</div>
 </div>
 
-<script>
-	(function(){
-		var supportsPlaceholder = function(){
-			var i = document.getElementsByTagName('input');
-			return i ? 'placeholder' in i[0] : false;
-		}
-		if (supportsPlaceholder()) {
-			var labels = document.querySelectorAll('#contact-form label');
-			for(var i = 0; i < labels.length; i++){
-				var label = labels[i];
-				var parent = label.parentNode;
-				var siblings = parent.children;
-				var input = siblings[1].children[0];
-				input.placeholder = label.innerText;
-				label.style.display = 'none';
-			}
-		};
-	}());
-</script>
-
 <?= snippet('content-types/social') ?>
 
 <?= snippet('footer') ?>
