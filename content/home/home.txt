@@ -2,7 +2,7 @@ Title: Home
 
 ----
 
-Text: # Welcome
+Text: # Hi there...
 
-My name is Phil, I'm a front-end web developer.
-This is a collection of some of my personal projects and other things.
+My name is Phil, I'm a web UI developer.
+This is a collection of some of my work, personal projects and other things.
