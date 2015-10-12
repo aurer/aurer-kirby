@@ -5,3 +5,26 @@
 .section--footer {
 	display: none;
 }
+
+.section {
+	.section-inner {
+		padding: 0;
+	}
+}
+
+.grid > div {
+	text-align: center;
+}
+
+.grid > div[class*='1of2'] { width: 100/2%; }
+.grid > div[class*='1of3'] { width: 100/3%; }
+.grid > div[class*='1of4'] { width: 100/4%; }
+.grid > div[class*='1of5'] { width: 100/5%; }
+
+a:after {
+	content: '[' attr(href) ']';
+	color: @color-neutral;
+	font-size: @base-font-size;
+	margin-left: @space-sm;
+	font-style: italic;
+}
