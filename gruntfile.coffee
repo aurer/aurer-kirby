@@ -51,6 +51,7 @@ module.exports = (grunt) ->
 					'<%= distDir %>/js/main.js': [
 						'<%= srcDir %>/components/svg4everybody.legacy.min.js'
 						'<%= srcDir %>/components/ajax/dist/ajax.min.js'
+						'<%= srcDir %>/js/plugins.js'
 						'<%= srcDir %>/js/main.js'
 					]
 				}
