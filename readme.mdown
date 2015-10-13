@@ -1,7 +1,15 @@
-# Kirby
+# Aurer.co.uk
 
-Kirby is a file-based CMS.   
-Easy to setup, easy to use, flexible as hell.
+Small personal/portfolio site built using Kirby <http://getkirby.com>
 
-<http://getkirby.com>
+## Other componenets include
 
+* NPM - https://github.com/npm/npm
+* Grunt - https://github.com/gruntjs/grunt
+* Bower - https://github.com/bower/bower
+* Backbone - https://github.com/jashkenas/backbone
+* jQuery - https://github.com/jquery/jquery
+* Underscore - https://github.com/jashkenas/underscore
+* HTML5 Shiv - https://github.com/aFarkas/html5shiv
+* jQuery Timeago - https://github.com/rmm5t/jquery-timeago
+* Ajax - https://github.com/fdaciuk/ajax
