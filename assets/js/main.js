@@ -66,7 +66,7 @@ function loadCss(path) {
   head.parentNode.insertBefore(link, head);
 }
 
-Appreciation.init('button.appreciate');
+Appreciation.init('button[class="appreciate"]');
 setTimeout(function(){
 	loadCss('http://fonts.googleapis.com/css?family=Oxygen:400,300');
 },0)
