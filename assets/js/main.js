@@ -49,12 +49,18 @@ Appreciation = {
     };
   },
 
+  unBindEvents: function() {
+  	this.button.onclick = null;
+  	console.log('Events unbound');
+  },
+
   addEntry: function() {
   	var button = this.button;
     var id = button.getAttribute('data-page_id');
     button.className = 'appreciate appreciate--clicked appreciate--active';
     var ajax = new Ajax();
     ajax.post('/appreciate', {page_id: id});
+    this.unBindEvents();
   }
 }
 
