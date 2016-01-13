@@ -51,7 +51,6 @@ Appreciation = {
 
   unBindEvents: function() {
   	this.button.onclick = null;
-  	console.log('Events unbound');
   },
 
   addEntry: function() {
