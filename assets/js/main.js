@@ -73,7 +73,7 @@ function loadCss(path) {
 
 Appreciation.init('button[class="appreciate"]');
 setTimeout(function(){
-	loadCss('http://fonts.googleapis.com/css?family=Oxygen:400,300');
+	loadCss('https://fonts.googleapis.com/css?family=Oxygen:400,300');
 },0)
 
 window.addEventListener('load', function(){

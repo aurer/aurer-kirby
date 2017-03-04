@@ -17,7 +17,7 @@ var TrackList = Backbone.Collection.extend({
   model: Track,
 
   url: function () {
-    return 'http://ws.audioscrobbler.com/2.0/?' + $.param(this.parameters) + '&page=' + this.page;
+    return 'https://ws.audioscrobbler.com/2.0/?' + $.param(this.parameters) + '&page=' + this.page;
   },
 
   page: 1,
