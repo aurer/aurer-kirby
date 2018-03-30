@@ -11,7 +11,7 @@
 		if($validator->run()==true){
 			$email = new Email(array(
 				'to'      => c::get('site_email'),
-				'from'    => 'Aurer emailer <noreply@aurer.co.uk>',
+				'from'    => $validator->get_value('email'),
 				'subject' => $validator->get_value('subject', 'Response from the Aurer site'),
 				'body'    => $validator->get_value('contactname')." sent you a message\n\n".$validator->get_value('message')."\n\n".$validator->get_value('email'),
 				'service' => 'mailgun',
